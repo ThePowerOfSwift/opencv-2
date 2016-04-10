@@ -6,7 +6,7 @@ http://blog.sina.com.cn/s/blog_7745fc8601018vzl.html
 http://blog.csdn.net/yanzi1225627/article/details/7524698
 http://www.cmake.org/examples/
 http://blog.csdn.net/sunny2038/article/details/9057415
-
+http://stackoverflow.com/questions/17831136/error-in-pkg-config
 
 #------------problem slove by myself----------------#
 1、cmake-qt-gui 点击configure提示没有权限？

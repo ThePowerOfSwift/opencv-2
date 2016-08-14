@@ -13,6 +13,10 @@ opencv/cv.hpp
 -
 opencv/highgui.h
 -
+ocr_read.hpp.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.hpp.h
+
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.hpp.h
 
 /home/cloud/opencv_lib/include/opencv/cv.h
 opencv2/core/core_c.h

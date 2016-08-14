@@ -4,6 +4,7 @@
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: src/ocr_read.cpp
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv/cv.h
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv/cv.hpp
+CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv/highgui.h
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/calib3d.hpp
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/core.hpp
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/core/affine.hpp
@@ -30,7 +31,9 @@ CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/ope
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/flann/defines.h
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/flann/miniflann.hpp
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/highgui.hpp
+CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/highgui/highgui_c.h
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/imgcodecs.hpp
+CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/imgcodecs/imgcodecs_c.h
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/imgproc.hpp
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/imgproc/imgproc_c.h
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/imgproc/types_c.h
@@ -44,4 +47,5 @@ CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/ope
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/video/tracking.hpp
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/video/tracking_c.h
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/videoio.hpp
+CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o: /home/cloud/opencv_lib/include/opencv2/videoio/videoio_c.h
 

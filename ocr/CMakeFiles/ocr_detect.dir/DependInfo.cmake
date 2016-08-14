@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/cloud/cloud-git-master/ocr/src/ocr_read.cpp" "/home/cloud/cloud-git-master/ocr/CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o"
+  "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

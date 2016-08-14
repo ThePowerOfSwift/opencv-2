@@ -13,5 +13,11 @@ typedef enum {
     E_MAX,
 } eThresholdType;
 
+typedef enum {
+    E_HUE = 1,
+    E_SATURATION,
+    E_VALUE
+} eHsvChannel;
+
 
 #endif //OCR_OCR_READ_HPP_H

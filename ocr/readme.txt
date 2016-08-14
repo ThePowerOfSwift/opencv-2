@@ -36,6 +36,7 @@ http://docs.opencv.org/3.0-beta/modules/core/doc/basic_structures.html#mat-conve
 http://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html#threshold
 http://stackoverflow.com/questions/17141535/how-to-use-the-otsu-threshold-in-opencv
 http://blog.csdn.net/hitwengqi/article/details/6856768
+http://blog.csdn.net/ningyaliuhebei/article/details/40736377
 
 
 

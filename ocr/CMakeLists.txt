@@ -3,11 +3,12 @@ project(ocr)
 set(OpenCV_DIR /home/cloud/opencv3.0/opencv-3.0.0-alpha/release)
 include_directories(/home/cloud/opencv_lib/include)
 include_directories(./)
+include_directories(/usr/local/include/leptonica)
 find_package(OpenCV REQUIRED)
-
+link_directories(/usr/local/lib)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES src/ocr_read.cpp src/ocr_read.hpp.h)
+set(SOURCE_FILES src/ocr_read.cpp src/ocr_read.h src/ocr_main.cpp src/ocr_tesseract.cpp src/ocr_tesseract.h)
 
 message(STATUS "OpenCV library status:")
 message(STATUS "    version: ${OpenCV_VERSION}")
@@ -16,3 +17,4 @@ message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 
 add_executable(ocr_detect ${SOURCE_FILES})
 target_link_libraries(ocr_detect ${OpenCV_LIBS})
+target_link_libraries(ocr_detect lept tesseract)

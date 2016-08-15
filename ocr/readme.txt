@@ -38,8 +38,12 @@ http://stackoverflow.com/questions/17141535/how-to-use-the-otsu-threshold-in-ope
 http://blog.csdn.net/hitwengqi/article/details/6856768
 http://blog.csdn.net/ningyaliuhebei/article/details/40736377
 
+http://www.cnblogs.com/huhuuu/p/3528508.html
+http://www.cnblogs.com/yuanbao/archive/2007/11/14/958488.html
 
 
+tesseract cmake
+http://stackoverflow.com/questions/20382549/cmake-for-tesseract-and-opencv
 
 
 

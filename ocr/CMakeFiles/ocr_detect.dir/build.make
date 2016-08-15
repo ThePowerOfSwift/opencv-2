@@ -75,14 +75,64 @@ CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o.provides: CMakeFiles/ocr_detect.dir
 
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o.provides.build: CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o
 
+CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o: CMakeFiles/ocr_detect.dir/flags.make
+CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o: src/ocr_main.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o -c /home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp
+
+CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp > CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.i
+
+CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp -o CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.s
+
+CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.requires:
+.PHONY : CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.requires
+
+CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.provides: CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.provides.build
+.PHONY : CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.provides
+
+CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.provides.build: CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o
+
+CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o: CMakeFiles/ocr_detect.dir/flags.make
+CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o: src/ocr_tesseract.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o -c /home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.cpp
+
+CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.cpp > CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.i
+
+CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.cpp -o CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.s
+
+CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o.requires:
+.PHONY : CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o.requires
+
+CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o.provides: CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o.provides.build
+.PHONY : CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o.provides
+
+CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o.provides.build: CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o
+
 # Object files for target ocr_detect
 ocr_detect_OBJECTS = \
-"CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o"
+"CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o" \
+"CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o" \
+"CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o"
 
 # External object files for target ocr_detect
 ocr_detect_EXTERNAL_OBJECTS =
 
 ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o
+ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o
+ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o
 ocr_detect: CMakeFiles/ocr_detect.dir/build.make
 ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_videostab.so.3.0.0
 ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_videoio.so.3.0.0
@@ -119,6 +169,8 @@ CMakeFiles/ocr_detect.dir/build: ocr_detect
 .PHONY : CMakeFiles/ocr_detect.dir/build
 
 CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o.requires
+CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.requires
+CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o.requires
 .PHONY : CMakeFiles/ocr_detect.dir/requires
 
 CMakeFiles/ocr_detect.dir/clean:

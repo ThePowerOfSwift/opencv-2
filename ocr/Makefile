@@ -114,6 +114,30 @@ ocr_detect/fast:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/build
 .PHONY : ocr_detect/fast
 
+src/ocr_main.o: src/ocr_main.cpp.o
+.PHONY : src/ocr_main.o
+
+# target to build an object file
+src/ocr_main.cpp.o:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o
+.PHONY : src/ocr_main.cpp.o
+
+src/ocr_main.i: src/ocr_main.cpp.i
+.PHONY : src/ocr_main.i
+
+# target to preprocess a source file
+src/ocr_main.cpp.i:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.i
+.PHONY : src/ocr_main.cpp.i
+
+src/ocr_main.s: src/ocr_main.cpp.s
+.PHONY : src/ocr_main.s
+
+# target to generate assembly for a file
+src/ocr_main.cpp.s:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.s
+.PHONY : src/ocr_main.cpp.s
+
 src/ocr_read.o: src/ocr_read.cpp.o
 .PHONY : src/ocr_read.o
 
@@ -138,6 +162,30 @@ src/ocr_read.cpp.s:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.s
 .PHONY : src/ocr_read.cpp.s
 
+src/ocr_tesseract.o: src/ocr_tesseract.cpp.o
+.PHONY : src/ocr_tesseract.o
+
+# target to build an object file
+src/ocr_tesseract.cpp.o:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o
+.PHONY : src/ocr_tesseract.cpp.o
+
+src/ocr_tesseract.i: src/ocr_tesseract.cpp.i
+.PHONY : src/ocr_tesseract.i
+
+# target to preprocess a source file
+src/ocr_tesseract.cpp.i:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.i
+.PHONY : src/ocr_tesseract.cpp.i
+
+src/ocr_tesseract.s: src/ocr_tesseract.cpp.s
+.PHONY : src/ocr_tesseract.s
+
+# target to generate assembly for a file
+src/ocr_tesseract.cpp.s:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.s
+.PHONY : src/ocr_tesseract.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -147,9 +195,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... ocr_detect"
 	@echo "... rebuild_cache"
+	@echo "... src/ocr_main.o"
+	@echo "... src/ocr_main.i"
+	@echo "... src/ocr_main.s"
 	@echo "... src/ocr_read.o"
 	@echo "... src/ocr_read.i"
 	@echo "... src/ocr_read.s"
+	@echo "... src/ocr_tesseract.o"
+	@echo "... src/ocr_tesseract.i"
+	@echo "... src/ocr_tesseract.s"
 .PHONY : help
 
 

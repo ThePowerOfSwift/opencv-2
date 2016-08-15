@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = /home/cloud/cloud-git-master/opencv/ocr
 CMakeFiles/ocr_detect.dir/all:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/depend
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles  1 2 3
 	@echo "Built target ocr_detect"
 .PHONY : CMakeFiles/ocr_detect.dir/all
 
@@ -72,7 +72,7 @@ all: CMakeFiles/ocr_detect.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ocr_detect.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ocr_detect.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles 0
 .PHONY : CMakeFiles/ocr_detect.dir/rule

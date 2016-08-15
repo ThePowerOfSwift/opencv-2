@@ -1,33 +1,32 @@
-#include <string>
 #include <opencv/cv.hpp>
 #include <opencv/highgui.h>
-#include "ocr_read.hpp.h"
+#include "ocr_read.h"
 
 using namespace cv;
 using namespace std;
 
-#define OCR_DBG 1
-
 //threshold define
+#define OCR_DBG 0
 #define DEFAULT_THRESHOLD 210
 #define DEFAULT_SIZE 3
 #define DEFAULT_DELTA 3
 
-IplImage *g_img = NULL;
-IplImage *g_grey = NULL;
-IplImage *g_binary = NULL;
-IplImage *g_hsv = NULL;
-IplImage *g_value = NULL;
-
-int ocr_dbg(IplImage* img, char* name) {
+void ocr_dbg(IplImage* img, char* name) {
     //display ocr png
+#if OCR_DBG
     cvNamedWindow(name, CV_WINDOW_AUTOSIZE);
     cvShowImage(name, img);
-    //waitKey(0);
+    waitKey(0);
+#endif
 }
 
-IplImage* ocr_read(char* ocr_name) {
+IplImage* ocr_read(const char* ocr_name) {
     return cvLoadImage(ocr_name, CV_LOAD_IMAGE_UNCHANGED);
+}
+
+int ocr_write(IplImage* srcImg, const char* ocr_name) {
+    cvSaveImage(ocr_name, srcImg);
+    return 0;
 }
 
 IplImage* ocr_grey(IplImage* srcImg) {
@@ -45,16 +44,16 @@ IplImage* ocr_binary(IplImage* srcImg, int threshold, int method, int size, doub
     switch(method) {
         case E_NORMAL: //normal threshold
         default:
-            cvThreshold(srcImg, desImg, threshold, 255, CV_THRESH_BINARY);
+            cvThreshold(srcImg, desImg, threshold, 255, CV_THRESH_BINARY_INV);
             break;
         case E_GAUSSIAN: //adaptive gaussian threshold
-            cvAdaptiveThreshold(srcImg, desImg, 255, CV_ADAPTIVE_THRESH_GAUSSIAN_C, CV_THRESH_BINARY, size, delta);
+            cvAdaptiveThreshold(srcImg, desImg, 255, CV_ADAPTIVE_THRESH_GAUSSIAN_C, CV_THRESH_BINARY_INV, size, delta);
             break;
         case E_MEAN: //adaptive mean threshold
-            cvAdaptiveThreshold(srcImg, desImg, 255, CV_ADAPTIVE_THRESH_MEAN_C, CV_THRESH_BINARY, size, delta);
+            cvAdaptiveThreshold(srcImg, desImg, 255, CV_ADAPTIVE_THRESH_MEAN_C, CV_THRESH_BINARY_INV, size, delta);
             break;
         case E_OTSU: //adaptive otsu threshold
-            cvThreshold(srcImg, desImg, 0, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
+            cvThreshold(srcImg, desImg, 0, 255, CV_THRESH_BINARY_INV | CV_THRESH_OTSU);
     }
     return desImg;
 }
@@ -96,24 +95,14 @@ IplImage* ocr_smooth(IplImage* srcImg, int smooth_type)
     return desImg;
 }
 
-int main(int argc, const char* argv[]) {
-	if(argc <= 1) {
-		printf("usage: ./ocr_read xx.png\n");
-		return -1;
-	}
+int ocr_preprocess(const char* srcImg, const char* desImg) {
 
-	g_img = ocr_read((char*)argv[1]);
-    //ocr_dbg(g_img);
-    g_grey = ocr_grey(g_img);
-    g_binary = ocr_binary(g_grey, DEFAULT_THRESHOLD, E_OTSU, DEFAULT_SIZE, DEFAULT_DELTA);
-    //g_binary = ocr_binary(g_binary, DEFAULT_THRESHOLD, E_GAUSSIAN, DEFAULT_SIZE, DEFAULT_DELTA);
-    ocr_dbg(g_binary, "grey");
-    g_binary = ocr_smooth(g_binary, CV_MEDIAN);
-    g_binary = ocr_binary(g_binary, DEFAULT_THRESHOLD, E_GAUSSIAN, DEFAULT_SIZE, DEFAULT_DELTA);
-    ocr_dbg(g_binary, "binary_grey");
-	//g_hsv = ocr_rgb2hsv(g_img);
-    //g_value = ocr_gethsv(g_hsv, E_VALUE);
-
-    waitKey(0);
-    return 0;
+    IplImage *org_img, *grey_img, *binary_img;
+    org_img = ocr_read(srcImg);
+    grey_img = ocr_grey(org_img);
+    binary_img = ocr_binary(grey_img, DEFAULT_THRESHOLD, E_OTSU, DEFAULT_SIZE, DEFAULT_DELTA);
+    binary_img = ocr_smooth(binary_img, CV_MEDIAN);
+    ocr_write(binary_img, desImg);
 }
+
+

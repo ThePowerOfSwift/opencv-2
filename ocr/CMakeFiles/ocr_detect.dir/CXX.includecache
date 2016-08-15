@@ -6,17 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.cpp
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp
 string
 -
 opencv/cv.hpp
 -
-opencv/highgui.h
--
-ocr_read.hpp.h
-/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.hpp.h
+ocr_read.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
+ocr_tesseract.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.h
 
-/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.hpp.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
+
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.h
 
 /home/cloud/opencv_lib/include/opencv/cv.h
 opencv2/core/core_c.h
@@ -49,12 +51,6 @@ opencv2/calib3d.hpp
 /home/cloud/opencv_lib/include/opencv/opencv2/calib3d.hpp
 opencv2/objdetect.hpp
 /home/cloud/opencv_lib/include/opencv/opencv2/objdetect.hpp
-
-/home/cloud/opencv_lib/include/opencv/highgui.h
-opencv2/core/core_c.h
-/home/cloud/opencv_lib/include/opencv/opencv2/core/core_c.h
-opencv2/highgui/highgui_c.h
-/home/cloud/opencv_lib/include/opencv/opencv2/highgui/highgui_c.h
 
 /home/cloud/opencv_lib/include/opencv2/calib3d.hpp
 opencv2/core.hpp
@@ -280,23 +276,9 @@ opencv2/imgcodecs.hpp
 opencv2/videoio.hpp
 /home/cloud/opencv_lib/include/opencv2/opencv2/videoio.hpp
 
-/home/cloud/opencv_lib/include/opencv2/highgui/highgui_c.h
-opencv2/core/core_c.h
-/home/cloud/opencv_lib/include/opencv2/highgui/opencv2/core/core_c.h
-opencv2/imgproc/imgproc_c.h
-/home/cloud/opencv_lib/include/opencv2/highgui/opencv2/imgproc/imgproc_c.h
-opencv2/imgcodecs/imgcodecs_c.h
-/home/cloud/opencv_lib/include/opencv2/highgui/opencv2/imgcodecs/imgcodecs_c.h
-opencv2/videoio/videoio_c.h
-/home/cloud/opencv_lib/include/opencv2/highgui/opencv2/videoio/videoio_c.h
-
 /home/cloud/opencv_lib/include/opencv2/imgcodecs.hpp
 opencv2/core.hpp
 /home/cloud/opencv_lib/include/opencv2/opencv2/core.hpp
-
-/home/cloud/opencv_lib/include/opencv2/imgcodecs/imgcodecs_c.h
-opencv2/core/core_c.h
-/home/cloud/opencv_lib/include/opencv2/imgcodecs/opencv2/core/core_c.h
 
 /home/cloud/opencv_lib/include/opencv2/imgproc.hpp
 opencv2/core.hpp
@@ -361,8 +343,4 @@ opencv2/imgproc/types_c.h
 /home/cloud/opencv_lib/include/opencv2/videoio.hpp
 opencv2/core.hpp
 /home/cloud/opencv_lib/include/opencv2/opencv2/core.hpp
-
-/home/cloud/opencv_lib/include/opencv2/videoio/videoio_c.h
-opencv2/core/core_c.h
-/home/cloud/opencv_lib/include/opencv2/videoio/opencv2/core/core_c.h
 

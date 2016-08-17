@@ -43,4 +43,5 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/ocr_detect.dir/DependInfo.cmake"
+  "CMakeFiles/ocr_java.dir/DependInfo.cmake"
   )

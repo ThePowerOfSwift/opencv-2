@@ -114,12 +114,53 @@ ocr_detect/fast:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/build
 .PHONY : ocr_detect/fast
 
+#=============================================================================
+# Target rules for targets named ocr_java
+
+# Build rule for target.
+ocr_java: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ocr_java
+.PHONY : ocr_java
+
+# fast build rule for target.
+ocr_java/fast:
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/build
+.PHONY : ocr_java/fast
+
+src/ocr_java.o: src/ocr_java.cpp.o
+.PHONY : src/ocr_java.o
+
+# target to build an object file
+src/ocr_java.cpp.o:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_java.cpp.o
+.PHONY : src/ocr_java.cpp.o
+
+src/ocr_java.i: src/ocr_java.cpp.i
+.PHONY : src/ocr_java.i
+
+# target to preprocess a source file
+src/ocr_java.cpp.i:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.i
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_java.cpp.i
+.PHONY : src/ocr_java.cpp.i
+
+src/ocr_java.s: src/ocr_java.cpp.s
+.PHONY : src/ocr_java.s
+
+# target to generate assembly for a file
+src/ocr_java.cpp.s:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.s
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_java.cpp.s
+.PHONY : src/ocr_java.cpp.s
+
 src/ocr_main.o: src/ocr_main.cpp.o
 .PHONY : src/ocr_main.o
 
 # target to build an object file
 src/ocr_main.cpp.o:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_main.cpp.o
 .PHONY : src/ocr_main.cpp.o
 
 src/ocr_main.i: src/ocr_main.cpp.i
@@ -128,6 +169,7 @@ src/ocr_main.i: src/ocr_main.cpp.i
 # target to preprocess a source file
 src/ocr_main.cpp.i:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.i
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_main.cpp.i
 .PHONY : src/ocr_main.cpp.i
 
 src/ocr_main.s: src/ocr_main.cpp.s
@@ -136,6 +178,7 @@ src/ocr_main.s: src/ocr_main.cpp.s
 # target to generate assembly for a file
 src/ocr_main.cpp.s:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.s
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_main.cpp.s
 .PHONY : src/ocr_main.cpp.s
 
 src/ocr_read.o: src/ocr_read.cpp.o
@@ -144,6 +187,7 @@ src/ocr_read.o: src/ocr_read.cpp.o
 # target to build an object file
 src/ocr_read.cpp.o:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_read.cpp.o
 .PHONY : src/ocr_read.cpp.o
 
 src/ocr_read.i: src/ocr_read.cpp.i
@@ -152,6 +196,7 @@ src/ocr_read.i: src/ocr_read.cpp.i
 # target to preprocess a source file
 src/ocr_read.cpp.i:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.i
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_read.cpp.i
 .PHONY : src/ocr_read.cpp.i
 
 src/ocr_read.s: src/ocr_read.cpp.s
@@ -160,6 +205,7 @@ src/ocr_read.s: src/ocr_read.cpp.s
 # target to generate assembly for a file
 src/ocr_read.cpp.s:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.s
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_read.cpp.s
 .PHONY : src/ocr_read.cpp.s
 
 src/ocr_tesseract.o: src/ocr_tesseract.cpp.o
@@ -168,6 +214,7 @@ src/ocr_tesseract.o: src/ocr_tesseract.cpp.o
 # target to build an object file
 src/ocr_tesseract.cpp.o:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_tesseract.cpp.o
 .PHONY : src/ocr_tesseract.cpp.o
 
 src/ocr_tesseract.i: src/ocr_tesseract.cpp.i
@@ -176,6 +223,7 @@ src/ocr_tesseract.i: src/ocr_tesseract.cpp.i
 # target to preprocess a source file
 src/ocr_tesseract.cpp.i:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.i
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_tesseract.cpp.i
 .PHONY : src/ocr_tesseract.cpp.i
 
 src/ocr_tesseract.s: src/ocr_tesseract.cpp.s
@@ -184,6 +232,7 @@ src/ocr_tesseract.s: src/ocr_tesseract.cpp.s
 # target to generate assembly for a file
 src/ocr_tesseract.cpp.s:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.s
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_tesseract.cpp.s
 .PHONY : src/ocr_tesseract.cpp.s
 
 # Help Target
@@ -194,7 +243,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... ocr_detect"
+	@echo "... ocr_java"
 	@echo "... rebuild_cache"
+	@echo "... src/ocr_java.o"
+	@echo "... src/ocr_java.i"
+	@echo "... src/ocr_java.s"
 	@echo "... src/ocr_main.o"
 	@echo "... src/ocr_main.i"
 	@echo "... src/ocr_main.s"

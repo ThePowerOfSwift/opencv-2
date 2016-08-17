@@ -1,1 +1,2 @@
 /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_detect.dir
+/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_java.dir

@@ -13,12 +13,12 @@ int main(int argc, const char* argv[]) {
     }
 
     ocr_preprocess(argv[1], argv[2]);
-    ocr_tesseract(argv[2], argv[3], "eng");
+    //ocr_tesseract(argv[2], argv[3], "eng");
 
-/*    CvSeq* contours = NULL;
+  /*  CvSeq* contours = NULL;
     CvMemStorage* storage = cvCreateMemStorage(0);
-
-    int count = cvFindContours(g_binary, storage, &contours, sizeof(CvContour), CV_RETR_EXTERNAL);
+    IplImage* img = ocr_read(argv[2]);
+    int count = cvFindContours(img, storage, &contours, sizeof(CvContour), CV_RETR_EXTERNAL);
     cvReleaseMemStorage(&storage);
     printf("count : %d\n", count);
     int idx = 0;
@@ -29,26 +29,26 @@ int main(int argc, const char* argv[]) {
         if((rc.height <= 5) || (rc.width <= 5)) {
             continue;
         }
-        cvDrawRect(g_binary, cvPoint(rc.x, rc.y), cvPoint(rc.x + rc.width, rc.y + rc.height), CV_RGB(255,0,0));
+        cvDrawRect(img, cvPoint(rc.x, rc.y), cvPoint(rc.x + rc.width, rc.y + rc.height), CV_RGB(255,0,0));
         IplImage* imgNo =cvCreateImage(cvSize(rc.width, rc.height), IPL_DEPTH_8U, 1);
-        cvSetImageROI(g_binary, rc);
+        cvSetImageROI(img, rc);
         printf("rc.height = %d\n", rc.height);
         printf("rc.width = %d\n", rc.width);
         printf("rc.x = %d\n", rc.x);
         printf("rc.y = %d\n", rc.y);
 
-        printf("g_binary->width = %d\n", g_binary->width);
-        printf("g_binary->height = %d\n", g_binary->height);
+        printf("g_binary->width = %d\n", img->width);
+        printf("g_binary->height = %d\n", img->height);
         printf("imgNo->width = %d\n", imgNo->width);
         printf("imgNo->height = %d\n", imgNo->height);
-        /*cvCopy(g_binary, imgNo, NULL);
+        *cvCopy(g_binary, imgNo, NULL);
         cvResetImageROI(g_binary);
         sprintf(szName, "wnd_%d", idx++);
         cvReleaseImage(&imgNo);
         cvNamedWindow(szName);
-        cvShowImage(szName, imgNo);
-    }
-    ocr_dbg(g_binary, "result");
+        cvShowImage(szName, imgNo);*/
+   /* }
+   ocr_dbg(g_binary, "result");
     //g_hsv = ocr_rgb2hsv(g_img);
     //g_value = ocr_gethsv(g_hsv, E_VALUE);
 */

@@ -21,12 +21,12 @@ typedef enum {
 
 void ocr_dbg(IplImage* img, char* name);
 IplImage* ocr_read(const char* ocr_name);
-int ocr_write(IplImage* srcImg, const char* ocr_name);
+int ocr_write(cv::Mat srcImg, const char* ocr_name);
 IplImage* ocr_grey(IplImage* srcImg);
 IplImage* ocr_binary(IplImage* srcImg, int threshold, int method, int size, double delta);
 IplImage* ocr_rgb2hsv(IplImage* srcImg);
 IplImage* ocr_gethsv(IplImage* srcImg, int hsv_channel);
-IplImage* ocr_smooth(IplImage* srcImg, int smooth_type);
+cv::Mat ocr_smooth(IplImage* srcImg, int smooth_type);
 int ocr_preprocess(const char* srcImg, const char* desImg);
 
 

@@ -24,8 +24,9 @@ IplImage* ocr_read(const char* ocr_name) {
     return cvLoadImage(ocr_name, CV_LOAD_IMAGE_UNCHANGED);
 }
 
-int ocr_write(IplImage* srcImg, const char* ocr_name) {
-    cvSaveImage(ocr_name, srcImg);
+int ocr_write(cv::Mat srcImg, const char* ocr_name) {
+    imwrite(ocr_name, srcImg);
+    //cvSaveImage(ocr_name, srcImg);
     return 0;
 }
 
@@ -88,11 +89,13 @@ IplImage* ocr_gethsv(IplImage* srcImg, int hsv_channel) {
     }
 }
 
-IplImage* ocr_smooth(IplImage* srcImg, int smooth_type)
+cv::Mat ocr_smooth(IplImage* srcImg, int smooth_type)
 {
-    IplImage* desImg;
-    cvSmooth(srcImg, desImg, smooth_type, 3, 3);
-    return desImg;
+    cv::Mat mDes;
+    cv::Mat mSrc = cv::cvarrToMat(srcImg);
+    //cvSmooth(srcImg, desImg, smooth_type, 3, 3);
+    cv::medianBlur(mSrc, mDes, 7);
+    return mDes;
 }
 
 int ocr_preprocess(const char* srcImg, const char* desImg) {
@@ -101,8 +104,11 @@ int ocr_preprocess(const char* srcImg, const char* desImg) {
     org_img = ocr_read(srcImg);
     grey_img = ocr_grey(org_img);
     binary_img = ocr_binary(grey_img, DEFAULT_THRESHOLD, E_OTSU, DEFAULT_SIZE, DEFAULT_DELTA);
-    binary_img = ocr_smooth(binary_img, CV_MEDIAN);
-    ocr_write(binary_img, desImg);
+    cv::Mat smooth_img;
+
+    smooth_img = ocr_smooth(binary_img, CV_MEDIAN);
+    ocr_write(smooth_img, desImg);
+    return 0;
 }
 
 

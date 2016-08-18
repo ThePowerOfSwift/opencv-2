@@ -45,5 +45,8 @@ http://www.cnblogs.com/yuanbao/archive/2007/11/14/958488.html
 tesseract cmake
 http://stackoverflow.com/questions/20382549/cmake-for-tesseract-and-opencv
 
-
+fix opencv3.0 cvsmooth call error
+http://answers.opencv.org/question/23440/any-way-to-convert-iplimage-to-cvmat-in-opencv-300/
+http://blog.csdn.net/liyuanbhu/article/details/48718735
+http://stackoverflow.com/questions/5449946/opencv-c-and-cvsmooth
 

@@ -6,17 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/cloud/cloud-git-master/opencv/ocr/com_ocr_java.h
-jni.h
--
-
-/home/cloud/cloud-git-master/opencv/ocr/src/ocr_java.cpp
-jni.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp
+string
 -
 opencv/cv.hpp
 -
-../com_ocr_java.h
-/home/cloud/cloud-git-master/opencv/ocr/com_ocr_java.h
 ocr_read.h
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
 ocr_tesseract.h
@@ -349,14 +343,4 @@ opencv2/imgproc/types_c.h
 /home/cloud/opencv_lib/include/opencv2/videoio.hpp
 opencv2/core.hpp
 /home/cloud/opencv_lib/include/opencv2/opencv2/core.hpp
-
-/usr/lib/jvm/java-7-openjdk-amd64/include/jni.h
-stdio.h
--
-stdarg.h
--
-jni_md.h
-/usr/lib/jvm/java-7-openjdk-amd64/include/jni_md.h
-
-/usr/lib/jvm/java-7-openjdk-amd64/include/jni_md.h
 

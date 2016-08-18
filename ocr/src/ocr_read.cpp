@@ -93,8 +93,14 @@ cv::Mat ocr_smooth(IplImage* srcImg, int smooth_type)
 {
     cv::Mat mDes;
     cv::Mat mSrc = cv::cvarrToMat(srcImg);
-    //cvSmooth(srcImg, desImg, smooth_type, 3, 3);
-    cv::medianBlur(mSrc, mDes, 7);
+    switch(smooth_type)
+    {
+        case CV_MEDIAN:
+            cv::medianBlur(mSrc, mDes, 3);
+            break;
+        default:
+            break;
+    }
     return mDes;
 }
 

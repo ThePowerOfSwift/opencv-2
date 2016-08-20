@@ -21,6 +21,7 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "."
   "/usr/local/include/leptonica"
   "/usr/lib/jvm/java-7-openjdk-amd64/include"
+  "/usr/local/include/ImageMagick-7"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

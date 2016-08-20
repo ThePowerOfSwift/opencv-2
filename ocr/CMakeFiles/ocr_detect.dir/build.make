@@ -176,6 +176,7 @@ ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_flann
 ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_features2d.so.3.0.0
 ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_core.so.3.0.0
 ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_calib3d.so.3.0.0
+ocr_detect: /usr/lib/x86_64-linux-gnu/libMagickCore.so
 ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/../3rdparty/ippicv/unpack/ippicv_lnx/lib/intel64/libippicv.a
 ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_features2d.so.3.0.0
 ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_highgui.so.3.0.0

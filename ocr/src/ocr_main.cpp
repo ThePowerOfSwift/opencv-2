@@ -2,6 +2,7 @@
 #include <opencv/cv.hpp>
 #include "ocr_read.h"
 #include "ocr_tesseract.h"
+#include "convert.h"
 
 using namespace cv;
 using namespace std;
@@ -12,6 +13,7 @@ int main(int argc, const char* argv[]) {
         return -1;
     }
 
+    convert(argv[1], (char*)argv[4]);
     ocr_preprocess(argv[1], argv[2]);
     ocr_tesseract(argv[2], argv[3], "eng");
 

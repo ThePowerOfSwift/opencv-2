@@ -170,6 +170,12 @@ CMAKE_USE_RELATIVE_PATHS:BOOL=OFF
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Path to a file.
+MagickCore_INCLUDE_DIR:PATH=/usr/local/include/ImageMagick-7
+
+//Path to a library.
+MagickCore_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libMagickCore.so
+
 //Path where debug 3rdpaty OpenCV dependencies are located
 OpenCV_3RDPARTY_LIB_DIR_DBG:PATH=
 
@@ -184,6 +190,9 @@ OpenCV_LIB_DIR_DBG:PATH=
 //Path where release OpenCV libraries are located
 OpenCV_LIB_DIR_OPT:PATH=
 
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
 //Value Computed by CMake
 ocr_BINARY_DIR:STATIC=/home/cloud/cloud-git-master/opencv/ocr
 
@@ -191,7 +200,7 @@ ocr_BINARY_DIR:STATIC=/home/cloud/cloud-git-master/opencv/ocr
 ocr_SOURCE_DIR:STATIC=/home/cloud/cloud-git-master/opencv/ocr
 
 //Dependencies for the target
-ocr_java_LIB_DEPENDS:STATIC=general;opencv_videostab;general;opencv_videoio;general;opencv_video;general;opencv_ts;general;opencv_superres;general;opencv_stitching;general;opencv_shape;general;opencv_photo;general;opencv_objdetect;general;opencv_ml;general;opencv_imgproc;general;opencv_imgcodecs;general;opencv_highgui;general;opencv_flann;general;opencv_features2d;general;opencv_core;general;opencv_calib3d;general;lept;general;tesseract;
+ocr_java_LIB_DEPENDS:STATIC=general;opencv_videostab;general;opencv_videoio;general;opencv_video;general;opencv_ts;general;opencv_superres;general;opencv_stitching;general;opencv_shape;general;opencv_photo;general;opencv_objdetect;general;opencv_ml;general;opencv_imgproc;general;opencv_imgcodecs;general;opencv_highgui;general;opencv_flann;general;opencv_features2d;general;opencv_core;general;opencv_calib3d;general;/usr/lib/x86_64-linux-gnu/libMagickCore.so;general;lept;general;tesseract;
 
 
 ########################
@@ -327,6 +336,46 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.26()]
+//ADVANCED property for variable: MagickCore_INCLUDE_DIR
+MagickCore_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MagickCore_LIBRARY
+MagickCore_LIBRARY-ADVANCED:INTERNAL=1
+MagickCore_PKGCONF_CFLAGS:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=8;-I/usr/local/include/ImageMagick-7
+MagickCore_PKGCONF_CFLAGS_I:INTERNAL=
+MagickCore_PKGCONF_CFLAGS_OTHER:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=8
+MagickCore_PKGCONF_FOUND:INTERNAL=1
+MagickCore_PKGCONF_INCLUDEDIR:INTERNAL=/usr/local/include/ImageMagick-7
+MagickCore_PKGCONF_INCLUDE_DIRS:INTERNAL=/usr/local/include/ImageMagick-7
+MagickCore_PKGCONF_LDFLAGS:INTERNAL=-L/usr/local/lib;-lMagickCore-7.Q8HDRI
+MagickCore_PKGCONF_LDFLAGS_OTHER:INTERNAL=
+MagickCore_PKGCONF_LIBDIR:INTERNAL=/usr/local/lib
+MagickCore_PKGCONF_LIBRARIES:INTERNAL=MagickCore-7.Q8HDRI
+MagickCore_PKGCONF_LIBRARY_DIRS:INTERNAL=/usr/local/lib
+MagickCore_PKGCONF_LIBS:INTERNAL=
+MagickCore_PKGCONF_LIBS_L:INTERNAL=
+MagickCore_PKGCONF_LIBS_OTHER:INTERNAL=
+MagickCore_PKGCONF_LIBS_PATHS:INTERNAL=
+MagickCore_PKGCONF_MagickCore_INCLUDEDIR:INTERNAL=
+MagickCore_PKGCONF_MagickCore_LIBDIR:INTERNAL=
+MagickCore_PKGCONF_MagickCore_PREFIX:INTERNAL=
+MagickCore_PKGCONF_MagickCore_VERSION:INTERNAL=
+MagickCore_PKGCONF_PREFIX:INTERNAL=/usr/local
+MagickCore_PKGCONF_STATIC_CFLAGS:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=8;-I/usr/local/include/ImageMagick-7
+MagickCore_PKGCONF_STATIC_CFLAGS_I:INTERNAL=
+MagickCore_PKGCONF_STATIC_CFLAGS_OTHER:INTERNAL=-fopenmp;-DMAGICKCORE_HDRI_ENABLE=1;-DMAGICKCORE_QUANTUM_DEPTH=8
+MagickCore_PKGCONF_STATIC_INCLUDE_DIRS:INTERNAL=/usr/local/include/ImageMagick-7
+MagickCore_PKGCONF_STATIC_LDFLAGS:INTERNAL=-L/usr/local/lib;-lMagickCore-7.Q8HDRI;-llcms2;-llqr-1;-lglib-2.0;-lfontconfig;-lfreetype;-lXext;-lSM;-lICE;-lX11;-lXt;-llzma;-lbz2;-lz;-lltdl;-lgomp;-lm
+MagickCore_PKGCONF_STATIC_LDFLAGS_OTHER:INTERNAL=
+MagickCore_PKGCONF_STATIC_LIBDIR:INTERNAL=
+MagickCore_PKGCONF_STATIC_LIBRARIES:INTERNAL=MagickCore-7.Q8HDRI;lcms2;lqr-1;glib-2.0;fontconfig;freetype;Xext;SM;ICE;X11;Xt;lzma;bz2;z;ltdl;gomp;m
+MagickCore_PKGCONF_STATIC_LIBRARY_DIRS:INTERNAL=/usr/local/lib
+MagickCore_PKGCONF_STATIC_LIBS:INTERNAL=
+MagickCore_PKGCONF_STATIC_LIBS_L:INTERNAL=
+MagickCore_PKGCONF_STATIC_LIBS_OTHER:INTERNAL=
+MagickCore_PKGCONF_STATIC_LIBS_PATHS:INTERNAL=
+MagickCore_PKGCONF_VERSION:INTERNAL=7.0.2
 //ADVANCED property for variable: OpenCV_3RDPARTY_LIB_DIR_DBG
 OpenCV_3RDPARTY_LIB_DIR_DBG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OpenCV_3RDPARTY_LIB_DIR_OPT
@@ -337,4 +386,7 @@ OpenCV_CONFIG_PATH-ADVANCED:INTERNAL=1
 OpenCV_LIB_DIR_DBG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OpenCV_LIB_DIR_OPT
 OpenCV_LIB_DIR_OPT-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+__pkg_config_checked_MagickCore_PKGCONF:INTERNAL=1
 

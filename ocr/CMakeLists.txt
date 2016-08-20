@@ -37,7 +37,6 @@ message(STATUS "    include path: ${MagickCore_LIBRARY}")
 set(MagickCore_PROCESS_INCLUDES MagickCore_INCLUDE_DIR)
 set(MagickCore_PROCESS_LIBS MagickCore_LIBRARY)
 libfind_process(MagickCore)
-message(STATUS "    include path: ${MagickCore_INCLUDE_DIR}")
 include_directories(${MagickCore_INCLUDE_DIR})
 
 
@@ -50,10 +49,12 @@ aux_source_directory(./src SOURCE_FILES)
 #message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 #message(STATUS "    include path: ${SOURCE_FILES}")
 
+link_directories(./)
 add_executable(ocr_detect ${SOURCE_FILES})
 target_link_libraries(ocr_detect ${OpenCV_LIBS})
 target_link_libraries(ocr_detect lept tesseract)
 target_link_libraries(ocr_detect ${MagickCore_LIBRARY})
+target_link_libraries(ocr_detect convert)
 
 add_library(ocr_java SHARED ${SOURCE_FILES})
 target_link_libraries(ocr_java ${OpenCV_LIBS})

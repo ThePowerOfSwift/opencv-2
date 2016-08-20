@@ -176,6 +176,7 @@ libocr_java.so: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_f
 libocr_java.so: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_features2d.so.3.0.0
 libocr_java.so: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_core.so.3.0.0
 libocr_java.so: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_calib3d.so.3.0.0
+libocr_java.so: /usr/lib/x86_64-linux-gnu/libMagickCore.so
 libocr_java.so: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/../3rdparty/ippicv/unpack/ippicv_lnx/lib/intel64/libippicv.a
 libocr_java.so: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_features2d.so.3.0.0
 libocr_java.so: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_highgui.so.3.0.0

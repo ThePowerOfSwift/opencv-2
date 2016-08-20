@@ -95,6 +95,7 @@ CMakeFiles/ocr_java.dir/src/ocr_main.cpp.o: /home/cloud/opencv_lib/include/openc
 CMakeFiles/ocr_java.dir/src/ocr_main.cpp.o: /home/cloud/opencv_lib/include/opencv2/video/tracking.hpp
 CMakeFiles/ocr_java.dir/src/ocr_main.cpp.o: /home/cloud/opencv_lib/include/opencv2/video/tracking_c.h
 CMakeFiles/ocr_java.dir/src/ocr_main.cpp.o: /home/cloud/opencv_lib/include/opencv2/videoio.hpp
+CMakeFiles/ocr_java.dir/src/ocr_main.cpp.o: convert.h
 
 CMakeFiles/ocr_java.dir/src/ocr_read.cpp.o: src/ocr_read.cpp
 CMakeFiles/ocr_java.dir/src/ocr_read.cpp.o: src/ocr_read.h

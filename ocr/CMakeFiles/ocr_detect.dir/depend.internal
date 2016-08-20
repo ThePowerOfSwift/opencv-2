@@ -96,6 +96,7 @@ CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o
  /home/cloud/opencv_lib/include/opencv2/video/tracking.hpp
  /home/cloud/opencv_lib/include/opencv2/video/tracking_c.h
  /home/cloud/opencv_lib/include/opencv2/videoio.hpp
+ convert.h
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o
  /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.cpp
  /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h

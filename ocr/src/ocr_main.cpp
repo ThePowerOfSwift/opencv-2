@@ -54,6 +54,6 @@ int main(int argc, const char* argv[]) {
     //g_hsv = ocr_rgb2hsv(g_img);
     //g_value = ocr_gethsv(g_hsv, E_VALUE);
 */
-
+    waitKey(0);
     return 0;
 }

@@ -19,7 +19,7 @@ typedef enum {
     E_VALUE
 } eHsvChannel;
 
-void ocr_dbg(IplImage* img, char* name);
+void ocr_dbg(cv::Mat mSrcImg, const char* name);
 cv::Mat ocr_read(const char* ocr_name);
 int ocr_write(cv::Mat srcImg, const char* ocr_name);
 cv::Mat ocr_read_grey(const char* ocr_name);

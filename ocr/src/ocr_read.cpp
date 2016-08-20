@@ -11,12 +11,11 @@ using namespace std;
 #define DEFAULT_SIZE 3
 #define DEFAULT_DELTA 3
 
-void ocr_dbg(IplImage* img, char* name) {
+void ocr_dbg(Mat mSrcImg, const char* name) {
     //display ocr png
 #if OCR_DBG
-    cvNamedWindow(name, CV_WINDOW_AUTOSIZE);
-    cvShowImage(name, img);
-    waitKey(0);
+    namedWindow(name,CV_WINDOW_AUTOSIZE);
+    imshow(name, mSrcImg);
 #endif
 }
 
@@ -98,8 +97,9 @@ int ocr_preprocess(const char* srcImg, const char* desImg) {
     Mat mGrey, mBinary, mSmooth;
     mGrey = ocr_read_grey(srcImg);
     mBinary = ocr_binary(mGrey, DEFAULT_THRESHOLD, E_OTSU, DEFAULT_SIZE, DEFAULT_DELTA);
-
+    ocr_dbg(mBinary, "Bianry");
     mSmooth = ocr_smooth(mBinary, CV_MEDIAN);
+    ocr_dbg(mSmooth, "Smooth");
     ocr_write(mSmooth, desImg);
     return 0;
 }

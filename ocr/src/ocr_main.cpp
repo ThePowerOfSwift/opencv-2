@@ -14,8 +14,8 @@ int main(int argc, const char* argv[]) {
     }
 
     ocr_preprocess(argv[1], argv[2]);
-    convert(argv[1], (char*)argv[3]);
-    ocr_tesseract(argv[3], argv[4], "eng");
+    //convert(argv[1], (char*)argv[3]);
+    ocr_tesseract(argv[2], argv[4], "eng");
 
   /*  CvSeq* contours = NULL;
     CvMemStorage* storage = cvCreateMemStorage(0);

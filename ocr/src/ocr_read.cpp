@@ -20,83 +20,72 @@ void ocr_dbg(IplImage* img, char* name) {
 #endif
 }
 
-IplImage* ocr_read(const char* ocr_name) {
-    return cvLoadImage(ocr_name, CV_LOAD_IMAGE_UNCHANGED);
+Mat ocr_read(const char* ocr_name) {
+    return imread(ocr_name, IMREAD_UNCHANGED);
 }
 
-int ocr_write(cv::Mat srcImg, const char* ocr_name) {
-    imwrite(ocr_name, srcImg);
-    //cvSaveImage(ocr_name, srcImg);
+int ocr_write(Mat mSrcImg, const char* ocr_name) {
+    imwrite(ocr_name, mSrcImg);
     return 0;
 }
 
-IplImage* ocr_grey(IplImage* srcImg) {
-    //convert to grey
-    IplImage* desImg;
-    desImg = cvCreateImage(cvGetSize(srcImg), IPL_DEPTH_8U, 1);
-    cvCvtColor(srcImg, desImg, CV_BGR2GRAY);
-    return desImg;
+Mat ocr_read_grey(const char* ocr_name) {
+    return imread(ocr_name, IMREAD_GRAYSCALE);
 }
 
-IplImage* ocr_binary(IplImage* srcImg, int threshold, int method, int size, double delta) {
+Mat ocr_binary(Mat mSrcImg, double thresh, int method, int size, double delta) {
     //convert to binary
-    IplImage* desImg;
-    desImg = cvCreateImage(cvGetSize(srcImg), IPL_DEPTH_8U, 1);
+    Mat mDesImg;
     switch(method) {
         case E_NORMAL: //normal threshold
         default:
-            cvThreshold(srcImg, desImg, threshold, 255, CV_THRESH_BINARY_INV);
+            threshold(mSrcImg, mDesImg, thresh, 255, THRESH_BINARY_INV);
             break;
         case E_GAUSSIAN: //adaptive gaussian threshold
-            cvAdaptiveThreshold(srcImg, desImg, 255, CV_ADAPTIVE_THRESH_GAUSSIAN_C, CV_THRESH_BINARY_INV, size, delta);
+            adaptiveThreshold(mSrcImg, mDesImg, 255, ADAPTIVE_THRESH_GAUSSIAN_C, THRESH_BINARY_INV, size, delta);
             break;
         case E_MEAN: //adaptive mean threshold
-            cvAdaptiveThreshold(srcImg, desImg, 255, CV_ADAPTIVE_THRESH_MEAN_C, CV_THRESH_BINARY_INV, size, delta);
+            adaptiveThreshold(mSrcImg, mDesImg, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY_INV, size, delta);
             break;
         case E_OTSU: //adaptive otsu threshold
-            cvThreshold(srcImg, desImg, 0, 255, CV_THRESH_BINARY_INV | CV_THRESH_OTSU);
+            threshold(mSrcImg, mDesImg, 0, 255, THRESH_BINARY_INV | THRESH_OTSU);
     }
-    return desImg;
+    return mDesImg;
 }
 
-IplImage* ocr_rgb2hsv(IplImage* srcImg) {
-    IplImage *hsv, *hue, *saturation, *value;
-
+Mat ocr_rgb2hsv(Mat mSrcImg) {
+    Mat mHsv;
     //hsv
-    hsv = cvCreateImage(cvGetSize(srcImg), 8, 3);
-    cvCvtColor(srcImg, hsv, CV_BGR2HSV);
-    return hsv;
+    cvtColor(mSrcImg, mHsv, COLOR_RGB2HSV);
+    return mHsv;
 }
 
-IplImage* ocr_gethsv(IplImage* srcImg, int hsv_channel) {
-    IplImage *hue, *saturation, *value;
-    switch(hsv_channel)
-    {
+Mat ocr_gethsv(Mat mSrcImg, int hsv_channel) {
+    Mat mHsv, mHue, mSaturation, mValue, mError;
+    vector<Mat> mChannels;
+
+    cvtColor(mSrcImg, mHsv, COLOR_RGB2HSV);
+    split(mHsv, mChannels);
+    switch(hsv_channel) {
         case E_HUE:
-            hue = cvCreateImage(cvGetSize(srcImg), 8, 1);
-            cvSplit(srcImg, hue, 0, 0, 0);
-            return hue;
+            mHue = mChannels.at(0);
+            return mHue;
         case E_SATURATION:
-            saturation = cvCreateImage(cvGetSize(srcImg), 8, 1);
-            cvSplit(srcImg, 0, saturation, 0, 0);
-            return  saturation;
+            mSaturation = mChannels.at(1);
+            return  mSaturation;
         case E_VALUE:
-            value = cvCreateImage(cvGetSize(srcImg), 8, 1);
-            cvSplit(srcImg, 0, 0, value, 0);
-            return  value;
+            mValue = mChannels.at(2);
+            return  mValue;
         default:
-            return 0;
+            return mError;
     }
 }
 
-cv::Mat ocr_smooth(IplImage* srcImg, int smooth_type)
-{
-    cv::Mat mDes;
-    cv::Mat mSrc = cv::cvarrToMat(srcImg);
-    switch(smooth_type)
-    {
+Mat ocr_smooth(Mat mSrcImg, int smooth_type) {
+    Mat mDes;
+    switch(smooth_type) {
         case CV_MEDIAN:
-            cv::medianBlur(mSrc, mDes, 3);
+            medianBlur(mSrcImg, mDes, 3);
             break;
         default:
             break;
@@ -106,14 +95,12 @@ cv::Mat ocr_smooth(IplImage* srcImg, int smooth_type)
 
 int ocr_preprocess(const char* srcImg, const char* desImg) {
 
-    IplImage *org_img, *grey_img, *binary_img;
-    org_img = ocr_read(srcImg);
-    grey_img = ocr_grey(org_img);
-    binary_img = ocr_binary(grey_img, DEFAULT_THRESHOLD, E_OTSU, DEFAULT_SIZE, DEFAULT_DELTA);
-    cv::Mat smooth_img;
+    Mat mGrey, mBinary, mSmooth;
+    mGrey = ocr_read_grey(srcImg);
+    mBinary = ocr_binary(mGrey, DEFAULT_THRESHOLD, E_OTSU, DEFAULT_SIZE, DEFAULT_DELTA);
 
-    smooth_img = ocr_smooth(binary_img, CV_MEDIAN);
-    ocr_write(smooth_img, desImg);
+    mSmooth = ocr_smooth(mBinary, CV_MEDIAN);
+    ocr_write(mSmooth, desImg);
     return 0;
 }
 

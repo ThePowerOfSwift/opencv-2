@@ -50,6 +50,7 @@ CMakeFiles/ocr_java.dir/src/ocr_java.cpp.o
  /home/cloud/opencv_lib/include/opencv2/videoio.hpp
  /usr/lib/jvm/java-7-openjdk-amd64/include/jni.h
  /usr/lib/jvm/java-7-openjdk-amd64/include/jni_md.h
+ convert.h
 CMakeFiles/ocr_java.dir/src/ocr_main.cpp.o
  /home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp
  /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h

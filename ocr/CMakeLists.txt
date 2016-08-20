@@ -60,4 +60,5 @@ add_library(ocr_java SHARED ${SOURCE_FILES})
 target_link_libraries(ocr_java ${OpenCV_LIBS})
 target_link_libraries(ocr_java ${MagickCore_LIBRARY})
 target_link_libraries(ocr_java lept tesseract)
+target_link_libraries(ocr_java convert)
 

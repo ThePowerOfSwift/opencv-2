@@ -6,6 +6,7 @@
 #include "../com_ocr_java.h"
 #include "ocr_read.h"
 #include "ocr_tesseract.h"
+#include "convert.h"
 
 
 JNIEXPORT jint JNICALL Java_com_ocr_1java_OcrPreprocess
@@ -17,7 +18,9 @@ JNIEXPORT jint JNICALL Java_com_ocr_1java_OcrPreprocess
     printf("input: %s\n", input);
     printf("output: %s\n", output);
 
-    ocr_preprocess(input, output);
+
+    //ocr_preprocess(input, output);
+    convert(input, (char*)output);
     env->ReleaseStringUTFChars(srcImg, input);
     env->ReleaseStringUTFChars(desImg, output);
     return 0;

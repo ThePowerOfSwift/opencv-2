@@ -49,6 +49,7 @@ CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o: /home/cloud/opencv_lib/include/ope
 CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o: /home/cloud/opencv_lib/include/opencv2/videoio.hpp
 CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o: /usr/lib/jvm/java-7-openjdk-amd64/include/jni.h
 CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o: /usr/lib/jvm/java-7-openjdk-amd64/include/jni_md.h
+CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o: convert.h
 
 CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o: src/ocr_main.cpp
 CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o: src/ocr_read.h

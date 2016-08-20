@@ -24,6 +24,18 @@ ocr_tesseract.h
 convert.h
 /home/cloud/cloud-git-master/opencv/ocr/src/convert.h
 
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp
+string
+-
+opencv/cv.hpp
+-
+ocr_read.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
+ocr_tesseract.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.h
+convert.h
+/home/cloud/cloud-git-master/opencv/ocr/src/convert.h
+
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
 
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.h

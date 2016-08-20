@@ -19,7 +19,7 @@ JNIEXPORT jint JNICALL Java_com_ocr_1java_OcrPreprocess
     printf("output: %s\n", output);
 
 
-    //ocr_preprocess(input, output);
+    ocr_preprocess(input, output);
     convert(input, (char*)output);
     env->ReleaseStringUTFChars(srcImg, input);
     env->ReleaseStringUTFChars(desImg, output);

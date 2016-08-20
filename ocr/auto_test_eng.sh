@@ -7,7 +7,7 @@ if [ -f ./test/result.txt ]; then
 fi
 
 for file in ./png/code1/*.png
-	do ./ocr_detect ${file} ./test/temp.jpg ./test/result.txt
+	do ./ocr_detect ${file} ./test/temp.jpg ./test/temp.tif ./test/result.txt
 done
 
 

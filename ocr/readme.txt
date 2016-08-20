@@ -50,3 +50,6 @@ http://answers.opencv.org/question/23440/any-way-to-convert-iplimage-to-cvmat-in
 http://blog.csdn.net/liyuanbhu/article/details/48718735
 http://stackoverflow.com/questions/5449946/opencv-c-and-cvsmooth
 
+how to search libs by use cmake
+http://www.yeolar.com/note/2014/12/16/cmake-how-to-find-libraries/
+

@@ -52,4 +52,10 @@ http://stackoverflow.com/questions/5449946/opencv-c-and-cvsmooth
 
 how to search libs by use cmake
 http://www.yeolar.com/note/2014/12/16/cmake-how-to-find-libraries/
+http://stackoverflow.com/questions/37759833/about-magick-how-to-write-the-cmakelists
+
+how to dilate and erode image in opencv
+blog.csdn.net/xiahouzuoxin/article/details/39404187
+http://blog.csdn.net/wangyaninglm/article/details/41864607
+http://blog.csdn.net/felix86/article/details/38121959
 

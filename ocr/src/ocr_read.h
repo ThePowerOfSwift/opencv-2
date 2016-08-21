@@ -27,7 +27,11 @@ cv::Mat ocr_binary(cv::Mat mSrcImg, double thresh, int method, int size, double 
 cv::Mat ocr_rgb2hsv(cv::Mat mSrcImg);
 cv::Mat ocr_gethsv(cv::Mat mSrcImg, int hsv_channel);
 cv::Mat ocr_smooth(cv::Mat mSrcImg, int smooth_type);
-int ocr_preprocess(const char* srcImg, const char* desImg);
+cv::Mat ocr_blur(cv::Mat mSrcImg, int index);
+cv::Mat ocr_preprocess(const char* srcImg, const char* desImg);
+cv::Mat ocr_dilate(cv::Mat mSrcImg, int index);
+cv::Mat ocr_erode(cv::Mat mSrcImg, int index);
+cv::Mat ocr_cut(cv::Mat mSrcImg, const char* desImg);
 
 
 #endif //OCR_OCR_READ_HPP_H

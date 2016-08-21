@@ -57,6 +57,7 @@ CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o
  /home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.h
  /home/cloud/opencv_lib/include/opencv/cv.h
  /home/cloud/opencv_lib/include/opencv/cv.hpp
+ /home/cloud/opencv_lib/include/opencv/highgui.h
  /home/cloud/opencv_lib/include/opencv2/calib3d.hpp
  /home/cloud/opencv_lib/include/opencv2/core.hpp
  /home/cloud/opencv_lib/include/opencv2/core/affine.hpp
@@ -83,7 +84,9 @@ CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o
  /home/cloud/opencv_lib/include/opencv2/flann/defines.h
  /home/cloud/opencv_lib/include/opencv2/flann/miniflann.hpp
  /home/cloud/opencv_lib/include/opencv2/highgui.hpp
+ /home/cloud/opencv_lib/include/opencv2/highgui/highgui_c.h
  /home/cloud/opencv_lib/include/opencv2/imgcodecs.hpp
+ /home/cloud/opencv_lib/include/opencv2/imgcodecs/imgcodecs_c.h
  /home/cloud/opencv_lib/include/opencv2/imgproc.hpp
  /home/cloud/opencv_lib/include/opencv2/imgproc/imgproc_c.h
  /home/cloud/opencv_lib/include/opencv2/imgproc/types_c.h
@@ -97,6 +100,7 @@ CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o
  /home/cloud/opencv_lib/include/opencv2/video/tracking.hpp
  /home/cloud/opencv_lib/include/opencv2/video/tracking_c.h
  /home/cloud/opencv_lib/include/opencv2/videoio.hpp
+ /home/cloud/opencv_lib/include/opencv2/videoio/videoio_c.h
  convert.h
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o
  /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.cpp

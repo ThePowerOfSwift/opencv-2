@@ -20,10 +20,10 @@ int main(int argc, const char* argv[]) {
     }*/
 
     mImg = ocr_preprocess(argv[1], argv[2]);
-    convert(argv[1], (char*)argv[3]);
-    ocr_tesseract(argv[2], argv[4], "eng");
+    //convert(argv[1], (char*)argv[3]);
+    //ocr_tesseract(argv[2], argv[4], "eng");
 
-    //mImg = ocr_cut(mImg, argv[3]);
+    mImg = ocr_cut(mImg, argv[3]);
     waitKey(0);
     return 0;
 }

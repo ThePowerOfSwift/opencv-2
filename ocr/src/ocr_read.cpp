@@ -115,6 +115,7 @@ Mat ocr_erode(Mat mSrcImg, int index) {
 Mat ocr_cut(Mat mSrcImg, const char* desImg) {
 
     Mat mDilateImg, mCannyImg;
+
     //dilate img
     mDilateImg = ocr_dilate(mSrcImg, 3);
 
@@ -126,13 +127,68 @@ Mat ocr_cut(Mat mSrcImg, const char* desImg) {
     Canny(mDilateImg, mCannyImg, 80, 255, 3);
     /// Find contours
     findContours(mCannyImg, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
-    for (int i = 0; i<contours.size(); i++) {
-        Rect aRect =boundingRect(contours[i]);
-        //printf("aRect.width = %d, aRect.height = %d\n", aRect.width, aRect.height);
-        if (aRect.width * aRect.height < 50) {
+
+    int count = 0;
+    int num = contours.size();
+    //remove small area ,  width*height < 50
+    for (count = 0; count < contours.size(); count++) {
+        Rect aRect =boundingRect(contours[count]);
+        if (aRect.width * aRect.height < 30) {
+            printf("remove small size = %d\n", count);
+            num--;
             //删除面积小于设定值的轮廓
-            contours.erase(contours.begin() + i);
+            contours.erase(contours.begin() + count);
             continue;
+        }
+    }
+
+    Rect* pRect = new Rect[num];
+    int valid_num = num;
+    //check reuse area
+    for(count = 0;  count < num; count++) {
+        Rect aRect = boundingRect(contours[count]);
+        pRect[count] = aRect;
+        for (int tmp = count + 1; tmp < contours.size(); tmp++) {
+
+            Rect bRect = boundingRect(contours[tmp]);
+
+            if ((aRect.x + aRect.width < bRect.x + aRect.width/10) \
+              || (aRect.x > bRect.x + bRect.width - aRect.width/10)) {
+                continue;
+            } else {
+                //x & width use max
+                if(aRect.x > bRect.x)
+                    pRect[count].x = bRect.x;
+                if(aRect.x + aRect.width > bRect.x + bRect.width) {
+                    pRect[count].width = aRect.x + aRect.width - pRect[count].x;
+                } else {
+                    pRect[count].width = bRect.x + bRect.width - pRect[count].x;
+                }
+
+                //y & height use max
+                if(aRect.y > bRect.y)
+                    pRect[count].y = bRect.y;
+                if(aRect.y + aRect.height > bRect.y + bRect.height) {
+                    pRect[count].height = aRect.y + aRect.height - pRect[count].y;
+                } else {
+                    pRect[count].height = bRect.y + bRect.height - pRect[count].y;
+                }
+                valid_num --;
+                printf("%d and %d is reuse area\n", count, tmp);
+            }
+        }
+    }
+
+    printf("area total: %d, area valid: %d\n", num, valid_num);
+    Rect stRectTemp;
+    int idx0, idx1;
+    for(idx0 = 0;  idx0 < num; idx0++) {
+        for (idx1 = 0; idx1 < num - idx0 - 1; idx1++) {
+            if ((pRect + idx1)->x > (pRect + 1 + idx1)->x) {
+                stRectTemp = *(pRect + idx1);
+                *(pRect + idx1) = *(pRect + 1 + idx1);
+                *(pRect + 1 + idx1) = stRectTemp;
+            }
         }
     }
 
@@ -140,18 +196,20 @@ Mat ocr_cut(Mat mSrcImg, const char* desImg) {
 #if 1
     /// Draw contours,彩色轮廓
     Mat mDrawImg = Mat::zeros(mCannyImg.size(), CV_8UC3);
-    printf("contours.size() = %d\n", (int) contours.size());
-    for (int i = 0; i < contours.size(); i++) {
-
-        //随机颜色
-        Scalar color = Scalar(255,0,0);
-        drawContours(mDrawImg, contours, i, color, 2, 8, hierarchy, 0, Point());
+    for(idx0 = 0; idx0 < num; idx0++) {
+        printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
+          pRect[idx0].width, pRect[idx0].height);
+        if((pRect[idx0-1].x == pRect[idx0].x) && (idx0 != 0)) {
+            printf("idx0-cont: %d\n", idx0);
+            continue;
+        }
+            printf("idx0 = %d\n", idx0);
+            rectangle(mDrawImg, pRect[idx0], Scalar(0,0,255), 3, 8, 0);//用矩形画矩形窗
     }
-
     imshow("draw_contours", mDrawImg);
 #endif
 
-    return mDrawImg;
+    return mSrcImg;
 }
 
 Mat ocr_preprocess(const char* srcImg, const char* desImg) {

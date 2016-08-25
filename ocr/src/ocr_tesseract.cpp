@@ -8,15 +8,16 @@
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
 
-int ocr_tesseract(const char* input, const char* output, const char* ocr_type) {
+char* ocr_tesseract(const char* input, const char* output, const char* ocr_type) {
 
     int ret = 0;
+    static char result[128];
 
     tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
     //Initialize tesseract-ocr with English
     if(api->Init(NULL, ocr_type)) {
         fprintf(stderr, "Could not initialize tesseract.\n");
-        return -1;
+        return NULL;
     }
 
     //Open input image with leptonica lib
@@ -27,6 +28,7 @@ int ocr_tesseract(const char* input, const char* output, const char* ocr_type) {
     char* outText;
     outText = api->GetUTF8Text();
     printf("OCR output: %s.\n", outText);
+    strcpy(result, outText);
 
     FILE* pf;
     pf = fopen(output, "a+");
@@ -44,5 +46,5 @@ int ocr_tesseract(const char* input, const char* output, const char* ocr_type) {
         api->End();
         delete[] outText;
         pixDestroy(&image);
-    return ret;
+    return result;
 }

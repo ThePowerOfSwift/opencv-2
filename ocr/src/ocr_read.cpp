@@ -32,7 +32,7 @@ Mat ocr_read_grey(const char* ocr_name) {
     return imread(ocr_name, IMREAD_GRAYSCALE);
 }
 
-Mat ocr_binary(Mat mSrcImg, double thresh, int method, int size, double delta) {
+Mat ocr_binary(Mat mSrcImg, double thresh, int method, int size, double div) {
     //convert to binary
     Mat mDesImg;
     switch(method) {
@@ -41,10 +41,10 @@ Mat ocr_binary(Mat mSrcImg, double thresh, int method, int size, double delta) {
             threshold(mSrcImg, mDesImg, thresh, 255, THRESH_BINARY_INV);
             break;
         case E_GAUSSIAN: //adaptive gaussian threshold
-            adaptiveThreshold(mSrcImg, mDesImg, 255, ADAPTIVE_THRESH_GAUSSIAN_C, THRESH_BINARY_INV, size, delta);
+            adaptiveThreshold(mSrcImg, mDesImg, 255, ADAPTIVE_THRESH_GAUSSIAN_C, THRESH_BINARY_INV, size, div);
             break;
         case E_MEAN: //adaptive mean threshold
-            adaptiveThreshold(mSrcImg, mDesImg, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY_INV, size, delta);
+            adaptiveThreshold(mSrcImg, mDesImg, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY_INV, size, div);
             break;
         case E_OTSU: //adaptive otsu threshold
             threshold(mSrcImg, mDesImg, 0, 255, THRESH_BINARY_INV | THRESH_OTSU);
@@ -112,7 +112,8 @@ Mat ocr_erode(Mat mSrcImg, int index) {
     return mDesImg;
 }
 
-Mat ocr_cut(Mat mSrcImg, const char* desImg) {
+/* div value is between 1~100 , must not be set to zero */
+int ocr_cut(Mat mSrcImg, const char* desImg, int div) {
 
     Mat mDilateImg, mCannyImg;
 
@@ -140,6 +141,8 @@ Mat ocr_cut(Mat mSrcImg, const char* desImg) {
             contours.erase(contours.begin() + count);
             continue;
         }
+        printf("x: %d, y: %d, width: %d, height: %d\n", aRect.x, aRect.y, \
+          aRect.width, aRect.height);
     }
 
     Rect* pRect = new Rect[num];
@@ -152,8 +155,8 @@ Mat ocr_cut(Mat mSrcImg, const char* desImg) {
 
             Rect bRect = boundingRect(contours[tmp]);
 
-            if ((aRect.x + aRect.width < bRect.x + aRect.width/10) \
-              || (aRect.x > bRect.x + bRect.width - aRect.width/10)) {
+            if ((aRect.x + aRect.width < bRect.x + aRect.width/div) \
+              || (aRect.x > bRect.x + bRect.width - aRect.width/div)) {
                 continue;
             } else {
                 //x & width use max
@@ -193,6 +196,7 @@ Mat ocr_cut(Mat mSrcImg, const char* desImg) {
     }
 
     //only for show contours debug
+    Mat roiImg;
 #if 1
     /// Draw contours,彩色轮廓
     Mat mDrawImg = Mat::zeros(mCannyImg.size(), CV_8UC3);
@@ -201,9 +205,13 @@ Mat ocr_cut(Mat mSrcImg, const char* desImg) {
           pRect[idx0].width, pRect[idx0].height);
 
         if(idx0 != 0) {
-            if ((pRect[idx0 -1].x + pRect[idx0 -1].width < pRect[idx0].x + pRect[idx0].width/10) \
-               || (pRect[idx0 -1].x > pRect[idx0 -1].x + pRect[idx0].width - pRect[idx0 - 1].width/10)) {
+            if ((pRect[idx0 -1].x + pRect[idx0 -1].width < pRect[idx0].x + pRect[idx0].width/div) \
+               || (pRect[idx0 -1].x > pRect[idx0 -1].x + pRect[idx0].width - pRect[idx0 - 1].width/div)) {
                 rectangle(mDrawImg, pRect[idx0], Scalar(0, 0, 255), 3, 8, 0);//用矩形画矩形窗
+                roiImg = mSrcImg(Range(pRect[idx0].x, pRect[idx0].x + pRect[idx0].width), \
+                   Range(pRect[idx0].y, pRect[idx0].y + pRect[idx0].height));
+                //roiImg =mSrcImg(Range(0,50), Range(0,20));
+                imshow("roi", roiImg);
             } else {
                 continue;
             }
@@ -214,7 +222,7 @@ Mat ocr_cut(Mat mSrcImg, const char* desImg) {
     imshow("draw_contours", mDrawImg);
 #endif
 
-    return mSrcImg;
+    return valid_num;
 }
 
 Mat ocr_preprocess(const char* srcImg, const char* desImg) {

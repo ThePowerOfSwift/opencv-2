@@ -6,6 +6,38 @@
 
 #IncludeRegexTransform: 
 
+/home/cloud/cloud-git-master/opencv/ocr/com_ocr_java.h
+jni.h
+-
+
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_java.cpp
+jni.h
+-
+opencv/cv.hpp
+-
+../com_ocr_java.h
+/home/cloud/cloud-git-master/opencv/ocr/com_ocr_java.h
+ocr_read.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
+ocr_tesseract.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.h
+convert.h
+/home/cloud/cloud-git-master/opencv/ocr/src/convert.h
+
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp
+string
+-
+opencv/cv.hpp
+-
+opencv/highgui.h
+-
+ocr_read.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
+ocr_tesseract.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.h
+convert.h
+/home/cloud/cloud-git-master/opencv/ocr/src/convert.h
+
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.cpp
 opencv/cv.hpp
 -
@@ -15,6 +47,20 @@ ocr_read.h
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
 
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
+
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.cpp
+ocr_tesseract.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.h
+stdio.h
+-
+stdlib.h
+-
+tesseract/baseapi.h
+-
+leptonica/allheaders.h
+-
+
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.h
 
 /home/cloud/opencv_lib/include/opencv/cv.h
 opencv2/core/core_c.h
@@ -363,4 +409,16 @@ opencv2/core.hpp
 /home/cloud/opencv_lib/include/opencv2/videoio/videoio_c.h
 opencv2/core/core_c.h
 /home/cloud/opencv_lib/include/opencv2/videoio/opencv2/core/core_c.h
+
+/usr/lib/jvm/java-7-openjdk-amd64/include/jni.h
+stdio.h
+-
+stdarg.h
+-
+jni_md.h
+/usr/lib/jvm/java-7-openjdk-amd64/include/jni_md.h
+
+/usr/lib/jvm/java-7-openjdk-amd64/include/jni_md.h
+
+convert.h
 

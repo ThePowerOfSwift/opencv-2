@@ -5,6 +5,6 @@
 #ifndef OCR_OCR_TESSERACT_H
 #define OCR_OCR_TESSERACT_H
 
-int ocr_tesseract(const char* input, const char* output, const char* ocr_type);
+char* ocr_tesseract(const char* input, const char* output, const char* ocr_type);
 
 #endif //OCR_OCR_TESSERACT_H

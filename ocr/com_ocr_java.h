@@ -18,9 +18,9 @@ JNIEXPORT jint JNICALL Java_com_ocr_1java_OcrPreprocess
 /*
  * Class:     com_ocr_java
  * Method:    OcrTesseract
- * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
  */
-JNIEXPORT jint JNICALL Java_com_ocr_1java_OcrTesseract
+JNIEXPORT jstring JNICALL Java_com_ocr_1java_OcrTesseract
   (JNIEnv *, jobject, jstring, jstring, jstring);
 
 #ifdef __cplusplus

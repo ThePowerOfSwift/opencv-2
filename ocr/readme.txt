@@ -59,3 +59,8 @@ blog.csdn.net/xiahouzuoxin/article/details/39404187
 http://blog.csdn.net/wangyaninglm/article/details/41864607
 http://blog.csdn.net/felix86/article/details/38121959
 
+cmake how to use static library
+www.cnblogs.com/binbinjx/p/5626916.html
+http://stackoverflow.com/questions/20382549/cmake-for-tesseract-and-opencv
+http://stackoverflow.com/questions/7583172/opencv-as-a-static-library-cmake-options
+

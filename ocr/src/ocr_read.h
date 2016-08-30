@@ -32,6 +32,8 @@ cv::Mat ocr_preprocess(const char* srcImg, const char* desImg);
 cv::Mat ocr_dilate(cv::Mat mSrcImg, int index);
 cv::Mat ocr_erode(cv::Mat mSrcImg, int index);
 int ocr_cut(cv::Mat mSrcImg, const char* desImg, int div);
+int ocr_rgb_histogram (cv::Mat mSrcImg);
+int ocr_hsv_histogram(cv::Mat mSrcImg);
 
 
 #endif //OCR_OCR_READ_HPP_H

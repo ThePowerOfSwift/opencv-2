@@ -202,22 +202,26 @@ int ocr_cut(Mat mSrcImg, const char* desImg, int div) {
     /// Draw contours,彩色轮廓
     Mat mDrawImg = Mat::zeros(mCannyImg.size(), CV_8UC3);
     for(idx0 = 0; idx0 < num; idx0++) {
-        printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
+        //printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
           pRect[idx0].width, pRect[idx0].height);
 
         if(idx0 != 0) {
             if ((pRect[idx0 -1].x + pRect[idx0 -1].width < pRect[idx0].x + pRect[idx0].width/div) \
                || (pRect[idx0 -1].x > pRect[idx0 -1].x + pRect[idx0].width - pRect[idx0 - 1].width/div)) {
                 rectangle(mDrawImg, pRect[idx0], Scalar(0, 0, 255), 3, 8, 0);//用矩形画矩形窗
-                roiImg = mSrcImg(Range(pRect[idx0].x, pRect[idx0].x + pRect[idx0].width), \
-                   Range(pRect[idx0].y, pRect[idx0].y + pRect[idx0].height));
-                //roiImg =mSrcImg(Range(0,50), Range(0,20));
+                printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
+          pRect[idx0].width, pRect[idx0].height);
+                roiImg = mSrcImg(Range(0, 50), \
+                    Range(pRect[idx0].x, pRect[idx0].x + pRect[idx0].width));
                 imshow("roi", roiImg);
+
             } else {
                 continue;
             }
         } else {
             rectangle(mDrawImg, pRect[idx0], Scalar(0, 0, 255), 3, 8, 0);//用矩形画矩形窗
+            printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
+          pRect[idx0].width, pRect[idx0].height);
         }
     }
     imshow("draw_contours", mDrawImg);

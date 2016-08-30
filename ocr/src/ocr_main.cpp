@@ -19,13 +19,13 @@ int main(int argc, const char* argv[]) {
         printf("usage: ./ocr_read xx.png\n");
     }*/
 
-    //mImg = ocr_preprocess(argv[1], argv[2]);
+    mImg = ocr_preprocess(argv[1], argv[2]);
     //convert(argv[1], (char*)argv[3]);
     //ocr_tesseract(argv[2], argv[4], "eng");
 
-    //ocr_cut(mImg, argv[3], 20);
-    mImg =imread(argv[1]);
-    ocr_rgb_histogram(mImg);
+    ocr_cut(mImg, argv[3], 20);
+    //mImg =imread(argv[1]);
+    //ocr_rgb_histogram(mImg);
     //ocr_hsv_histogram(mImg);
     waitKey(0);
     return 0;

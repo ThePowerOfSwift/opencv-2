@@ -39,11 +39,11 @@
       <file leaf-file-name="ocr_read.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ocr_read.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1257">
-              <caret line="283" column="19" selection-start-line="283" selection-start-column="19" selection-end-line="283" selection-end-column="19" />
+            <state relative-caret-position="234">
+              <caret line="215" column="38" selection-start-line="215" selection-start-column="38" selection-end-line="215" selection-end-column="38" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
-                <element signature="e#10767#15295#0" expanded="true" />
+                <element signature="e#10954#15482#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,7 +74,7 @@
       <file leaf-file-name="imgproc.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../../opencv_lib/include/opencv2/imgproc.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="18216">
               <caret line="1012" column="16" selection-start-line="1012" selection-start-column="16" selection-end-line="1012" selection-end-column="16" />
               <folding />
             </state>
@@ -106,8 +106,8 @@
       <file leaf-file-name="ocr_main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ocr_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-18">
-              <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+            <state relative-caret-position="303">
+              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
                 <element signature="e#700#2451#0" expanded="true" />
@@ -442,11 +442,12 @@
       <workItem from="1471963370193" duration="1806000" />
       <workItem from="1472130803108" duration="2716000" />
       <workItem from="1472479658299" duration="8130000" />
+      <workItem from="1472570050154" duration="1659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97813000" />
+    <option name="totallyTimeSpent" value="99472000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -516,7 +517,7 @@
           <caret line="80" column="36" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#10767#15295#0" expanded="true" />
+            <element signature="e#10954#15482#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -554,7 +555,7 @@
           <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#10767#15295#0" expanded="true" />
+            <element signature="e#10954#15482#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -632,7 +633,7 @@
           <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#10767#15295#0" expanded="true" />
+            <element signature="e#10954#15482#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -679,7 +680,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#10767#15295#0" expanded="true" />
+            <element signature="e#10954#15482#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -699,7 +700,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#10767#15295#0" expanded="true" />
+            <element signature="e#10954#15482#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -718,7 +719,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#10767#15295#0" expanded="true" />
+            <element signature="e#10954#15482#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -731,28 +732,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../practice/tesseract/imagemagick/c_demo/convert.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../practice/tesseract/imagemagick/c_demo/convert.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="3" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../practice/tesseract/imagemagick/c_demo/convert.c" />
+    <entry file="file://$PROJECT_DIR$/../../practice/tesseract/imagemagick/c_demo/convert.h" />
     <entry file="file://$PROJECT_DIR$/src/ocr_tesseract.c" />
-    <entry file="file://$PROJECT_DIR$/../../practice/tesseract/tesseract.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../practice/tesseract/tesseract.cpp" />
     <entry file="file://$PROJECT_DIR$/src/com_ocr.h" />
     <entry file="file://$PROJECT_DIR$/src/ocr_java.cpp.cpp" />
     <entry file="file://$PROJECT_DIR$/src/com/ocr_java.java" />
@@ -810,7 +793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4968">
           <caret line="276" column="0" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -866,6 +848,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../../opencv_lib/include/opencv2/imgproc.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18216">
+          <caret line="1012" column="16" selection-start-line="1012" selection-start-column="16" selection-end-line="1012" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ocr_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#700#2451#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ocr_read.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -874,32 +875,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../opencv_lib/include/opencv2/imgproc.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="1012" column="16" selection-start-line="1012" selection-start-column="16" selection-end-line="1012" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ocr_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#700#2451#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ocr_read.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1257">
-          <caret line="283" column="19" selection-start-line="283" selection-start-column="19" selection-end-line="283" selection-end-column="19" />
+        <state relative-caret-position="234">
+          <caret line="215" column="38" selection-start-line="215" selection-start-column="38" selection-end-line="215" selection-end-column="38" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#10767#15295#0" expanded="true" />
+            <element signature="e#10954#15482#0" expanded="true" />
           </folding>
         </state>
       </provider>

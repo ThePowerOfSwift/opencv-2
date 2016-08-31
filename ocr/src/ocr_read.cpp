@@ -198,22 +198,24 @@ int ocr_cut(Mat mSrcImg, const char* desImg, int div) {
 
     //only for show contours debug
     Mat roiImg;
-#if 1
+    char cutPath[128] = {0};
     /// Draw contours,彩色轮廓
     Mat mDrawImg = Mat::zeros(mCannyImg.size(), CV_8UC3);
     for(idx0 = 0; idx0 < num; idx0++) {
-        //printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
-          pRect[idx0].width, pRect[idx0].height);
 
         if(idx0 != 0) {
             if ((pRect[idx0 -1].x + pRect[idx0 -1].width < pRect[idx0].x + pRect[idx0].width/div) \
                || (pRect[idx0 -1].x > pRect[idx0 -1].x + pRect[idx0].width - pRect[idx0 - 1].width/div)) {
                 rectangle(mDrawImg, pRect[idx0], Scalar(0, 0, 255), 3, 8, 0);//用矩形画矩形窗
                 printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
-          pRect[idx0].width, pRect[idx0].height);
-                roiImg = mSrcImg(Range(0, 50), \
+                  pRect[idx0].width, pRect[idx0].height);
+                // y direction not cut , just use origin img height
+                roiImg = mSrcImg(Range(0, mSrcImg.rows), \
                     Range(pRect[idx0].x, pRect[idx0].x + pRect[idx0].width));
-                imshow("roi", roiImg);
+                memset(cutPath, 0, sizeof(cutPath));
+                snprintf(cutPath, sizeof(cutPath), "%s_%d", desImg, idx0);
+                ocr_write(roiImg, cutPath);
+                //imshow("roi", roiImg);
 
             } else {
                 continue;
@@ -221,11 +223,16 @@ int ocr_cut(Mat mSrcImg, const char* desImg, int div) {
         } else {
             rectangle(mDrawImg, pRect[idx0], Scalar(0, 0, 255), 3, 8, 0);//用矩形画矩形窗
             printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
-          pRect[idx0].width, pRect[idx0].height);
+               pRect[idx0].width, pRect[idx0].height);
+            // y direction not cut , just use origin img height
+            roiImg = mSrcImg(Range(0, mSrcImg.rows), \
+                    Range(pRect[idx0].x, pRect[idx0].x + pRect[idx0].width));
+            memset(cutPath, 0, sizeof(cutPath));
+            snprintf(cutPath, sizeof(cutPath), "%s_%d", desImg, idx0);
+            ocr_write(roiImg, cutPath);
         }
     }
-    imshow("draw_contours", mDrawImg);
-#endif
+    //imshow("draw_contours", mDrawImg);
 
     return valid_num;
 }

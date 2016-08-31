@@ -36,14 +36,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ocr_read.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ocr_read.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ocr_read.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="204" column="38" selection-start-line="204" selection-start-column="38" selection-end-line="204" selection-end-column="38" />
+            <state relative-caret-position="-162">
+              <caret line="210" column="18" selection-start-line="210" selection-start-column="18" selection-end-line="210" selection-end-column="18" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
-                <element signature="e#11592#16120#0" expanded="true" />
+                <element signature="e#336#400#0" expanded="true" />
+                <element signature="e#11604#16132#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ocr_main.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ocr_main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ocr_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+            <state relative-caret-position="324">
+              <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
                 <element signature="e#1984#3735#0" expanded="true" />
@@ -159,9 +160,9 @@
         <option value="$PROJECT_DIR$/src/ocr_java.cpp" />
         <option value="$PROJECT_DIR$/com/ocr_java.java" />
         <option value="$PROJECT_DIR$/src/ocr_read.h" />
-        <option value="$PROJECT_DIR$/src/ocr_read.cpp" />
         <option value="$PROJECT_DIR$/src/ocr_main.cpp" />
         <option value="$PROJECT_DIR$/src/ocr_tesseract.cpp" />
+        <option value="$PROJECT_DIR$/src/ocr_read.cpp" />
       </list>
     </option>
   </component>
@@ -441,12 +442,12 @@
       <workItem from="1472130803108" duration="2716000" />
       <workItem from="1472479658299" duration="8130000" />
       <workItem from="1472570050154" duration="1659000" />
-      <workItem from="1472650509539" duration="6414000" />
+      <workItem from="1472650509539" duration="6793000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105886000" />
+    <option name="totallyTimeSpent" value="106265000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
@@ -516,7 +517,8 @@
           <caret line="80" column="36" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#11592#16120#0" expanded="true" />
+            <element signature="e#336#400#0" expanded="true" />
+            <element signature="e#11604#16132#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -554,7 +556,8 @@
           <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#11592#16120#0" expanded="true" />
+            <element signature="e#336#400#0" expanded="true" />
+            <element signature="e#11604#16132#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -632,7 +635,8 @@
           <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#11592#16120#0" expanded="true" />
+            <element signature="e#336#400#0" expanded="true" />
+            <element signature="e#11604#16132#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -679,7 +683,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#11592#16120#0" expanded="true" />
+            <element signature="e#336#400#0" expanded="true" />
+            <element signature="e#11604#16132#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -699,7 +704,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#11592#16120#0" expanded="true" />
+            <element signature="e#336#400#0" expanded="true" />
+            <element signature="e#11604#16132#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -718,7 +724,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#11592#16120#0" expanded="true" />
+            <element signature="e#336#400#0" expanded="true" />
+            <element signature="e#11604#16132#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -846,17 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ocr_read.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="204" column="38" selection-start-line="204" selection-start-column="38" selection-end-line="204" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#11592#16120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ocr_read.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
@@ -877,11 +873,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ocr_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+        <state relative-caret-position="324">
+          <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
             <element signature="e#1984#3735#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ocr_read.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-162">
+          <caret line="210" column="18" selection-start-line="210" selection-start-column="18" selection-end-line="210" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#336#400#0" expanded="true" />
+            <element signature="e#11604#16132#0" expanded="true" />
           </folding>
         </state>
       </provider>

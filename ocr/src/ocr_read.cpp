@@ -7,7 +7,7 @@ using namespace cv;
 using namespace std;
 
 //threshold define
-#define OCR_DBG 1
+#define OCR_DBG 0
 #define DEFAULT_THRESHOLD 210
 #define DEFAULT_SIZE 3
 #define DEFAULT_DELTA 3
@@ -136,13 +136,13 @@ int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
     for (count = 0; count < contours.size(); count++) {
         Rect aRect =boundingRect(contours[count]);
         if (aRect.width * aRect.height < 30) {
-            printf("remove small size = %d\n", count);
+           // printf("remove small size = %d\n", count);
             num--;
             //删除面积小于设定值的轮廓
             contours.erase(contours.begin() + count);
             continue;
         }
-        printf("x: %d, y: %d, width: %d, height: %d\n", aRect.x, aRect.y, \
+        //printf("x: %d, y: %d, width: %d, height: %d\n", aRect.x, aRect.y, \
           aRect.width, aRect.height);
     }
 
@@ -178,12 +178,12 @@ int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
                     pRect[count].height = bRect.y + bRect.height - pRect[count].y;
                 }
                 valid_num --;
-                printf("%d and %d is reuse area\n", count, tmp);
+                //printf("%d and %d is reuse area\n", count, tmp);
             }
         }
     }
 
-    printf("area total: %d, area valid: %d\n", num, valid_num);
+    //printf("area total: %d, area valid: %d\n", num, valid_num);
     Rect stRectTemp;
     int idx0, idx1;
     for(idx0 = 0;  idx0 < num; idx0++) {
@@ -208,7 +208,7 @@ int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
             if ((pRect[idx0 -1].x + pRect[idx0 -1].width < pRect[idx0].x + pRect[idx0].width/div) \
                || (pRect[idx0 -1].x > pRect[idx0 -1].x + pRect[idx0].width - pRect[idx0 - 1].width/div)) {
                 rectangle(mDrawImg, pRect[idx0], Scalar(0, 0, 255), 3, 8, 0);//用矩形画矩形窗
-                printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
+                //printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
                   pRect[idx0].width, pRect[idx0].height);
                 // y direction not cut , just use origin img height
                 roiImg = mSrcImg(Range(0, mSrcImg.rows), \
@@ -224,7 +224,7 @@ int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
             }
         } else {
             rectangle(mDrawImg, pRect[idx0], Scalar(0, 0, 255), 3, 8, 0);//用矩形画矩形窗
-            printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
+            //printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
                pRect[idx0].width, pRect[idx0].height);
             // y direction not cut , just use origin img height
             roiImg = mSrcImg(Range(0, mSrcImg.rows), \

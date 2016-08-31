@@ -10,7 +10,6 @@
 
 char* ocr_tesseract(const char* input, const char* output, const char* ocr_type) {
 
-    int ret = 0;
     static char result[128];
 
     tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
@@ -27,15 +26,14 @@ char* ocr_tesseract(const char* input, const char* output, const char* ocr_type)
     //Get ocr result
     char* outText;
     outText = api->GetUTF8Text();
-    printf("OCR output: %s.\n", outText);
+    //printf("OCR output: %s.\n", outText);
     strcpy(result, outText);
 
     FILE* pf;
     pf = fopen(output, "a+");
     if(pf == NULL)
     {
-        fprintf(stderr, "open %s error\n", output);
-        ret = -1;
+        //fprintf(stderr, "open %s error\n", output);
         goto ocr_finish;
     }
     fprintf(pf, "%s", outText);

@@ -4,6 +4,7 @@
 #include "ocr_read.h"
 #include "ocr_tesseract.h"
 #include "convert.h"
+#include <dirent.h>
 
 using namespace cv;
 using namespace std;
@@ -11,7 +12,56 @@ using namespace std;
 #define DEFAULT_THRESHOLD 210
 #define DEFAULT_SIZE 3
 #define DEFAULT_DELTA 3
+
+#define MAX_SIZE 256
+char path[6][MAX_SIZE];
+
 #if 1
+int ocrs_detect(const char* dir, const char* result) {
+    DIR *dirptr = NULL;
+    struct dirent *entry;
+    int count = 0;
+
+    //printf("dir: %s\n", dir);
+    if((dirptr = opendir(dir)) == NULL) {
+        printf("open dir error!\n");
+        return -1;
+    }
+
+    char *p1, *p2;
+    char index[10] = {0};
+    while(entry = readdir(dirptr)) {
+        if(strncmp(entry->d_name, "temp_", 5) == 0) {
+            p1 = strstr(entry->d_name, "_");
+            p2 = strstr(entry->d_name, ".");
+            strncpy(index, p1+1, p2-p1-1);
+            count = atoi(index);
+            strcpy(path[count], dir);
+            strcat(path[count], "/");
+            strcat(path[count], entry->d_name);
+            //printf("%s\n", entry->d_name);
+        }
+    }
+    closedir(dirptr);
+
+    memset(index, 0, sizeof(index));
+    for(int i=0; i<6; i++) {
+        p1 = ocr_tesseract(path[i], NULL, "eng");
+        strncat(index, p1, sizeof(*p1));
+    }
+
+    FILE* pf;
+    pf = fopen(result, "a+");
+    if(pf == NULL) {
+        fprintf(stderr, "open %s error\n", result);
+        return -1;
+    }
+
+    fprintf(pf, "%s", index);
+    printf("ocr result is %s\n", index);
+    fclose(pf);
+    return 0;
+}
 int main(int argc, const char* argv[]) {
     Mat mImg;
 
@@ -23,7 +73,8 @@ int main(int argc, const char* argv[]) {
     //convert(argv[1], (char*)argv[3]);
     //ocr_tesseract(argv[2], argv[4], "eng");
 
-    ocr_cut(mImg, argv[3], 20);
+    ocr_cut(mImg, argv[4], 20);
+    ocrs_detect(argv[4], argv[5]);
     //mImg =imread(argv[1]);
     //ocr_rgb_histogram(mImg);
     //ocr_hsv_histogram(mImg);

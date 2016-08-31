@@ -114,7 +114,7 @@ Mat ocr_erode(Mat mSrcImg, int index) {
 }
 
 /* div value is between 1~100 , must not be set to zero */
-int ocr_cut(Mat mSrcImg, const char* desImg, int div) {
+int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
 
     Mat mDilateImg, mCannyImg;
 
@@ -199,6 +199,7 @@ int ocr_cut(Mat mSrcImg, const char* desImg, int div) {
     //only for show contours debug
     Mat roiImg;
     char cutPath[128] = {0};
+    idx1 = 0;
     /// Draw contours,彩色轮廓
     Mat mDrawImg = Mat::zeros(mCannyImg.size(), CV_8UC3);
     for(idx0 = 0; idx0 < num; idx0++) {
@@ -213,8 +214,9 @@ int ocr_cut(Mat mSrcImg, const char* desImg, int div) {
                 roiImg = mSrcImg(Range(0, mSrcImg.rows), \
                     Range(pRect[idx0].x, pRect[idx0].x + pRect[idx0].width));
                 memset(cutPath, 0, sizeof(cutPath));
-                snprintf(cutPath, sizeof(cutPath), "%s_%d", desImg, idx0);
+                snprintf(cutPath, sizeof(cutPath), "./%s/temp_%d.png", desImgDir, idx1);
                 ocr_write(roiImg, cutPath);
+                idx1 ++;
                 //imshow("roi", roiImg);
 
             } else {
@@ -228,12 +230,14 @@ int ocr_cut(Mat mSrcImg, const char* desImg, int div) {
             roiImg = mSrcImg(Range(0, mSrcImg.rows), \
                     Range(pRect[idx0].x, pRect[idx0].x + pRect[idx0].width));
             memset(cutPath, 0, sizeof(cutPath));
-            snprintf(cutPath, sizeof(cutPath), "%s_%d", desImg, idx0);
+            snprintf(cutPath, sizeof(cutPath), "./%s/temp_%d.png", desImgDir, idx1);
             ocr_write(roiImg, cutPath);
+            idx1 ++;
         }
     }
     //imshow("draw_contours", mDrawImg);
 
+    printf("single ocr num: %d\n", valid_num);
     return valid_num;
 }
 

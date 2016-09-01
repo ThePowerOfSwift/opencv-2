@@ -17,7 +17,7 @@ using namespace std;
 char path[6][MAX_SIZE];
 
 #if 1
-int ocrs_detect(const char* dir, const char* result) {
+int ocrs_detect(const char* dir, const char* result, int cnt) {
     DIR *dirptr = NULL;
     struct dirent *entry;
     int count = 0;
@@ -45,11 +45,12 @@ int ocrs_detect(const char* dir, const char* result) {
     closedir(dirptr);
 
     memset(index, 0, sizeof(index));
-    for(int i=0; i<6; i++) {
+    for(int i=0; i<cnt; i++) {
         p1 = ocr_tesseract(path[i], NULL, "eng");
         strncat(index, p1, sizeof(*p1));
+        remove(path[i]);
     }
-
+    strcat(index, "\n");
     FILE* pf;
     pf = fopen(result, "a+");
     if(pf == NULL) {
@@ -64,7 +65,7 @@ int ocrs_detect(const char* dir, const char* result) {
 }
 int main(int argc, const char* argv[]) {
     Mat mImg;
-
+    int count;
 /*    if(argc <= 2) {
         printf("usage: ./ocr_read xx.png\n");
     }*/
@@ -73,8 +74,8 @@ int main(int argc, const char* argv[]) {
     //convert(argv[1], (char*)argv[3]);
     //ocr_tesseract(argv[2], argv[4], "eng");
 
-    ocr_cut(mImg, argv[4], 20);
-    ocrs_detect(argv[4], argv[5]);
+    count = ocr_cut(mImg, argv[4], 20);
+    ocrs_detect(argv[4], argv[5], count);
     //mImg =imread(argv[1]);
     //ocr_rgb_histogram(mImg);
     //ocr_hsv_histogram(mImg);

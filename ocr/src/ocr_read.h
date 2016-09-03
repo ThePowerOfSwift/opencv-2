@@ -34,6 +34,8 @@ cv::Mat ocr_erode(cv::Mat mSrcImg, int index);
 int ocr_cut(cv::Mat mSrcImg, const char* desImgDir, int div);
 int ocr_rgb_histogram (cv::Mat mSrcImg);
 int ocr_hsv_histogram(cv::Mat mSrcImg);
-
+cv::Mat ocr_mergeMatCol(cv::Mat mMat1, cv::Mat mMat2);
+cv::Mat ocr_mergeMatRow(cv::Mat mMat1, cv::Mat mMat2);
+cv::Mat ocr_xfill(cv::Mat mMat1, int col);
 
 #endif //OCR_OCR_READ_HPP_H

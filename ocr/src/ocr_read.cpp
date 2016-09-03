@@ -121,6 +121,40 @@ Mat ocr_erode(Mat mSrcImg, int index) {
     return mDesImg;
 }
 
+Mat ocr_mergeMatCol(Mat mMat1, Mat mMat2) {
+    CV_Assert(mMat2.rows == mMat1.rows);//行数不相等，出现错误中断
+    Mat mMerge, mTemp1, mTemp2;
+    mMerge.create(mMat1.rows, mMat1.cols+mMat2.cols, mMat1.type());
+    mTemp1 = mMerge.colRange(0, mMat1.cols);
+    mMat1.copyTo(mTemp1);
+    mTemp2 = mMerge.colRange(mMat1.cols, mMat1.cols + mMat2.cols);
+    mMat2.copyTo(mTemp2);
+    return  mMerge;
+}
+
+Mat ocr_mergeMatRow(Mat mMat1, Mat mMat2) {
+    CV_Assert(mMat2.rows == mMat1.rows);//行数不相等，出现错误中断
+    Mat mMerge, mTemp1, mTemp2;
+    mMerge.create(mMat1.rows + mMat2.rows, mMat1.cols, mMat1.type());
+    mTemp1 = mMerge.rowRange(0, mMat1.rows);
+    mMat1.copyTo(mTemp1);
+    mTemp2 = mMerge.rowRange(mMat1.rows, mMat1.rows + mMat2.rows);
+    mMat2.copyTo(mTemp2);
+    return  mMerge;
+}
+
+/*fill image as follows:
+ *     ***img***      */
+Mat ocr_xfill(Mat mMat1, int col) {
+    Mat mFill;
+    Mat mTemp = Mat::zeros(mMat1.rows, col, mMat1.type());
+    //mTemp.create(mMat1.rows, col, mMat1.type());
+    //Mat mTemp(mMat1.rows, col, mMat1.type(), Sca);
+    mFill = ocr_mergeMatCol(mTemp, mMat1);
+    mFill = ocr_mergeMatCol(mFill, mTemp);
+    return mFill;
+}
+
 /* div value is between 1~100 , must not be set to zero */
 int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
 
@@ -231,6 +265,7 @@ int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
                 // y direction not cut , just use origin img height
                 roiImg = mSrcImg(Range(0, mSrcImg.rows), \
                     Range(pRect[idx0].x, pRect[idx0].x + pRect[idx0].width));
+                roiImg = ocr_xfill(roiImg, 5);
                 memset(cutPath, 0, sizeof(cutPath));
                 snprintf(cutPath, sizeof(cutPath), "./%s/temp_%d.png", desImgDir, idx1);
                 ocr_write(roiImg, cutPath);
@@ -247,6 +282,7 @@ int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
             // y direction not cut , just use origin img height
             roiImg = mSrcImg(Range(0, mSrcImg.rows), \
                     Range(pRect[idx0].x, pRect[idx0].x + pRect[idx0].width));
+            roiImg = ocr_xfill(roiImg, 5);
             memset(cutPath, 0, sizeof(cutPath));
             snprintf(cutPath, sizeof(cutPath), "./%s/temp_%d.png", desImgDir, idx1);
             ocr_write(roiImg, cutPath);

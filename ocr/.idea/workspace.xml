@@ -39,13 +39,23 @@
       <file leaf-file-name="ocr_read.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ocr_read.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="134" column="6" selection-start-line="134" selection-start-column="6" selection-end-line="134" selection-end-column="6" />
+            <state relative-caret-position="267">
+              <caret line="284" column="12" selection-start-line="284" selection-start-column="12" selection-end-line="284" selection-end-column="12" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
                 <element signature="e#336#400#0" expanded="true" />
-                <element signature="e#12153#16681#0" expanded="true" />
+                <element signature="e#13388#17916#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mat.inl.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../opencv_lib/include/opencv2/core/mat.inl.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1817">
+              <caret line="617" column="10" selection-start-line="617" selection-start-column="10" selection-end-line="617" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -53,8 +63,8 @@
       <file leaf-file-name="mat.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../../opencv_lib/include/opencv2/core/mat.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11574">
-              <caret line="643" column="17" selection-start-line="643" selection-start-column="17" selection-end-line="643" selection-end-column="17" />
+            <state relative-caret-position="393">
+              <caret line="748" column="19" selection-start-line="748" selection-start-column="19" selection-end-line="748" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -63,8 +73,8 @@
       <file leaf-file-name="ocr_read.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ocr_read.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+            <state relative-caret-position="321">
+              <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -125,16 +135,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="com_ocr_java.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com_ocr_java.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ocr_java.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ocr_java.cpp">
           <provider selected="true" editor-type-id="text-editor">
@@ -159,9 +159,9 @@
         <option value="$PROJECT_DIR$/src/ocr_tesseract.h" />
         <option value="$PROJECT_DIR$/src/ocr_java.cpp" />
         <option value="$PROJECT_DIR$/com/ocr_java.java" />
-        <option value="$PROJECT_DIR$/src/ocr_read.h" />
         <option value="$PROJECT_DIR$/src/ocr_tesseract.cpp" />
         <option value="$PROJECT_DIR$/src/ocr_main.cpp" />
+        <option value="$PROJECT_DIR$/src/ocr_read.h" />
         <option value="$PROJECT_DIR$/src/ocr_read.cpp" />
       </list>
     </option>
@@ -445,12 +445,12 @@
       <workItem from="1472650509539" duration="7023000" />
       <workItem from="1472741800180" duration="352000" />
       <workItem from="1472833590178" duration="6576000" />
-      <workItem from="1472867868370" duration="832000" />
+      <workItem from="1472867868370" duration="5222000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114255000" />
+    <option name="totallyTimeSpent" value="118645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -514,18 +514,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ocr_read.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-399">
-          <caret line="80" column="36" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#12153#16681#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ocr_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -558,7 +546,7 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#12153#16681#0" expanded="true" />
+            <element signature="e#13388#17916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -636,7 +624,7 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#12153#16681#0" expanded="true" />
+            <element signature="e#13388#17916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -683,7 +671,7 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#12153#16681#0" expanded="true" />
+            <element signature="e#13388#17916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -703,7 +691,7 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#12153#16681#0" expanded="true" />
+            <element signature="e#13388#17916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -722,7 +710,7 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#12153#16681#0" expanded="true" />
+            <element signature="e#13388#17916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -838,22 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../opencv_lib/include/opencv2/core/mat.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11574">
-          <caret line="643" column="17" selection-start-line="643" selection-start-column="17" selection-end-line="643" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ocr_read.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ocr_tesseract.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -875,14 +847,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ocr_read.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../opencv_lib/include/opencv2/core/mat.inl.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1817">
+          <caret line="617" column="10" selection-start-line="617" selection-start-column="10" selection-end-line="617" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../opencv_lib/include/opencv2/core/mat.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="748" column="19" selection-start-line="748" selection-start-column="19" selection-end-line="748" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ocr_read.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="134" column="6" selection-start-line="134" selection-start-column="6" selection-end-line="134" selection-end-column="6" />
+        <state relative-caret-position="267">
+          <caret line="284" column="12" selection-start-line="284" selection-start-column="12" selection-end-line="284" selection-end-column="12" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#12153#16681#0" expanded="true" />
+            <element signature="e#13388#17916#0" expanded="true" />
           </folding>
         </state>
       </provider>

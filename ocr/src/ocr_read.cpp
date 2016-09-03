@@ -124,18 +124,23 @@ Mat ocr_erode(Mat mSrcImg, int index) {
 /* div value is between 1~100 , must not be set to zero */
 int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
 
-    Mat mDilateImg, mCannyImg;
+    Mat mDilateImg, mErodeImg, mCannyImg;
     int idx0, idx1, valid_num;
 
     //dilate img
     mDilateImg = ocr_dilate(mSrcImg, 3);
+    //imshow("dialte", mDilateImg);
+    //erode img
+    mErodeImg = ocr_erode(mDilateImg, 3);
+    //imshow("erode", mErodeImg);
 
     //the pram. for findContours,
     vector<vector<Point> > contours;
     vector<Vec4i> hierarchy;
 
     /// Detect edges using canny
-    Canny(mDilateImg, mCannyImg, 80, 255, 3);
+    //Canny(mDilateImg, mCannyImg, 80, 255, 3);
+    Canny(mErodeImg, mCannyImg, 80, 255, 3);
     /// Find contours
     findContours(mCannyImg, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
 

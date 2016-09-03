@@ -6,25 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp
-string
--
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.cpp
 opencv/cv.hpp
 -
 opencv/highgui.h
 -
 ocr_read.h
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
-ocr_tesseract.h
-/home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.h
-convert.h
-/home/cloud/cloud-git-master/opencv/ocr/src/convert.h
-dirent.h
+iostream
 -
 
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
-
-/home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.h
 
 /home/cloud/opencv_lib/include/opencv/cv.h
 opencv2/core/core_c.h
@@ -373,6 +365,4 @@ opencv2/core.hpp
 /home/cloud/opencv_lib/include/opencv2/videoio/videoio_c.h
 opencv2/core/core_c.h
 /home/cloud/opencv_lib/include/opencv2/videoio/opencv2/core/core_c.h
-
-convert.h
 

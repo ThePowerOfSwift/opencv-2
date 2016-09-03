@@ -2,8 +2,8 @@
 
 export TESSDATA_PREFIX=/home/cloud/tesseract/tessdata
 
-if [ -f ./test/result.txt ]; then
-	rm -rf ./test/result.txt
+if [ -d ./test ]; then
+	rm -rf ./test/*
 fi
 
 for file in ./png/code1/*.png

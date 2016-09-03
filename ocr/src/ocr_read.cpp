@@ -20,6 +20,14 @@ void ocr_dbg(Mat mSrcImg, const char* name) {
 #endif
 }
 
+static int ocr_max(int a, int b) {
+    return a>=b?a:b;
+}
+
+static int ocr_min(int a, int b) {
+    return a<=b?a:b;
+}
+
 Mat ocr_read(const char* ocr_name) {
     return imread(ocr_name, IMREAD_UNCHANGED);
 }
@@ -117,6 +125,7 @@ Mat ocr_erode(Mat mSrcImg, int index) {
 int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
 
     Mat mDilateImg, mCannyImg;
+    int idx0, idx1, valid_num;
 
     //dilate img
     mDilateImg = ocr_dilate(mSrcImg, 3);
@@ -130,64 +139,28 @@ int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
     /// Find contours
     findContours(mCannyImg, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
 
-    int count = 0;
-    int num = contours.size();
+    valid_num = contours.size();
+    //printf("valid_num = %d\n", valid_num);
+    idx1 = 0;
+    Rect* pRect = new Rect[valid_num];
     //remove small area ,  width*height < 50
-    for (count = 0; count < contours.size(); count++) {
-        Rect aRect =boundingRect(contours[count]);
+    for (idx0 = 0; idx0 < contours.size(); idx0++) {
+        Rect aRect =boundingRect(contours[idx0]);
         if (aRect.width * aRect.height < 30) {
-           // printf("remove small size = %d\n", count);
-            num--;
+            //printf("remove small size = %d\n", idx0);
+            valid_num--;
             //删除面积小于设定值的轮廓
-            contours.erase(contours.begin() + count);
+            //contours.erase(contours.begin() + idx0);
             continue;
         }
         //printf("x: %d, y: %d, width: %d, height: %d\n", aRect.x, aRect.y, \
           aRect.width, aRect.height);
+        pRect[idx1++] = boundingRect(contours[idx0]);
     }
 
-    Rect* pRect = new Rect[num];
-    int valid_num = num;
-    //check reuse area
-    for(count = 0;  count < num; count++) {
-        Rect aRect = boundingRect(contours[count]);
-        pRect[count] = aRect;
-        for (int tmp = count + 1; tmp < contours.size(); tmp++) {
-
-            Rect bRect = boundingRect(contours[tmp]);
-
-            if ((aRect.x + aRect.width < bRect.x + aRect.width/div) \
-              || (aRect.x > bRect.x + bRect.width - aRect.width/div)) {
-                continue;
-            } else {
-                //x & width use max
-                if(aRect.x > bRect.x)
-                    pRect[count].x = bRect.x;
-                if(aRect.x + aRect.width > bRect.x + bRect.width) {
-                    pRect[count].width = aRect.x + aRect.width - pRect[count].x;
-                } else {
-                    pRect[count].width = bRect.x + bRect.width - pRect[count].x;
-                }
-
-                //y & height use max
-                if(aRect.y > bRect.y)
-                    pRect[count].y = bRect.y;
-                if(aRect.y + aRect.height > bRect.y + bRect.height) {
-                    pRect[count].height = aRect.y + aRect.height - pRect[count].y;
-                } else {
-                    pRect[count].height = bRect.y + bRect.height - pRect[count].y;
-                }
-                valid_num --;
-                //printf("%d and %d is reuse area\n", count, tmp);
-            }
-        }
-    }
-
-    //printf("area total: %d, area valid: %d\n", num, valid_num);
     Rect stRectTemp;
-    int idx0, idx1;
-    for(idx0 = 0;  idx0 < num; idx0++) {
-        for (idx1 = 0; idx1 < num - idx0 - 1; idx1++) {
+    for(idx0 = 0;  idx0 < valid_num; idx0++) {
+        for (idx1 = 0; idx1 < valid_num - idx0 - 1; idx1++) {
             if ((pRect + idx1)->x > (pRect + 1 + idx1)->x) {
                 stRectTemp = *(pRect + idx1);
                 *(pRect + idx1) = *(pRect + 1 + idx1);
@@ -196,17 +169,57 @@ int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
         }
     }
 
+    int p_start, p_end;
+    //check reuse area
+    for(idx0 = 0;  idx0 < valid_num; idx0++) {
+        Rect aRect = pRect[idx0];
+        for (idx1 = idx0 + 1; idx1 < valid_num; idx1++) {
+
+            Rect bRect = pRect[idx1];
+
+            if ((pRect[idx0].x + pRect[idx0].width < pRect[idx1].x + div) \
+              || (pRect[idx0].x > pRect[idx1].x + pRect[idx1].width - div)) {
+                continue;
+            } else {
+                p_start = ocr_min(pRect[idx0].x, pRect[idx1].x);
+                p_end = ocr_max(pRect[idx0].x + pRect[idx0].width, pRect[idx1].x + pRect[idx1].width);
+                //x & width use max
+                pRect[idx0].x = p_start;
+                pRect[idx1].x = p_start;
+                pRect[idx0].width = p_end - p_start;
+                pRect[idx1].width = pRect[idx0].width;
+
+                 //height default use image max height, so no use to compare
+                /*
+                //y & height use max
+                p_start = ocr_min(pRect[idx0].y, pRect[idx1].y);
+                p_end = ocr_max(pRect[idx0].y + pRect[idx0].height, pRect[idx1].y + pRect[idx1].height);
+                //y & width use max
+                pRect[idx0].y = p_start;
+                pRect[idx1].y = p_start;
+                pRect[idx0].height = p_end - p_start;
+                pRect[idx1].height = pRect[idx0].height;*/
+            }
+        }
+    }
+
+    /*for(idx0 = 0; idx0 < valid_num; idx0++) {
+        printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
+                  pRect[idx0].width, pRect[idx0].height);
+    }
+    printf("valid_num = %d\n", valid_num);*/
+
     //only for show contours debug
     Mat roiImg;
     char cutPath[128] = {0};
     idx1 = 0;
     /// Draw contours,彩色轮廓
     Mat mDrawImg = Mat::zeros(mCannyImg.size(), CV_8UC3);
-    for(idx0 = 0; idx0 < num; idx0++) {
+    for(idx0 = 0; idx0 < valid_num; idx0++) {
 
         if(idx0 != 0) {
-            if ((pRect[idx0 -1].x + pRect[idx0 -1].width < pRect[idx0].x + pRect[idx0].width/div) \
-               || (pRect[idx0 -1].x > pRect[idx0 -1].x + pRect[idx0].width - pRect[idx0 - 1].width/div)) {
+            if ((pRect[idx0 -1].x + pRect[idx0 -1].width < pRect[idx0].x + div) \
+               || (pRect[idx0 -1].x > pRect[idx0 -1].x + pRect[idx0].width - div)) {
                 rectangle(mDrawImg, pRect[idx0], Scalar(0, 0, 255), 3, 8, 0);//用矩形画矩形窗
                 //printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
                   pRect[idx0].width, pRect[idx0].height);
@@ -237,8 +250,8 @@ int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
     }
     //imshow("draw_contours", mDrawImg);
 
-    printf("single ocr num: %d\n", valid_num);
-    return valid_num;
+    //printf("single ocr num: %d\n", idx1);
+    return idx1;
 }
 
 int ocr_rgb_histogram (Mat mSrcImg) {

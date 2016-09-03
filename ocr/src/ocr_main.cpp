@@ -48,7 +48,7 @@ int ocrs_detect(const char* dir, const char* result, int cnt) {
     for(int i=0; i<cnt; i++) {
         p1 = ocr_tesseract(path[i], NULL, "eng");
         strncat(index, p1, sizeof(*p1));
-        remove(path[i]);
+        //remove(path[i]);
     }
     strcat(index, "\n");
     FILE* pf;
@@ -74,7 +74,7 @@ int main(int argc, const char* argv[]) {
     //convert(argv[1], (char*)argv[3]);
     //ocr_tesseract(argv[2], argv[4], "eng");
 
-    count = ocr_cut(mImg, argv[4], 20);
+    count = ocr_cut(mImg, argv[4], 3);
     ocrs_detect(argv[4], argv[5], count);
     //mImg =imread(argv[1]);
     //ocr_rgb_histogram(mImg);

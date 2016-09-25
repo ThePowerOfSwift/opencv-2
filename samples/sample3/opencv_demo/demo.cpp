@@ -75,6 +75,7 @@ void circle_detect(const char* srcimg, const char* desimg)
     sprintf(cmd, "%s_color.jpg", desimg);
     imwrite(cmd, circleImg);
     Mat orgImg = imread(srcimg, IMREAD_UNCHANGED);
+	Mat orgImg1 = imread(srcimg, IMREAD_UNCHANGED);
     Mat element1(2, 2, CV_8U, Scalar(255));
     erode(circleImg, circleImg, element1);   
 	Mat element(3, 3, CV_8U, Scalar(255));
@@ -114,7 +115,42 @@ void circle_detect(const char* srcimg, const char* desimg)
 		circle_min,circle_max);//min and max radius
 	vector<Vec3f>::
 		const_iterator itc= circles.begin();
-	Mat roiImg;
+
+    //the pram. for findContours,
+    vector<vector<Point> > contours;
+    vector<Vec4i> hierarchy;
+    /// Find contours
+	//Mat mCannyImg;
+	//Canny(circleImg, mCannyImg, 80, 255, 3);
+    findContours(circleImg, contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE);
+	vector<RotatedRect> minEllipse(contours.size());
+	int elipse_num = 0;
+	int elipse_max_num = 0;
+	double elipse_area = 0;
+    for (int i = 0; i < contours.size(); i++)  
+    {
+		Rect aRect = boundingRect(contours[i]);
+		if(aRect.y < height/2)
+			continue;
+		printf("size = %lf\n",  contourArea(contours[i]));
+        if ((contours[i].size() > 5) && (contourArea(contours[i]) >= circle_min * circle_min * 2) \
+			&& (contourArea(contours[i]) < circle_max * circle_max * 4))
+			//&& ())  
+        {  
+            minEllipse[elipse_num] = fitEllipse(Mat(contours[i]));
+			printf("elipse_num = %d\n", elipse_num);
+			//printf("size = %lf\n",  contourArea(contours[i]));
+	    	if(contourArea(contours[i]) > elipse_area)
+			{
+				elipse_area = contourArea(contours[i]);
+				elipse_max_num = elipse_num; 
+				printf("elipse_max_num = %d\n", elipse_max_num);
+			}
+			elipse_num ++;
+        }  
+    }
+
+ 	Mat roiImg;
 	Mat bImg, cImg;
 	int x_s,y_s,x_e,y_e;
 	int cnt=0;
@@ -170,15 +206,21 @@ void circle_detect(const char* srcimg, const char* desimg)
 					(*itc)[2],  //circle radius  
 					Scalar(0,255,0), //color  
 					5); //thickness*/
+			
 			}
+			ellipse(orgImg1,minEllipse[elipse_max_num],Scalar(255, 255, 0), 5);
 		}
 		cnt=0;
 		++itc;  
 	}  
 	//imshow("HoughCircleDetect",orgImg);
     memset(cmd, 0, sizeof(cmd));
-    sprintf(cmd, "%s_detect.jpg", desimg);
+    sprintf(cmd, "%s_circle_detect.jpg", desimg);
     imwrite(cmd, orgImg);
+
+    memset(cmd, 0, sizeof(cmd));
+    sprintf(cmd, "%s_elipse_detect.jpg", desimg);
+    imwrite(cmd, orgImg1);
 }
 
 int main(const int argc, const char* argv[])

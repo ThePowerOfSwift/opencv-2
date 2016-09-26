@@ -8,7 +8,7 @@ using namespace std;
 
 //threshold define
 #define OCR_DBG 0
-#define DEFAULT_THRESHOLD 210
+#define DEFAULT_THRESHOLD 200
 #define DEFAULT_SIZE 3
 #define DEFAULT_DELTA 3
 
@@ -155,11 +155,91 @@ Mat ocr_xfill(Mat mMat1, int col) {
     return mFill;
 }
 
+static Mat ocr_sub_cut(Mat mSrcImg, const char* srcImgPath, int offset, int width, const char* cutImgPath) {
+    Mat mImg = imread(srcImgPath, IMREAD_UNCHANGED);
+    Mat mSubImg = mImg(Range(0, mImg.rows), Range(offset, offset+width));
+    ocr_write(mSubImg, cutImgPath);
+
+    int x1 = 0;
+    int x2 = 0;
+    uchar* ptr_m = mSrcImg.ptr<uchar>(mSrcImg.rows>>1);
+    for(int j=0; j<mSrcImg.cols; j++) {
+        if((ptr_m[j] == 255) && (ptr_m[j+1] == 255) && (ptr_m[j+2] == 255) && (x1 == 0))
+            x1 = j+2;
+        if((ptr_m[mSrcImg.cols-j] == 255) && (ptr_m[mSrcImg.cols-j-1] == 255) && (ptr_m[mSrcImg.cols-j-2] == 255) && (x2 == 0))
+            x2 = mSrcImg.cols-j-2;
+    }
+
+    vector<Mat> mChannels;
+    split(mSubImg, mChannels);
+    Mat mRed = mChannels.at(2);
+    Mat mGreen = mChannels.at(1);
+    Mat mBlue = mChannels.at(0);
+    uchar gv1,bv1,rv1, gv2, bv2, rv2;
+    uchar* ptr_mR = mRed.ptr<uchar>(mSrcImg.rows>>1);
+    uchar* ptr_mB = mBlue.ptr<uchar>(mSrcImg.rows>>1);
+    uchar* ptr_mG = mGreen.ptr<uchar>(mSrcImg.rows>>1);
+    gv1 = ptr_mG[x1];
+    gv2 = ptr_mG[x2];
+    bv1 = ptr_mB[x1];
+    bv2 = ptr_mB[x2];
+    rv1 = ptr_mR[x1];
+    rv2 = ptr_mR[x2];
+
+    //printf("x1=%d, x2=%d, gv1=%d, gv2=%d, bv1=%d, bv2=%d, rv1=%d, rv2=%d\n", x1, x2, gv1, gv2, bv1, bv2, rv1, rv2);
+    //printf("%d, %d, %d, %d\n", mBlue.rows, mBlue.cols, mSrcImg.rows, mSrcImg.cols);
+    int x1_max=0;
+    int x2_max=mSrcImg.cols;
+    for(int i=0; i<mSrcImg.rows; i++) {
+        ptr_mR = mRed.ptr<uchar>(i);
+        ptr_mB = mBlue.ptr<uchar>(i);
+        ptr_mG = mGreen.ptr<uchar>(i);
+        ptr_m = mSrcImg.ptr<uchar>(i);
+        for(int j=0; j<mSrcImg.cols; j++) {
+            if((ptr_mR[j] > rv1-10) && (ptr_mR[j] < rv1+10) \
+                 && (ptr_mB[j] > bv1-10) && (ptr_mB[j] < bv1+10) \
+                 && (ptr_mG[j] > gv1-10) && (ptr_mG[j] < gv1+10)) {
+                //ptr_m[j] = 255;
+                if(x1_max>x2_max)
+                    x1_max=0;
+                if((j>x1_max) && (ptr_m[j-1] == 255) && (x1_max < x2_max))
+                    x1_max=j;
+            }
+            else if((ptr_mR[j] > rv2-10) && (ptr_mR[j] < rv2+10) \
+                 && (ptr_mB[j] > bv2-10) && (ptr_mB[j] < bv2+10) \
+                 && (ptr_mG[j] > gv2-10) && (ptr_mG[j] < gv2+10)) {
+                if(x2_max<x1_max)
+                    x2_max=mSrcImg.cols;
+                if((j<x2_max) && (x2_max > x1_max))
+                    x2_max=j;
+                //ptr_m[j] = 0;
+            }
+        }
+    }
+    printf("x1_max=%d, x2_max=%d\n", x1_max, x2_max);
+    printf("%s\n", cutImgPath);
+    Mat roiImg1 = mSrcImg(Range(0, mSrcImg.rows), Range(0,x1_max+3));
+    roiImg1 = ocr_xfill(roiImg1, 5);
+    Mat roiImg2 = mSrcImg(Range(0, mSrcImg.rows), Range(x2_max-3, mSrcImg.cols));
+    roiImg2 = ocr_xfill(roiImg2, 5);
+    char cmd[128];
+    strcpy(cmd, cutImgPath);
+    char *p = strstr(cmd, ".png");
+    p--;
+    *p -= 1;
+    //printf("cmd = %s\n", cmd);
+    ocr_write(roiImg1, cmd);
+    ocr_write(roiImg2, cutImgPath);
+    return mSubImg;
+}
+
 /* div value is between 1~100 , must not be set to zero */
-int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
+int ocr_cut(Mat mSrcImg, const char* srcImgPath, const char* desImgDir, int div, int count) {
 
     Mat mDilateImg, mErodeImg, mCannyImg;
     int idx0, idx1, valid_num;
+    int m_offset = 0;
+    int m_width = 0;
 
     //dilate img
     mDilateImg = ocr_dilate(mSrcImg, 3);
@@ -257,17 +337,23 @@ int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
     for(idx0 = 0; idx0 < valid_num; idx0++) {
 
         if(idx0 != 0) {
-            if ((pRect[idx0 -1].x + pRect[idx0 -1].width < pRect[idx0].x + div) \
-               || (pRect[idx0 -1].x > pRect[idx0 -1].x + pRect[idx0].width - div)) {
+            if (((pRect[idx0 -1].x + pRect[idx0 -1].width < pRect[idx0].x + div) \
+               || (pRect[idx0 -1].x > pRect[idx0 -1].x + pRect[idx0].width - div)) && (pRect[idx0].width > 8)) {
                 rectangle(mDrawImg, pRect[idx0], Scalar(0, 0, 255), 3, 8, 0);//用矩形画矩形窗
-                //printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
-                  pRect[idx0].width, pRect[idx0].height);
+                if(pRect[idx0].width > 40) {
+                    //printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
+                       pRect[idx0].width, pRect[idx0].height);
+                    m_offset = pRect[idx0].x;
+                    m_width = pRect[idx0].width;
+                    idx1++;
+                }
                 // y direction not cut , just use origin img height
                 roiImg = mSrcImg(Range(0, mSrcImg.rows), \
                     Range(pRect[idx0].x, pRect[idx0].x + pRect[idx0].width));
-                roiImg = ocr_xfill(roiImg, 5);
+                if(m_width == 0)
+                    roiImg = ocr_xfill(roiImg, 5);
                 memset(cutPath, 0, sizeof(cutPath));
-                snprintf(cutPath, sizeof(cutPath), "./%s/temp_%d.png", desImgDir, idx1);
+                snprintf(cutPath, sizeof(cutPath), "./%s/%d_%d.png", desImgDir, count, idx1);
                 ocr_write(roiImg, cutPath);
                 idx1 ++;
                 //imshow("roi", roiImg);
@@ -275,18 +361,30 @@ int ocr_cut(Mat mSrcImg, const char* desImgDir, int div) {
             } else {
                 continue;
             }
-        } else {
+        } else if(pRect[idx0].width > 8) {
             rectangle(mDrawImg, pRect[idx0], Scalar(0, 0, 255), 3, 8, 0);//用矩形画矩形窗
-            //printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
-               pRect[idx0].width, pRect[idx0].height);
+            if(pRect[idx0].width > 40) {
+                //printf("x: %d, y: %d, width: %d, height: %d\n", pRect[idx0].x, pRect[idx0].y, \
+                   pRect[idx0].width, pRect[idx0].height);
+                idx1++;
+                m_offset = pRect[idx0].x;
+                m_width = pRect[idx0].width;
+            }
             // y direction not cut , just use origin img height
             roiImg = mSrcImg(Range(0, mSrcImg.rows), \
                     Range(pRect[idx0].x, pRect[idx0].x + pRect[idx0].width));
-            roiImg = ocr_xfill(roiImg, 5);
+            if(m_width == 0)
+                roiImg = ocr_xfill(roiImg, 5);
             memset(cutPath, 0, sizeof(cutPath));
-            snprintf(cutPath, sizeof(cutPath), "./%s/temp_%d.png", desImgDir, idx1);
+            snprintf(cutPath, sizeof(cutPath), "./%s/%d_%d.png", desImgDir, count, idx1);
             ocr_write(roiImg, cutPath);
             idx1 ++;
+        }
+
+        if(m_width != 0){
+           // printf("m_width = %d, m_offset = %d\n", m_width, m_offset);
+            ocr_sub_cut(roiImg, srcImgPath, m_offset, m_width, cutPath);
+            m_width = 0;
         }
     }
     //imshow("draw_contours", mDrawImg);
@@ -574,12 +672,82 @@ Mat ocr_preprocess(const char* srcImg, const char* desImg) {
     Mat mGrey, mBinary, mSmooth;
     mGrey = ocr_read_grey(srcImg);
     mGrey = ocr_blur(mGrey, 2);
-    mBinary = ocr_binary(mGrey, DEFAULT_THRESHOLD, E_OTSU, DEFAULT_SIZE, DEFAULT_DELTA);
+    //mBinary = ocr_binary(mGrey, DEFAULT_THRESHOLD, E_OTSU, DEFAULT_SIZE, DEFAULT_DELTA);
+    mBinary = ocr_binary(mGrey, DEFAULT_THRESHOLD, E_NORMAL, DEFAULT_SIZE, DEFAULT_DELTA);
     ocr_dbg(mBinary, "Bianry");
     mSmooth = ocr_smooth(mBinary, CV_MEDIAN);
     ocr_dbg(mSmooth, "Smooth");
     ocr_write(mSmooth, desImg);
     return mSmooth;
+}
+
+Mat ocr_filter(const char* srcImg, const char* desImg) {
+    Mat mImg, mGray;
+    int pos_delta = 10;
+    uchar color_detla = 5;
+    mImg = imread(srcImg, IMREAD_UNCHANGED);
+    mGray = imread(srcImg, IMREAD_GRAYSCALE);
+    Mat mTop = mGray(Range(0, pos_delta), \
+                    Range(0, mGray.cols));
+    Mat mBottom =  mGray(Range(mGray.rows - pos_delta, mGray.rows), \
+                    Range(0, mGray.cols));
+
+    vector<Mat> mChannels;
+    split(mImg, mChannels);
+    Mat mRed = mChannels.at(2);
+    Mat mGreen = mChannels.at(1);
+    Mat mBlue = mChannels.at(0);
+    uchar gv,bv,rv;
+    int x,y;
+    x=0;
+    y=0;
+    for(int i=0; i<pos_delta; i++) {
+        uchar* pTop = mTop.ptr<uchar>(i);
+        uchar* pBottom = mBottom.ptr<uchar>(i);
+
+        for(int j=0; j<mGray.cols; j++) {
+            if ((pTop[j] < 200)) {
+                x = i;
+                y = j;
+                goto exit;
+            } else if(pBottom[j] < 195) {
+                x = mGray.rows - pos_delta + i;
+                y = j;
+                goto exit;
+
+            }
+        }
+    }
+    exit:
+    if(y!=0) {
+        uchar *ptr_Red = mRed.ptr<uchar>(x);
+        uchar *ptr_Green = mGreen.ptr<uchar>(x);
+        uchar *ptr_Blue = mBlue.ptr<uchar>(x);
+        bv = ptr_Blue[y];
+        rv = ptr_Red[y];
+        gv = ptr_Green[y];
+        //printf("x=%d, y=%d, bv=%d, rv=%d, gv=%d\n", x, y, bv, rv, gv);
+        for(int i=0; i<mGray.rows; i++) {
+            ptr_Red = mRed.ptr<uchar>(i);
+            ptr_Green = mGreen.ptr<uchar>(i);
+            ptr_Blue = mBlue.ptr<uchar>(i);
+            uchar* ptr_Gray = mGray.ptr<uchar>(i);
+            for(int j=0; j<mGray.cols; j++) {
+                if((ptr_Red[j] <= rv+color_detla) && (ptr_Red[j] >= rv-color_detla) \
+                    && (ptr_Blue[j] <= bv+color_detla) && (ptr_Blue[j] >= bv-color_detla) \
+                    && (ptr_Green[j] <= gv+color_detla) && (ptr_Green[j] >= gv-color_detla)) {
+                    ptr_Gray[j] = 255;
+                }
+
+            }
+        }
+    }
+    Mat mBinary = ocr_binary(mGray, DEFAULT_THRESHOLD, E_NORMAL, DEFAULT_SIZE, DEFAULT_DELTA);
+    mBinary = ocr_smooth(mBinary, CV_MEDIAN);
+    mBinary = ocr_blur(mBinary, 2);
+    mBinary = ocr_dilate(mBinary, 2);
+    ocr_write(mBinary, desImg);
+    return mBinary;
 }
 
 

@@ -144,12 +144,36 @@ CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.provides: CMakeFiles/ocr_detect.dir
 
 CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.provides.build: CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o
 
+CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o: CMakeFiles/ocr_detect.dir/flags.make
+CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o: src/ocr_ml.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o -c /home/cloud/cloud-git-master/opencv/ocr/src/ocr_ml.cpp
+
+CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/cloud/cloud-git-master/opencv/ocr/src/ocr_ml.cpp > CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.i
+
+CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/cloud/cloud-git-master/opencv/ocr/src/ocr_ml.cpp -o CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.s
+
+CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o.requires:
+.PHONY : CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o.requires
+
+CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o.provides: CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o.provides.build
+.PHONY : CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o.provides
+
+CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o.provides.build: CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o
+
 # Object files for target ocr_detect
 ocr_detect_OBJECTS = \
 "CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o" \
 "CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o" \
 "CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o" \
-"CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o"
+"CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o" \
+"CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o"
 
 # External object files for target ocr_detect
 ocr_detect_EXTERNAL_OBJECTS =
@@ -158,34 +182,66 @@ ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o
 ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o
 ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o
 ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o
+ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o
 ocr_detect: CMakeFiles/ocr_detect.dir/build.make
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_videostab.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_videoio.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_video.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_ts.a
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_superres.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_stitching.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_shape.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_photo.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_objdetect.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_ml.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_imgproc.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_imgcodecs.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_highgui.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_flann.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_features2d.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_core.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_calib3d.so.3.0.0
+ocr_detect: /usr/local/lib/libopencv_calib3d.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_core.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_features2d.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_flann.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_highgui.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_imgcodecs.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_imgproc.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_ml.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_objdetect.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_photo.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_shape.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_stitching.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_superres.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_video.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_videoio.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_videostab.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_aruco.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_bgsegm.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_bioinspired.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_ccalib.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_datasets.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_dnn.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_dpm.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_face.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_fuzzy.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_line_descriptor.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_optflow.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_plot.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_reg.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_rgbd.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_saliency.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_stereo.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_structured_light.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_surface_matching.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_text.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_tracking.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_xfeatures2d.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_ximgproc.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_xobjdetect.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_xphoto.so.3.1.0
 ocr_detect: /usr/lib/x86_64-linux-gnu/libMagickCore.so
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/../3rdparty/ippicv/unpack/ippicv_lnx/lib/intel64/libippicv.a
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_features2d.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_highgui.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_videoio.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_imgcodecs.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_flann.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_video.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_imgproc.so.3.0.0
-ocr_detect: /home/cloud/opencv3.0/opencv-3.0.0-alpha/release/lib/libopencv_core.so.3.0.0
+ocr_detect: /usr/local/lib/libopencv_shape.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_rgbd.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_calib3d.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_video.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_datasets.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_face.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_text.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_features2d.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_flann.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_objdetect.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_ml.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_highgui.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_photo.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_videoio.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_imgcodecs.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_imgproc.so.3.1.0
+ocr_detect: /usr/local/lib/libopencv_core.so.3.1.0
 ocr_detect: CMakeFiles/ocr_detect.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable ocr_detect"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ocr_detect.dir/link.txt --verbose=$(VERBOSE)
@@ -198,6 +254,7 @@ CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o
 CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o.requires
 CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o.requires
 CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.requires
+CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o.requires
 .PHONY : CMakeFiles/ocr_detect.dir/requires
 
 CMakeFiles/ocr_detect.dir/clean:

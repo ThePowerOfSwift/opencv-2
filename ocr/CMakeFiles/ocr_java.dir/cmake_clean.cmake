@@ -3,6 +3,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/ocr_java.dir/src/ocr_read.cpp.o"
   "CMakeFiles/ocr_java.dir/src/ocr_tesseract.cpp.o"
   "CMakeFiles/ocr_java.dir/src/ocr_main.cpp.o"
+  "CMakeFiles/ocr_java.dir/src/ocr_ml.cpp.o"
   "libocr_java.pdb"
   "libocr_java.so"
 )

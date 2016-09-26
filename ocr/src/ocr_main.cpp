@@ -5,6 +5,7 @@
 #include "ocr_tesseract.h"
 #include "convert.h"
 #include <dirent.h>
+#include "ocr_ml.h"
 
 using namespace cv;
 using namespace std;
@@ -64,21 +65,32 @@ int ocrs_detect(const char* dir, const char* result, int cnt) {
     return 0;
 }
 int main(int argc, const char* argv[]) {
-    Mat mImg;
+    //ocr_traning(argv[1], argv[2]);
+    ocr_predict(argv[3], argv[2]);
+#if 0
+    Mat mImg, mImg2;
     int count;
+    int cnt = atoi(argv[6]);
 /*    if(argc <= 2) {
         printf("usage: ./ocr_read xx.png\n");
     }*/
+    //mImg = ocr_filter(argv[1], argv[2]);
 
     mImg = ocr_preprocess(argv[1], argv[2]);
-    //convert(argv[1], (char*)argv[3]);
-    //ocr_tesseract(argv[2], argv[4], "eng");
+    count = ocr_cut(mImg, argv[1], argv[4], 3, cnt);
+    //ocrs_detect(argv[4], argv[5], count);
+    /*
+    mImg =imread(argv[1]);
+    resize(mImg, mImg2, Size(100, 25), 0, 0, CV_INTER_LINEAR);
+    //mImg2 = ocr_dilate(mImg2, 2);
+    mImg2 = ocr_blur(mImg2, CV_MEDIAN);
+    //mImg2 = ocr_erode(mImg2, 3);
+    //imshow("hello", mImg2);
+    resize(mImg2, mImg2, Size(200, 50), 0, 0, CV_INTER_LINEAR);
+    imwrite(argv[2], mImg2);
 
-    count = ocr_cut(mImg, argv[4], 3);
-    ocrs_detect(argv[4], argv[5], count);
-    //mImg =imread(argv[1]);
-    //ocr_rgb_histogram(mImg);
-    //ocr_hsv_histogram(mImg);
+    ocr_tesseract(argv[2], NULL, "eng");*/
+#endif
     waitKey(0);
     return 0;
 }

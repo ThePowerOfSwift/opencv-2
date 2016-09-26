@@ -181,6 +181,33 @@ src/ocr_main.cpp.s:
 	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_main.cpp.s
 .PHONY : src/ocr_main.cpp.s
 
+src/ocr_ml.o: src/ocr_ml.cpp.o
+.PHONY : src/ocr_ml.o
+
+# target to build an object file
+src/ocr_ml.cpp.o:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_ml.cpp.o
+.PHONY : src/ocr_ml.cpp.o
+
+src/ocr_ml.i: src/ocr_ml.cpp.i
+.PHONY : src/ocr_ml.i
+
+# target to preprocess a source file
+src/ocr_ml.cpp.i:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.i
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_ml.cpp.i
+.PHONY : src/ocr_ml.cpp.i
+
+src/ocr_ml.s: src/ocr_ml.cpp.s
+.PHONY : src/ocr_ml.s
+
+# target to generate assembly for a file
+src/ocr_ml.cpp.s:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.s
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_ml.cpp.s
+.PHONY : src/ocr_ml.cpp.s
+
 src/ocr_read.o: src/ocr_read.cpp.o
 .PHONY : src/ocr_read.o
 
@@ -251,6 +278,9 @@ help:
 	@echo "... src/ocr_main.o"
 	@echo "... src/ocr_main.i"
 	@echo "... src/ocr_main.s"
+	@echo "... src/ocr_ml.o"
+	@echo "... src/ocr_ml.i"
+	@echo "... src/ocr_ml.s"
 	@echo "... src/ocr_read.o"
 	@echo "... src/ocr_read.i"
 	@echo "... src/ocr_read.s"

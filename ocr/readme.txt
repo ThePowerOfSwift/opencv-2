@@ -64,3 +64,7 @@ www.cnblogs.com/binbinjx/p/5626916.html
 http://stackoverflow.com/questions/20382549/cmake-for-tesseract-and-opencv
 http://stackoverflow.com/questions/7583172/opencv-as-a-static-library-cmake-options
 
+
+how to use bp to training data
+http://blog.jobbole.com/84234/
+http://www.cnblogs.com/denny402/p/5032232.html

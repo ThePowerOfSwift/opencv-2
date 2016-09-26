@@ -31,11 +31,12 @@ cv::Mat ocr_blur(cv::Mat mSrcImg, int index);
 cv::Mat ocr_preprocess(const char* srcImg, const char* desImg);
 cv::Mat ocr_dilate(cv::Mat mSrcImg, int index);
 cv::Mat ocr_erode(cv::Mat mSrcImg, int index);
-int ocr_cut(cv::Mat mSrcImg, const char* desImgDir, int div);
+int ocr_cut(cv::Mat mSrcImg, const char* srcImgPath, const char* desImgDir, int div, int count);
 int ocr_rgb_histogram (cv::Mat mSrcImg);
 int ocr_hsv_histogram(cv::Mat mSrcImg);
 cv::Mat ocr_mergeMatCol(cv::Mat mMat1, cv::Mat mMat2);
 cv::Mat ocr_mergeMatRow(cv::Mat mMat1, cv::Mat mMat2);
 cv::Mat ocr_xfill(cv::Mat mMat1, int col);
+cv::Mat ocr_filter(const char* srcImg, const char* desImg);
 
 #endif //OCR_OCR_READ_HPP_H

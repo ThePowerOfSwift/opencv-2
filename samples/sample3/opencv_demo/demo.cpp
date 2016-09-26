@@ -125,12 +125,14 @@ void circle_detect(const char* srcimg, const char* desimg)
     findContours(circleImg, contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE);
 	vector<RotatedRect> minEllipse(contours.size());
 	int elipse_num = 0;
-	int elipse_max_num = 0;
+	int elipse_max_num = 0xffff;
 	double elipse_area = 0;
+    double elipse_area1 = 0;
+    int elipse_max_num1 = 0xffff;
     for (int i = 0; i < contours.size(); i++)  
     {
 		Rect aRect = boundingRect(contours[i]);
-		if(aRect.y < height/2)
+		if((aRect.y < height/2) && ((aRect.x < width/4) || (aRect.x > width/2)))
 			continue;
 		printf("size = %lf\n",  contourArea(contours[i]));
         if ((contours[i].size() > 5) && (contourArea(contours[i]) >= circle_min * circle_min * 2) \
@@ -140,12 +142,18 @@ void circle_detect(const char* srcimg, const char* desimg)
             minEllipse[elipse_num] = fitEllipse(Mat(contours[i]));
 			printf("elipse_num = %d\n", elipse_num);
 			//printf("size = %lf\n",  contourArea(contours[i]));
-	    	if(contourArea(contours[i]) > elipse_area)
+	    	if((contourArea(contours[i]) > elipse_area) && (aRect.y > height/2))
 			{
 				elipse_area = contourArea(contours[i]);
 				elipse_max_num = elipse_num; 
 				printf("elipse_max_num = %d\n", elipse_max_num);
 			}
+            else if((contourArea(contours[i]) > elipse_area) && (aRect.y < height/4))
+            {
+				elipse_area1 = contourArea(contours[i]);
+				elipse_max_num1 = elipse_num; 
+				printf("elipse_max_num1 = %d\n", elipse_max_num1);
+            }
 			elipse_num ++;
         }  
     }
@@ -154,14 +162,16 @@ void circle_detect(const char* srcimg, const char* desimg)
 	Mat bImg, cImg;
 	int x_s,y_s,x_e,y_e;
 	int cnt=0;
-	double rate;
+	double rate1, rate2;
 	while(itc!= circles.end()){  
 		x_s = (int)(*itc)[0] - (int)(*itc)[2];
 		x_e = (int)(*itc)[0] + (int)(*itc)[2];
 		y_s = (int)(*itc)[1] - (int)(*itc)[2];
 		y_e = (int)(*itc)[1] + (int)(*itc)[2];
-		if((x_s < 0) || (x_e > width) \
+		//if((x_s < 0) || (x_e > width) \
             || (y_s < height/2) || (y_e > height))
+        if((x_s < 0) || (x_e > width) \
+            || (y_s < 0) || (y_e > height))
 		{
 			++itc;
 			continue;
@@ -171,34 +181,34 @@ void circle_detect(const char* srcimg, const char* desimg)
 		cnt=0;
 		for (int i=0;i<roiImg.rows;i++)
 		{
-			uchar *p=roiImg.ptr<uchar>(i);    //鑾峰彇琛屽湴鍧�
+			uchar *p=roiImg.ptr<uchar>(i);    //获取行地址
 			for (int j=0;j<roiImg.cols;j++)
 			{
 				if(p[j] != 0)
 				  cnt++;
 			}
 		}
-		rate = double(cnt)/double(roiImg.rows*roiImg.cols);
+		rate1 = double(cnt)/double(roiImg.rows*roiImg.cols);
 		//printf("total = %d, cnt = %d, rate= %lf\n", bImg.rows*bImg.cols, cnt, rate);
-		if(rate > 0.1)
+		if(rate1 > 0.1)
 		{
 			printf("%d, %d, %d, %d\n", x_s, x_e, y_s, y_e);
-			printf("[Circle1] total = %d, cnt = %d, rate= %lf\n", roiImg.rows*roiImg.cols, cnt, rate);
+			printf("[Circle1] total = %d, cnt = %d, rate1= %lf\n", roiImg.rows*roiImg.cols, cnt, rate1);
 			cImg = roiImg(Range(roiImg.rows/2-roiImg.rows/12, roiImg.rows/2+roiImg.rows/12), \
 					Range(roiImg.cols/2-roiImg.cols/12, roiImg.cols/2+roiImg.cols/12));
 			cnt=0;
 		    for (int i=0;i<cImg.rows;i++)
 			{
-				uchar *p=cImg.ptr<uchar>(i);    //鑾峰彇琛屽湴鍧�
+				uchar *p=cImg.ptr<uchar>(i);    //获取行地址
 				for (int j=0;j<cImg.cols;j++)
 				{										
 					if(p[j] != 0)
 					  cnt++;
 				}
 			}
-			rate = double(cnt)/double(cImg.rows*cImg.cols);
-			printf("[Circle2] total = %d, cnt = %d, rate= %lf\n", cImg.rows*cImg.cols, cnt, rate);
-			if(rate > 0.55)
+			rate2 = double(cnt)/double(cImg.rows*cImg.cols);
+			printf("[Circle2] total = %d, cnt = %d, rate2= %lf\n", cImg.rows*cImg.cols, cnt, rate2);
+			if((rate2 > 0.55) && (y_s > height/2))
 			//if(rate > 0.1)
 			{  
 				circle(orgImg,  
@@ -208,7 +218,23 @@ void circle_detect(const char* srcimg, const char* desimg)
 					5); //thickness*/
 			
 			}
-			ellipse(orgImg1,minEllipse[elipse_max_num],Scalar(255, 255, 0), 5);
+            else if((y_s < height/4) && (rate2 > 0.05) && (rate1 > 0.3) &&\
+				((int)((*itc)[0]) > width/2 - width/25) && ((int)((*itc)[0]) < width/2 + width/25))
+            {
+				circle(orgImg,  
+					Point((* itc)[0],(*itc)[1]),  //circle centre  
+					(*itc)[2],  //circle radius  
+					Scalar(0,255,0), //color  
+					5); //thickness*/
+            }
+			if(elipse_max_num != 0xffff)
+			{
+				ellipse(orgImg1,minEllipse[elipse_max_num],Scalar(255, 255, 0), 5);
+			}
+			if(elipse_max_num1 != 0xffff)
+			{
+            	ellipse(orgImg1,minEllipse[elipse_max_num1],Scalar(255, 255, 0), 5);
+			}
 		}
 		cnt=0;
 		++itc;  

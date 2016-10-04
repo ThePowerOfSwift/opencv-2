@@ -6,14 +6,14 @@ if [ -d ./test ]; then
 	rm -rf ./test/*
 fi
 
-if [-d ./cut ]; then
+if [ -d ./cut ]; then
 	rm -rf ./cut/*
 fi
 i=1
 
-for file in ./png/code5/*.png
+for file in ./png/code6/*.png
 	do 
-		./ocr_detect ${file} ./test/$i.jpg ./test/temp.tif cut ./test/result.txt $i
+		./ocr_detect ${file} ./test/$i.png cut ./test/result.txt $i bp.xml
 		i=`expr $i + 1`
 done
 #./ocr_detect ./png/code1/1468500000502.png ./test/temp.jpg ./test/temp.tif test ./test/result.txt

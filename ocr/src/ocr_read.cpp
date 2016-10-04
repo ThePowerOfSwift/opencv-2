@@ -216,8 +216,8 @@ static Mat ocr_sub_cut(Mat mSrcImg, const char* srcImgPath, int offset, int widt
             }
         }
     }
-    printf("x1_max=%d, x2_max=%d\n", x1_max, x2_max);
-    printf("%s\n", cutImgPath);
+    //printf("x1_max=%d, x2_max=%d\n", x1_max, x2_max);
+    //printf("%s\n", cutImgPath);
     Mat roiImg1 = mSrcImg(Range(0, mSrcImg.rows), Range(0,x1_max+3));
     roiImg1 = ocr_xfill(roiImg1, 5);
     Mat roiImg2 = mSrcImg(Range(0, mSrcImg.rows), Range(x2_max-3, mSrcImg.cols));

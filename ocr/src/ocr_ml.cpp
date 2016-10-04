@@ -118,7 +118,7 @@ int ocr_traning(const char* samplePath, const char* bpPath) {
     ann->train(tData);
     ann->save(bpPath);
 
-    cout<<"training finish...bpModel1.xml saved "<<endl;
+    cout<<"training finish...bp xml saved "<<endl;
     return 0;
 }
 
@@ -134,6 +134,6 @@ int ocr_predict(const char * testPath, const char * bpPath) {
     Mat testDataMat(1, sample_height*sample_width, CV_32FC1, testData);
     Ptr<ANN_MLP> ann = ANN_MLP::load(bpPath);
     float response = ann->predict(testDataMat);
-    printf("result is = %c\n", sample_name[(int)response]);
+    //printf("result is = %c\n", sample_name[(int)response]);
     return sample_name[(int)response];
 }

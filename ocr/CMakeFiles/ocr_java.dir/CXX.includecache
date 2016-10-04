@@ -24,22 +24,6 @@ dirent.h
 ocr_ml.h
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_ml.h
 
-/home/cloud/cloud-git-master/opencv/ocr/src/ocr_ml.cpp
-ocr_ml.h
-/home/cloud/cloud-git-master/opencv/ocr/src/ocr_ml.h
-opencv/cv.hpp
--
-opencv/highgui.h
--
-iostream
--
-dirent.h
--
-string
--
-opencv2/ml.hpp
--
-
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_ml.h
 
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h

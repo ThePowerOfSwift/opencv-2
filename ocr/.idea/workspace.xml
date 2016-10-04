@@ -39,22 +39,22 @@
       <file leaf-file-name="ocr_read.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ocr_read.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+            <state relative-caret-position="148">
+              <caret line="219" column="6" selection-start-line="219" selection-start-column="6" selection-end-line="219" selection-end-column="6" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
                 <element signature="e#336#400#0" expanded="true" />
-                <element signature="e#17215#21743#0" expanded="true" />
+                <element signature="e#17219#21747#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ocr_ml.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ocr_ml.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ocr_ml.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="124" column="3" selection-start-line="124" selection-start-column="3" selection-end-line="124" selection-end-column="3" />
+            <state relative-caret-position="373">
+              <caret line="135" column="31" selection-start-line="135" selection-start-column="31" selection-end-line="135" selection-end-column="31" />
               <folding>
                 <element signature="e#38#57#0" expanded="true" />
               </folding>
@@ -126,15 +126,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ocr_main.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ocr_main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ocr_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
+            <state relative-caret-position="211">
+              <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
-                <element signature="e#1721#2418#0" expanded="true" />
-                <element signature="e#2471#4222#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -165,11 +163,11 @@
         <option value="$PROJECT_DIR$/com/ocr_java.java" />
         <option value="$PROJECT_DIR$/src/ocr_tesseract.cpp" />
         <option value="$PROJECT_DIR$/src/ocr_read.h" />
-        <option value="$PROJECT_DIR$/src/ocr_read.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/src/ocr_main.cpp" />
         <option value="$PROJECT_DIR$/src/ocr_ml.h" />
         <option value="$PROJECT_DIR$/src/ocr_ml.cpp" />
+        <option value="$PROJECT_DIR$/src/ocr_read.cpp" />
+        <option value="$PROJECT_DIR$/src/ocr_main.cpp" />
       </list>
     </option>
   </component>
@@ -472,12 +470,12 @@
       <workItem from="1475457435102" duration="6920000" />
       <workItem from="1475466686641" duration="8170000" />
       <workItem from="1475496175543" duration="7410000" />
-      <workItem from="1475558835357" duration="6089000" />
+      <workItem from="1475558835357" duration="8732000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177687000" />
+    <option name="totallyTimeSpent" value="180330000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -564,8 +562,6 @@
           <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#1721#2418#0" expanded="true" />
-            <element signature="e#2471#4222#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -574,6 +570,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
           <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -605,7 +602,7 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#17215#21743#0" expanded="true" />
+            <element signature="e#17219#21747#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -633,8 +630,6 @@
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#1721#2418#0" expanded="true" />
-            <element signature="e#2471#4222#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -653,7 +648,7 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#17215#21743#0" expanded="true" />
+            <element signature="e#17219#21747#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -673,7 +668,7 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#17215#21743#0" expanded="true" />
+            <element signature="e#17219#21747#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -692,7 +687,7 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#17215#21743#0" expanded="true" />
+            <element signature="e#17219#21747#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -765,6 +760,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
           <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -839,31 +835,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include/float.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
           <caret line="112" column="8" selection-start-line="112" selection-start-column="8" selection-end-line="112" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ocr_read.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#336#400#0" expanded="true" />
-            <element signature="e#17215#21743#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,18 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ocr_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#1721#2418#0" expanded="true" />
-            <element signature="e#2471#4222#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ocr_ml.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -897,12 +861,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ocr_ml.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="124" column="3" selection-start-line="124" selection-start-column="3" selection-end-line="124" selection-end-column="3" />
+        <state relative-caret-position="373">
+          <caret line="135" column="31" selection-start-line="135" selection-start-column="31" selection-end-line="135" selection-end-column="31" />
           <folding>
             <element signature="e#38#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ocr_read.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="219" column="6" selection-start-line="219" selection-start-column="6" selection-end-line="219" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#336#400#0" expanded="true" />
+            <element signature="e#17219#21747#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ocr_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>

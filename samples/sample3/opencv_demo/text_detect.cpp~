@@ -23,7 +23,7 @@ void text_detect(const char* srcimg, const char* desimg)
 
    	//sprintf(cmd, "%s_gray.jpg", desimg);
     //imwrite(cmd, grayImg);
-	Canny(grayImg, mCannyImg, 80, 255, 3);
+	//Canny(grayImg, mCannyImg, 80, 255, 3);
    	//sprintf(cmd, "%s_canny.jpg", desimg);
     //imwrite(cmd, mCannyImg);
 

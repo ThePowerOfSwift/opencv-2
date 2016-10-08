@@ -249,7 +249,7 @@ public class ocr_java {
 		}
 		return b;
 	}
-
+/*
 	// char转byte
 	public static byte[] getBytes (char[] chars) {
    		Charset cs = Charset.forName ("UTF-8");
@@ -269,7 +269,7 @@ public class ocr_java {
        	CharBuffer cb = cs.decode (bb);
   
    		return cb.array();
-	}
+	}*/
 
 	public native byte[] getOcrArray(String srcImg);
 	public native void setOcrArray(byte[] ocrArray);

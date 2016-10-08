@@ -48,5 +48,5 @@ JNIEXPORT void JNICALL Java_com_ocr_1java_setOcrArray
 	int size = env->GetArrayLength(array);
 	printf("size = %d\n", size);	
 	for(int i=0; i<size; i++)
-		printf("pArray[%d] = %d\n", i, pArray[i]);
+		printf("pArray[%d] = %c\n", i, pArray[i]);
 }

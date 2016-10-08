@@ -10,18 +10,18 @@ extern "C" {
 /*
  * Class:     com_ocr_java
  * Method:    getOcrArray
- * Signature: (Ljava/lang/String;)[C
+ * Signature: (Ljava/lang/String;)[B
  */
-JNIEXPORT jcharArray JNICALL Java_com_ocr_1java_getOcrArray
+JNIEXPORT jbyteArray JNICALL Java_com_ocr_1java_getOcrArray
   (JNIEnv *, jobject, jstring);
 
 /*
  * Class:     com_ocr_java
  * Method:    setOcrArray
- * Signature: ([C)V
+ * Signature: ([B)V
  */
 JNIEXPORT void JNICALL Java_com_ocr_1java_setOcrArray
-  (JNIEnv *, jobject, jcharArray);
+  (JNIEnv *, jobject, jbyteArray);
 
 #ifdef __cplusplus
 }

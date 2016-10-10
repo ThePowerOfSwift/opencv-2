@@ -18,15 +18,19 @@ JNIEXPORT jstring JNICALL Java_com_ocr_1java_getOcrArray
 	//printf("path = %s\n", path);
 
 	Mat mImg = imread(path, IMREAD_UNCHANGED);
-    
 	vector<uchar> buf;
-	imencode(".jpg", mImg, buf);
 	//imencode(".png", mImg, buf);
+	imencode(".jpg", mImg, buf);
 	uchar *enc_msg = new uchar[buf.size()];
-	for(int i=0; i < buf.size(); i++) enc_msg[i] = buf[i];
+	for(int i=0; i < buf.size(); i++)
+		enc_msg[i] = buf[i];
+
+	FILE *fp = fopen("2.jpg","w+");
+	fwrite(enc_msg,buf.size(),1,fp);
+
 	string encoded = base64_encode(enc_msg, buf.size());
 	const char* cstr = encoded.c_str();
-	//printf("%s\n", cstr);
+	printf("%s\n", cstr);
 	env->ReleaseStringUTFChars(srcImg, path);
 	return env->NewStringUTF(cstr);
 }

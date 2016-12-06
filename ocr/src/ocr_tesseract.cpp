@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
-
+/*
 char* ocr_tesseract(const char* input, const char* output, const char* ocr_type) {
 
     static char result[128];
@@ -45,4 +45,4 @@ char* ocr_tesseract(const char* input, const char* output, const char* ocr_type)
         delete[] outText;
         pixDestroy(&image);
     return result;
-}
+}*/

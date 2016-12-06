@@ -224,7 +224,6 @@ ocr_detect: /usr/local/lib/libopencv_xfeatures2d.so.3.1.0
 ocr_detect: /usr/local/lib/libopencv_ximgproc.so.3.1.0
 ocr_detect: /usr/local/lib/libopencv_xobjdetect.so.3.1.0
 ocr_detect: /usr/local/lib/libopencv_xphoto.so.3.1.0
-ocr_detect: /usr/lib/x86_64-linux-gnu/libMagickCore.so
 ocr_detect: /usr/local/lib/libopencv_shape.so.3.1.0
 ocr_detect: /usr/local/lib/libopencv_rgbd.so.3.1.0
 ocr_detect: /usr/local/lib/libopencv_calib3d.so.3.1.0

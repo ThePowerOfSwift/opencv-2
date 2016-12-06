@@ -158,8 +158,44 @@ Mat ocr_xfill(Mat mMat1, int col) {
 static Mat ocr_sub_cut(Mat mSrcImg, const char* srcImgPath, int offset, int width, const char* cutImgPath) {
     Mat mImg = imread(srcImgPath, IMREAD_UNCHANGED);
     Mat mSubImg = mImg(Range(0, mImg.rows), Range(offset, offset+width));
+    printf("cutImgPath: %s\n", cutImgPath);
     ocr_write(mSubImg, cutImgPath);
+//for k-means test case
+#if 0
+    {
+        //use unuse path eg. 4_8.png
+        char cmd[128];
+        strcpy(cmd, cutImgPath);
+        char *p = strstr(cmd, ".png");
+        p--;
+        *p += 3;
+        //printf("cmd = %s\n", cmd);
+        vector<Mat> mChannels;
+        split(mSubImg, mChannels);
+        Mat mRed = mChannels.at(2);
+        Mat mGreen = mChannels.at(1);
+        Mat mBlue = mChannels.at(0);
 
+        //filter noise to white color (255,255,255)
+        for (int i=0; i<mSrcImg.rows; i++) {
+            uchar* ptr_m = mSrcImg.ptr<uchar>(i);
+            uchar* ptr_mR = mRed.ptr<uchar>(i);
+            uchar* ptr_mB = mBlue.ptr<uchar>(i);
+            uchar* ptr_mG = mGreen.ptr<uchar>(i);
+            for (int j=0; j<mSrcImg.cols; j++) {
+                if(ptr_m[j] == 0) {
+                    ptr_mB[j] = 255;
+                    ptr_mG[j] = 255;
+                    ptr_mR[j] = 255;
+                }
+            }
+        }
+
+        Mat mergeImg;
+        merge(mChannels, mergeImg);
+        ocr_write(mergeImg, cmd);
+    }
+#endif
     int x1 = 0;
     int x2 = 0;
     uchar* ptr_m = mSrcImg.ptr<uchar>(mSrcImg.rows>>1);
@@ -382,7 +418,7 @@ int ocr_cut(Mat mSrcImg, const char* srcImgPath, const char* desImgDir, int div,
         }
 
         if(m_width != 0){
-           // printf("m_width = %d, m_offset = %d\n", m_width, m_offset);
+            printf("m_width = %d, m_offset = %d\n", m_width, m_offset);
             ocr_sub_cut(roiImg, srcImgPath, m_offset, m_width, cutPath);
             m_width = 0;
         }

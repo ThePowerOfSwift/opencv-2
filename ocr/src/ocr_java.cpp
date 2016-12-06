@@ -5,8 +5,8 @@
 #include <opencv/cv.hpp>
 #include "../com_ocr_java.h"
 #include "ocr_read.h"
-#include "ocr_tesseract.h"
-#include "convert.h"
+//#include "ocr_tesseract.h"
+//#include "convert.h"
 
 
 JNIEXPORT jint JNICALL Java_com_ocr_1java_OcrPreprocess
@@ -20,7 +20,7 @@ JNIEXPORT jint JNICALL Java_com_ocr_1java_OcrPreprocess
 
 
     ocr_preprocess(input, output);
-    convert(input, (char*)output);
+    //convert(input, (char*)output);
     env->ReleaseStringUTFChars(srcImg, input);
     env->ReleaseStringUTFChars(desImg, output);
     return 0;
@@ -36,7 +36,7 @@ JNIEXPORT jstring JNICALL Java_com_ocr_1java_OcrTesseract
     printf("output: %s\n", output);
     printf("type: %s\n", type);
 
-    buf = ocr_tesseract(input, output, type);
+    //buf = ocr_tesseract(input, output, type);
 
     env->ReleaseStringUTFChars(srcImg, input);
     env->ReleaseStringUTFChars(desImg, output);

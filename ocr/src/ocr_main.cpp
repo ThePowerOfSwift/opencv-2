@@ -2,7 +2,7 @@
 #include <opencv/cv.hpp>
 #include <opencv/highgui.h>
 #include "ocr_read.h"
-#include "ocr_tesseract.h"
+//#include "ocr_tesseract.h"
 #include "convert.h"
 #include <dirent.h>
 #include "ocr_ml.h"

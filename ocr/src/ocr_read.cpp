@@ -1,6 +1,7 @@
 #include <opencv/cv.hpp>
 #include <opencv/highgui.h>
 #include "ocr_read.h"
+#include "kmeans.h"
 #include<iostream>
 
 using namespace cv;
@@ -11,6 +12,7 @@ using namespace std;
 #define DEFAULT_THRESHOLD 200
 #define DEFAULT_SIZE 3
 #define DEFAULT_DELTA 3
+#define KMEAN_DELTA 0.00001
 
 void ocr_dbg(Mat mSrcImg, const char* name) {
     //display ocr png
@@ -155,13 +157,115 @@ Mat ocr_xfill(Mat mMat1, int col) {
     return mFill;
 }
 
+static int _search_label(vector<int> pos, int value, int num) {
+    int i = 0;
+    for(;i<num; i++) {
+        if(pos[i] == value)
+            break;
+    }
+    return i;
+}
+
+static int ocr_kmeans_cut(Mat mSrc, const char* srcImgPath, int offset, int width, const char* cutImgPath) {
+    int kmeans_cnt = width/40 + 1;
+    if((kmeans_cnt < 2) || (kmeans_cnt > 6)) {
+        printf("kmeans cut count error : %d\n", kmeans_cnt);
+        return -1;
+    }
+    char cmd[128];
+    std::vector<int> knum(kmeans_cnt, 0);
+    std::vector<Mat> mChannels;
+    std::vector<KMEAN_STRUCT> cluster;
+    std::vector<KMEAN_STRUCT> means;
+    std::vector<int> label;
+    KMEAN_STRUCT point;
+    Mat mImg = imread(srcImgPath, IMREAD_UNCHANGED);
+    Mat mSubImg = mImg(Range(0, mImg.rows), Range(offset, offset+width));
+    split(mSubImg, mChannels);
+    Mat mR = mChannels.at(2);
+    Mat mG = mChannels.at(1);
+    Mat mB = mChannels.at(0);
+
+    //init cluster
+    for(int i=0; i<mSrc.rows; i++) {
+        uchar* ptr_m = mSrc.ptr<uchar>(i);
+        uchar* ptr_mR = mR.ptr<uchar>(i);
+        uchar* ptr_mB = mB.ptr<uchar>(i);
+        uchar* ptr_mG = mG.ptr<uchar>(i);
+        for(int j=0; j<mSrc.cols; j++) {
+            if(ptr_m[j] != 0) {
+                point.x = j;
+                point.y = i;
+                point.gv = ptr_mG[j];
+                point.bv = ptr_mB[j];
+                point.rv = ptr_mR[j];
+                cluster.push_back(point);
+                label.push_back(0);
+            }
+        }
+    }
+
+    //init means
+    kmeans_init(means, cluster, kmeans_cnt, ocr_kmeans_init);
+    //sort cluster & init label
+    kmeans_sort_cluster(means, cluster, label, knum, ocr_kmeans_load);
+    //cal sum
+    double kmeans_sum = 0;
+    double kmeans_sum_old = 0;
+    kmeans_sum = kmeans_cal_deltaSum(means, cluster, label, ocr_kmeans_load);
+    printf("src_sum is %f, src_sum_old is %f\n", kmeans_sum, kmeans_sum_old);
+    while(abs(kmeans_sum - kmeans_sum_old) > KMEAN_DELTA) {
+        kmeans_sum_old = kmeans_sum;
+        kmeans_update(means, cluster, label, knum, ocr_kmeans_update);
+        kmeans_sort_cluster(means, cluster, label, knum, ocr_kmeans_load);
+        kmeans_sum = kmeans_cal_deltaSum(means, cluster, label, ocr_kmeans_load);
+        printf("src_sum is %f, src_sum_old is %f\n", kmeans_sum, kmeans_sum_old);
+    }
+
+    vector<int> xpos;
+    for(int k = 0; k<means.size(); k++) {
+        xpos.push_back(means[k].x);
+    }
+
+    int tmp = 0;
+    for(int i=0; i<means.size(); i++) {
+        for(int j=0; j<means.size()-i-1; j++) {
+            if(xpos[j] > xpos[j+1]) {
+                tmp = xpos[j];
+                xpos[j] = xpos[j+1];
+                xpos[j+1] = tmp;
+            }
+        }
+    }
+
+    Mat roiImg;
+    int idx = 0;
+    for(int k = 0; k<means.size(); k++) {
+        mSrc.copyTo(roiImg);
+        idx = _search_label(xpos, means[k].x, means.size());
+        for(int i=0; i<cluster.size(); i++) {
+            uchar* ptr_m = roiImg.ptr<uchar>(cluster[i].y);
+            if(idx != label[i])
+                ptr_m[cluster[i].x] = 0;
+        }
+
+        memset(cmd, 0, sizeof(cmd));
+        strcpy(cmd, cutImgPath);
+        printf("means.x = %d, idx = %d\n", means[k].x, idx);
+        char *p = strstr(cmd, ".png");
+        p--;
+        *p -= (means.size()-idx-1);
+        ocr_write(roiImg, cmd);
+    }
+}
+
 static Mat ocr_sub_cut(Mat mSrcImg, const char* srcImgPath, int offset, int width, const char* cutImgPath) {
     Mat mImg = imread(srcImgPath, IMREAD_UNCHANGED);
     Mat mSubImg = mImg(Range(0, mImg.rows), Range(offset, offset+width));
-    printf("cutImgPath: %s\n", cutImgPath);
-    ocr_write(mSubImg, cutImgPath);
 //for k-means test case
 #if 0
+    printf("cutImgPath: %s\n", cutImgPath);
+    ocr_write(mSubImg, cutImgPath);
     {
         //use unuse path eg. 4_8.png
         char cmd[128];
@@ -381,6 +485,9 @@ int ocr_cut(Mat mSrcImg, const char* srcImgPath, const char* desImgDir, int div,
                        pRect[idx0].width, pRect[idx0].height);
                     m_offset = pRect[idx0].x;
                     m_width = pRect[idx0].width;
+                    if(pRect[idx0].width > 80) {
+                        idx1++;
+                    }
                     idx1++;
                 }
                 // y direction not cut , just use origin img height
@@ -419,7 +526,8 @@ int ocr_cut(Mat mSrcImg, const char* srcImgPath, const char* desImgDir, int div,
 
         if(m_width != 0){
             printf("m_width = %d, m_offset = %d\n", m_width, m_offset);
-            ocr_sub_cut(roiImg, srcImgPath, m_offset, m_width, cutPath);
+            //ocr_sub_cut(roiImg, srcImgPath, m_offset, m_width, cutPath);
+            ocr_kmeans_cut(roiImg, srcImgPath, m_offset, m_width, cutPath);
             m_width = 0;
         }
     }

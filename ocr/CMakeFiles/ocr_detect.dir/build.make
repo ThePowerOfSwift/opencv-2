@@ -98,9 +98,32 @@ CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o.provides: CMakeFiles/ocr_detect.dir
 
 CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o.provides.build: CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o
 
+CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o: CMakeFiles/ocr_detect.dir/flags.make
+CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o: src/kmeans.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o -c /home/cloud/cloud-git-master/opencv/ocr/src/kmeans.cpp
+
+CMakeFiles/ocr_detect.dir/src/kmeans.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ocr_detect.dir/src/kmeans.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/cloud/cloud-git-master/opencv/ocr/src/kmeans.cpp > CMakeFiles/ocr_detect.dir/src/kmeans.cpp.i
+
+CMakeFiles/ocr_detect.dir/src/kmeans.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ocr_detect.dir/src/kmeans.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/cloud/cloud-git-master/opencv/ocr/src/kmeans.cpp -o CMakeFiles/ocr_detect.dir/src/kmeans.cpp.s
+
+CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o.requires:
+.PHONY : CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o.requires
+
+CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o.provides: CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o.provides.build
+.PHONY : CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o.provides
+
+CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o.provides.build: CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o
+
 CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o: CMakeFiles/ocr_detect.dir/flags.make
 CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o: src/ocr_tesseract.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o -c /home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.cpp
 
@@ -123,7 +146,7 @@ CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o.provides.build: CMakeFiles/ocr
 
 CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o: CMakeFiles/ocr_detect.dir/flags.make
 CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o: src/ocr_main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o -c /home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp
 
@@ -146,7 +169,7 @@ CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.provides.build: CMakeFiles/ocr_dete
 
 CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o: CMakeFiles/ocr_detect.dir/flags.make
 CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o: src/ocr_ml.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o -c /home/cloud/cloud-git-master/opencv/ocr/src/ocr_ml.cpp
 
@@ -167,22 +190,49 @@ CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o.provides: CMakeFiles/ocr_detect.dir/s
 
 CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o.provides.build: CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o
 
+CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o: CMakeFiles/ocr_detect.dir/flags.make
+CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o: src/ocr_kmeans.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/cloud-git-master/opencv/ocr/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o -c /home/cloud/cloud-git-master/opencv/ocr/src/ocr_kmeans.cpp
+
+CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/cloud/cloud-git-master/opencv/ocr/src/ocr_kmeans.cpp > CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.i
+
+CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/cloud/cloud-git-master/opencv/ocr/src/ocr_kmeans.cpp -o CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.s
+
+CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o.requires:
+.PHONY : CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o.requires
+
+CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o.provides: CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o.provides.build
+.PHONY : CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o.provides
+
+CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o.provides.build: CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o
+
 # Object files for target ocr_detect
 ocr_detect_OBJECTS = \
 "CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o" \
 "CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o" \
+"CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o" \
 "CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o" \
 "CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o" \
-"CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o"
+"CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o" \
+"CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o"
 
 # External object files for target ocr_detect
 ocr_detect_EXTERNAL_OBJECTS =
 
 ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o
 ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o
+ocr_detect: CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o
 ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o
 ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o
 ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o
+ocr_detect: CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o
 ocr_detect: CMakeFiles/ocr_detect.dir/build.make
 ocr_detect: /usr/local/lib/libopencv_calib3d.so.3.1.0
 ocr_detect: /usr/local/lib/libopencv_core.so.3.1.0
@@ -251,9 +301,11 @@ CMakeFiles/ocr_detect.dir/build: ocr_detect
 
 CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o.requires
 CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o.requires
+CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o.requires
 CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_tesseract.cpp.o.requires
 CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o.requires
 CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o.requires
+CMakeFiles/ocr_detect.dir/requires: CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o.requires
 .PHONY : CMakeFiles/ocr_detect.dir/requires
 
 CMakeFiles/ocr_detect.dir/clean:

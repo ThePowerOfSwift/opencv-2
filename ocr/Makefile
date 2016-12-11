@@ -127,6 +127,33 @@ ocr_java/fast:
 	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/build
 .PHONY : ocr_java/fast
 
+src/kmeans.o: src/kmeans.cpp.o
+.PHONY : src/kmeans.o
+
+# target to build an object file
+src/kmeans.cpp.o:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/kmeans.cpp.o
+.PHONY : src/kmeans.cpp.o
+
+src/kmeans.i: src/kmeans.cpp.i
+.PHONY : src/kmeans.i
+
+# target to preprocess a source file
+src/kmeans.cpp.i:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/kmeans.cpp.i
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/kmeans.cpp.i
+.PHONY : src/kmeans.cpp.i
+
+src/kmeans.s: src/kmeans.cpp.s
+.PHONY : src/kmeans.s
+
+# target to generate assembly for a file
+src/kmeans.cpp.s:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/kmeans.cpp.s
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/kmeans.cpp.s
+.PHONY : src/kmeans.cpp.s
+
 src/ocr_java.o: src/ocr_java.cpp.o
 .PHONY : src/ocr_java.o
 
@@ -153,6 +180,33 @@ src/ocr_java.cpp.s:
 	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.s
 	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_java.cpp.s
 .PHONY : src/ocr_java.cpp.s
+
+src/ocr_kmeans.o: src/ocr_kmeans.cpp.o
+.PHONY : src/ocr_kmeans.o
+
+# target to build an object file
+src/ocr_kmeans.cpp.o:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_kmeans.cpp.o
+.PHONY : src/ocr_kmeans.cpp.o
+
+src/ocr_kmeans.i: src/ocr_kmeans.cpp.i
+.PHONY : src/ocr_kmeans.i
+
+# target to preprocess a source file
+src/ocr_kmeans.cpp.i:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.i
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_kmeans.cpp.i
+.PHONY : src/ocr_kmeans.cpp.i
+
+src/ocr_kmeans.s: src/ocr_kmeans.cpp.s
+.PHONY : src/ocr_kmeans.s
+
+# target to generate assembly for a file
+src/ocr_kmeans.cpp.s:
+	$(MAKE) -f CMakeFiles/ocr_detect.dir/build.make CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.s
+	$(MAKE) -f CMakeFiles/ocr_java.dir/build.make CMakeFiles/ocr_java.dir/src/ocr_kmeans.cpp.s
+.PHONY : src/ocr_kmeans.cpp.s
 
 src/ocr_main.o: src/ocr_main.cpp.o
 .PHONY : src/ocr_main.o
@@ -272,9 +326,15 @@ help:
 	@echo "... ocr_detect"
 	@echo "... ocr_java"
 	@echo "... rebuild_cache"
+	@echo "... src/kmeans.o"
+	@echo "... src/kmeans.i"
+	@echo "... src/kmeans.s"
 	@echo "... src/ocr_java.o"
 	@echo "... src/ocr_java.i"
 	@echo "... src/ocr_java.s"
+	@echo "... src/ocr_kmeans.o"
+	@echo "... src/ocr_kmeans.i"
+	@echo "... src/ocr_kmeans.s"
 	@echo "... src/ocr_main.o"
 	@echo "... src/ocr_main.i"
 	@echo "... src/ocr_main.s"

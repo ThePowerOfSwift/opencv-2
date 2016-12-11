@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/cloud/cloud-git-master/opencv/ocr/src/kmeans.h
+vector
+-
+ocr_kmeans.h
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_kmeans.h
+
+/home/cloud/cloud-git-master/opencv/ocr/src/ocr_kmeans.h
+vector
+-
+
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.cpp
 opencv/cv.hpp
 -
@@ -13,6 +23,8 @@ opencv/highgui.h
 -
 ocr_read.h
 /home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.h
+kmeans.h
+/home/cloud/cloud-git-master/opencv/ocr/src/kmeans.h
 iostream
 -
 

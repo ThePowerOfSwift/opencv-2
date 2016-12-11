@@ -4,7 +4,9 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
+  "/home/cloud/cloud-git-master/opencv/ocr/src/kmeans.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_detect.dir/src/kmeans.cpp.o"
   "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_java.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_detect.dir/src/ocr_java.cpp.o"
+  "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_kmeans.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_detect.dir/src/ocr_kmeans.cpp.o"
   "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_detect.dir/src/ocr_main.cpp.o"
   "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_ml.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_detect.dir/src/ocr_ml.cpp.o"
   "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_detect.dir/src/ocr_read.cpp.o"

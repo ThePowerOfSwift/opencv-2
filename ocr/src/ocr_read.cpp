@@ -157,10 +157,10 @@ Mat ocr_xfill(Mat mMat1, int col) {
     return mFill;
 }
 
-static int _search_label(vector<int> pos, int value, int num) {
+static int _search_label(vector<KMEAN_STRUCT> means, int value, int num) {
     int i = 0;
     for(;i<num; i++) {
-        if(pos[i] == value)
+        if(means[i].x == value)
             break;
     }
     return i;
@@ -213,15 +213,16 @@ static int ocr_kmeans_cut(Mat mSrc, const char* srcImgPath, int offset, int widt
     double kmeans_sum = 0;
     double kmeans_sum_old = 0;
     kmeans_sum = kmeans_cal_deltaSum(means, cluster, label, ocr_kmeans_load);
-    printf("src_sum is %f, src_sum_old is %f\n", kmeans_sum, kmeans_sum_old);
+    //printf("src_sum is %f, src_sum_old is %f\n", kmeans_sum, kmeans_sum_old);
     while(abs(kmeans_sum - kmeans_sum_old) > KMEAN_DELTA) {
         kmeans_sum_old = kmeans_sum;
         kmeans_update(means, cluster, label, knum, ocr_kmeans_update);
         kmeans_sort_cluster(means, cluster, label, knum, ocr_kmeans_load);
         kmeans_sum = kmeans_cal_deltaSum(means, cluster, label, ocr_kmeans_load);
-        printf("src_sum is %f, src_sum_old is %f\n", kmeans_sum, kmeans_sum_old);
+        //printf("src_sum is %f, src_sum_old is %f\n", kmeans_sum, kmeans_sum_old);
     }
 
+    kmeans_update(means, cluster, label, knum, ocr_kmeans_update);
     vector<int> xpos;
     for(int k = 0; k<means.size(); k++) {
         xpos.push_back(means[k].x);
@@ -242,135 +243,34 @@ static int ocr_kmeans_cut(Mat mSrc, const char* srcImgPath, int offset, int widt
     int idx = 0;
     for(int k = 0; k<means.size(); k++) {
         mSrc.copyTo(roiImg);
-        idx = _search_label(xpos, means[k].x, means.size());
+        idx = _search_label(means, xpos[k], means.size());
         for(int i=0; i<cluster.size(); i++) {
             uchar* ptr_m = roiImg.ptr<uchar>(cluster[i].y);
             if(idx != label[i])
                 ptr_m[cluster[i].x] = 0;
         }
-
+        //printf("cluster[%d] center: %d\n", k, xpos[k]);
+        int x_start, x_end;
+        if(xpos[k] >= 20) {
+            x_start = xpos[k] - 20;
+        } else {
+            x_start = 0;
+        }
+        if(width >= (xpos[k] + 20)) {
+            x_end = xpos[k] + 20;
+        } else {
+            x_end = width;
+        }
+        Mat mCutImg = roiImg(Range(0, roiImg.rows), Range(x_start, x_end));
+        mCutImg = ocr_blur(mCutImg, 3);
+        mCutImg = ocr_smooth(mCutImg, CV_MEDIAN);
         memset(cmd, 0, sizeof(cmd));
         strcpy(cmd, cutImgPath);
-        printf("means.x = %d, idx = %d\n", means[k].x, idx);
         char *p = strstr(cmd, ".png");
         p--;
-        *p -= (means.size()-idx-1);
-        ocr_write(roiImg, cmd);
+        *p -= (means.size()-k-1);
+        ocr_write(mCutImg, cmd);
     }
-}
-
-static Mat ocr_sub_cut(Mat mSrcImg, const char* srcImgPath, int offset, int width, const char* cutImgPath) {
-    Mat mImg = imread(srcImgPath, IMREAD_UNCHANGED);
-    Mat mSubImg = mImg(Range(0, mImg.rows), Range(offset, offset+width));
-//for k-means test case
-#if 0
-    printf("cutImgPath: %s\n", cutImgPath);
-    ocr_write(mSubImg, cutImgPath);
-    {
-        //use unuse path eg. 4_8.png
-        char cmd[128];
-        strcpy(cmd, cutImgPath);
-        char *p = strstr(cmd, ".png");
-        p--;
-        *p += 3;
-        //printf("cmd = %s\n", cmd);
-        vector<Mat> mChannels;
-        split(mSubImg, mChannels);
-        Mat mRed = mChannels.at(2);
-        Mat mGreen = mChannels.at(1);
-        Mat mBlue = mChannels.at(0);
-
-        //filter noise to white color (255,255,255)
-        for (int i=0; i<mSrcImg.rows; i++) {
-            uchar* ptr_m = mSrcImg.ptr<uchar>(i);
-            uchar* ptr_mR = mRed.ptr<uchar>(i);
-            uchar* ptr_mB = mBlue.ptr<uchar>(i);
-            uchar* ptr_mG = mGreen.ptr<uchar>(i);
-            for (int j=0; j<mSrcImg.cols; j++) {
-                if(ptr_m[j] == 0) {
-                    ptr_mB[j] = 255;
-                    ptr_mG[j] = 255;
-                    ptr_mR[j] = 255;
-                }
-            }
-        }
-
-        Mat mergeImg;
-        merge(mChannels, mergeImg);
-        ocr_write(mergeImg, cmd);
-    }
-#endif
-    int x1 = 0;
-    int x2 = 0;
-    uchar* ptr_m = mSrcImg.ptr<uchar>(mSrcImg.rows>>1);
-    for(int j=0; j<mSrcImg.cols; j++) {
-        if((ptr_m[j] == 255) && (ptr_m[j+1] == 255) && (ptr_m[j+2] == 255) && (x1 == 0))
-            x1 = j+2;
-        if((ptr_m[mSrcImg.cols-j] == 255) && (ptr_m[mSrcImg.cols-j-1] == 255) && (ptr_m[mSrcImg.cols-j-2] == 255) && (x2 == 0))
-            x2 = mSrcImg.cols-j-2;
-    }
-
-    vector<Mat> mChannels;
-    split(mSubImg, mChannels);
-    Mat mRed = mChannels.at(2);
-    Mat mGreen = mChannels.at(1);
-    Mat mBlue = mChannels.at(0);
-    uchar gv1,bv1,rv1, gv2, bv2, rv2;
-    uchar* ptr_mR = mRed.ptr<uchar>(mSrcImg.rows>>1);
-    uchar* ptr_mB = mBlue.ptr<uchar>(mSrcImg.rows>>1);
-    uchar* ptr_mG = mGreen.ptr<uchar>(mSrcImg.rows>>1);
-    gv1 = ptr_mG[x1];
-    gv2 = ptr_mG[x2];
-    bv1 = ptr_mB[x1];
-    bv2 = ptr_mB[x2];
-    rv1 = ptr_mR[x1];
-    rv2 = ptr_mR[x2];
-
-    //printf("x1=%d, x2=%d, gv1=%d, gv2=%d, bv1=%d, bv2=%d, rv1=%d, rv2=%d\n", x1, x2, gv1, gv2, bv1, bv2, rv1, rv2);
-    //printf("%d, %d, %d, %d\n", mBlue.rows, mBlue.cols, mSrcImg.rows, mSrcImg.cols);
-    int x1_max=0;
-    int x2_max=mSrcImg.cols;
-    for(int i=0; i<mSrcImg.rows; i++) {
-        ptr_mR = mRed.ptr<uchar>(i);
-        ptr_mB = mBlue.ptr<uchar>(i);
-        ptr_mG = mGreen.ptr<uchar>(i);
-        ptr_m = mSrcImg.ptr<uchar>(i);
-        for(int j=0; j<mSrcImg.cols; j++) {
-            if((ptr_mR[j] > rv1-10) && (ptr_mR[j] < rv1+10) \
-                 && (ptr_mB[j] > bv1-10) && (ptr_mB[j] < bv1+10) \
-                 && (ptr_mG[j] > gv1-10) && (ptr_mG[j] < gv1+10)) {
-                //ptr_m[j] = 255;
-                if(x1_max>x2_max)
-                    x1_max=0;
-                if((j>x1_max) && (ptr_m[j-1] == 255) && (x1_max < x2_max))
-                    x1_max=j;
-            }
-            else if((ptr_mR[j] > rv2-10) && (ptr_mR[j] < rv2+10) \
-                 && (ptr_mB[j] > bv2-10) && (ptr_mB[j] < bv2+10) \
-                 && (ptr_mG[j] > gv2-10) && (ptr_mG[j] < gv2+10)) {
-                if(x2_max<x1_max)
-                    x2_max=mSrcImg.cols;
-                if((j<x2_max) && (x2_max > x1_max))
-                    x2_max=j;
-                //ptr_m[j] = 0;
-            }
-        }
-    }
-    //printf("x1_max=%d, x2_max=%d\n", x1_max, x2_max);
-    //printf("%s\n", cutImgPath);
-    Mat roiImg1 = mSrcImg(Range(0, mSrcImg.rows), Range(0,x1_max+3));
-    roiImg1 = ocr_xfill(roiImg1, 5);
-    Mat roiImg2 = mSrcImg(Range(0, mSrcImg.rows), Range(x2_max-3, mSrcImg.cols));
-    roiImg2 = ocr_xfill(roiImg2, 5);
-    char cmd[128];
-    strcpy(cmd, cutImgPath);
-    char *p = strstr(cmd, ".png");
-    p--;
-    *p -= 1;
-    //printf("cmd = %s\n", cmd);
-    ocr_write(roiImg1, cmd);
-    ocr_write(roiImg2, cutImgPath);
-    return mSubImg;
 }
 
 /* div value is between 1~100 , must not be set to zero */
@@ -526,7 +426,6 @@ int ocr_cut(Mat mSrcImg, const char* srcImgPath, const char* desImgDir, int div,
 
         if(m_width != 0){
             printf("m_width = %d, m_offset = %d\n", m_width, m_offset);
-            //ocr_sub_cut(roiImg, srcImgPath, m_offset, m_width, cutPath);
             ocr_kmeans_cut(roiImg, srcImgPath, m_offset, m_width, cutPath);
             m_width = 0;
         }

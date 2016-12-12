@@ -49,7 +49,7 @@ void* ocr_kmeans_init(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRUCT
 
     for(int i=0; i<knum; i++) {
         means.push_back(xcluster[i*((cnt-1)/(knum-1))]);
-        printf("means[%d].x = %d, .y = %d, .rb = %f, .rg = %f, .gb = %f\n", i, means[i].x, means[i].y, means[i].rb, means[i].rg, means[i].gb);
+        //printf("means[%d].x = %d, .y = %d, .rb = %f, .rg = %f, .gb = %f\n", i, means[i].x, means[i].y, means[i].rb, means[i].rg, means[i].gb);
     }
 }
 
@@ -71,7 +71,6 @@ void* ocr_kmeans_update(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRU
         means[label[i]].rg += cluster[i].rg;
         means[label[i]].gb += cluster[i].gb;
     }
-
     for(int i=0; i<means.size(); i++) {
         means[i].x /= cnt[i];
         means[i].rg /= cnt[i];

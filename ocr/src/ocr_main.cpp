@@ -35,7 +35,7 @@ int ocrs_detect(const char* dir, const char* result, int cnt, const char* bpPath
         //printf("Cut path: %s\n", path[count]);
     }
 
-    printf("result: %s\n", cutResult);
+    printf("%d:result: %s\n", cnt, cutResult);
     FILE* pf;
     pf = fopen(result, "a+");
     if(pf == NULL) {

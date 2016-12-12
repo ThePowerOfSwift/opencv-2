@@ -13,7 +13,7 @@
 using namespace std;
 
 #ifndef KDEBUG_ENABLE
-#define KDEBUG_ENABLE 1
+#define KDEBUG_ENABLE 0
 #endif
 #if KDEBUG_ENABLE
 #define KDEBUG(x) \

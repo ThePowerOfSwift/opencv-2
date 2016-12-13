@@ -61,7 +61,7 @@ int main(int argc, const char* argv[]) {
         int cut_count;
         int cnt = atoi(argv[5]);
         mImg = ocr_preprocess(argv[1], argv[2]);
-        cut_count = ocr_cut(mImg, argv[1], argv[3], 3, cnt);
+        cut_count = ocr_cut(mImg, argv[1], argv[3], 3, cnt, NULL);
         if(cut_count == 6)
             ocrs_detect(argv[3], argv[4], cnt, argv[6]);
     }

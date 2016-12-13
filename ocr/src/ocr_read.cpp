@@ -262,8 +262,8 @@ static int ocr_kmeans_cut(Mat mSrc, const char* srcImgPath, int offset, int widt
             x_end = width;
         }
         Mat mCutImg = roiImg(Range(0, roiImg.rows), Range(x_start, x_end));
-        mCutImg = ocr_dilate(mCutImg, 2);
-        mCutImg = ocr_erode(mCutImg, 2);
+        mCutImg = ocr_dilate(mCutImg, 3);
+        mCutImg = ocr_erode(mCutImg, 3);
         mCutImg = ocr_smooth(mCutImg, CV_MEDIAN);
         memset(cmd, 0, sizeof(cmd));
         strcpy(cmd, cutImgPath);
@@ -271,11 +271,12 @@ static int ocr_kmeans_cut(Mat mSrc, const char* srcImgPath, int offset, int widt
         p--;
         *p -= (means.size()-k-1);
         ocr_write(mCutImg, cmd);
+        ocr_cut(mCutImg, srcImgPath, NULL, 3, 0, cmd);
     }
 }
 
 /* div value is between 1~100 , must not be set to zero */
-int ocr_cut(Mat mSrcImg, const char* srcImgPath, const char* desImgDir, int div, int count) {
+int ocr_cut(Mat mSrcImg, const char* srcImgPath, const char* desImgDir, int div, int count, const char* singleImgDir) {
 
     Mat mDilateImg, mErodeImg, mCannyImg;
     int idx0, idx1, valid_num;
@@ -397,7 +398,11 @@ int ocr_cut(Mat mSrcImg, const char* srcImgPath, const char* desImgDir, int div,
                 if(m_width == 0)
                     roiImg = ocr_xfill(roiImg, 5);
                 memset(cutPath, 0, sizeof(cutPath));
-                snprintf(cutPath, sizeof(cutPath), "./%s/%d_%d.png", desImgDir, count, idx1);
+                if(desImgDir == NULL) {
+                    snprintf(cutPath, sizeof(cutPath), "%s", singleImgDir);
+                } else {
+                    snprintf(cutPath, sizeof(cutPath), "./%s/%d_%d.png", desImgDir, count, idx1);
+                }
                 ocr_write(roiImg, cutPath);
                 idx1 ++;
                 //imshow("roi", roiImg);
@@ -420,7 +425,11 @@ int ocr_cut(Mat mSrcImg, const char* srcImgPath, const char* desImgDir, int div,
             if(m_width == 0)
                 roiImg = ocr_xfill(roiImg, 5);
             memset(cutPath, 0, sizeof(cutPath));
-            snprintf(cutPath, sizeof(cutPath), "./%s/%d_%d.png", desImgDir, count, idx1);
+            if(desImgDir == NULL) {
+                snprintf(cutPath, sizeof(cutPath), "%s", singleImgDir);
+            } else {
+                snprintf(cutPath, sizeof(cutPath), "./%s/%d_%d.png", desImgDir, count, idx1);
+            }
             ocr_write(roiImg, cutPath);
             idx1 ++;
         }

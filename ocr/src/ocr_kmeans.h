@@ -15,6 +15,7 @@ struct KPoint {
     double rb; //red value/ blue value
     double rg;
     double gb;
+    double dx;
 };
 
 #define KMEAN_STRUCT KPoint

@@ -17,7 +17,15 @@ using namespace std;
 
 void* ocr_kmeans_init(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRUCT> &cluster, int knum) {
     int cnt = 0;
+    double x_sum = 0;
     std::vector<KMEAN_STRUCT> xcluster;
+
+    for(int i=0; i<cluster.size(); i++) {
+        x_sum += (double) cluster[i].x;
+    }
+    x_sum /= cluster.size();
+
+    cluster[0].dx = ((double)cluster[0].x)/x_sum;
     cluster[0].rb = (double)cluster[0].rv/(double)cluster[0].bv;
     cluster[0].rg = (double)cluster[0].rv/(double)cluster[0].gv;
     cluster[0].gb = (double)cluster[0].gv/(double)cluster[0].bv;
@@ -36,6 +44,7 @@ void* ocr_kmeans_init(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRUCT
     }
 
     for(int i=0; i<cluster.size();i++) {
+        cluster[i].dx = ((double)cluster[i].x)/x_sum;
         cluster[i].rb = (double)cluster[i].rv/(double)cluster[i].bv;
         cluster[i].rg = (double)cluster[i].rv/(double)cluster[i].gv;
         cluster[i].gb = (double)cluster[i].gv/(double)cluster[i].bv;
@@ -63,6 +72,7 @@ void* ocr_kmeans_update(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRU
     point.rb = 0;
     point.rg = 0;
     point.gb = 0;
+    point.dx = 0;
 
     means.assign(means.size(), point);
     for(int i=0; i<cluster.size(); i++) {
@@ -70,12 +80,14 @@ void* ocr_kmeans_update(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRU
         means[label[i]].rb += cluster[i].rb;
         means[label[i]].rg += cluster[i].rg;
         means[label[i]].gb += cluster[i].gb;
+        means[label[i]].dx += cluster[i].dx;
     }
     for(int i=0; i<means.size(); i++) {
         means[i].x /= cnt[i];
         means[i].rg /= cnt[i];
         means[i].rb /= cnt[i];
         means[i].gb /= cnt[i];
+        means[i].dx /= cnt[i];
     }
 }
 
@@ -84,9 +96,11 @@ void* ocr_kmeans_load(KMEAN_STRUCT& point1, KMEAN_STRUCT& point2, std::vector<do
     v1.push_back(point1.rb);
     v1.push_back(point1.rg);
     v1.push_back(point1.gb);
+    v1.push_back(point1.dx);
     v2.push_back(point2.rb);
     v2.push_back(point2.rg);
     v2.push_back(point2.gb);
+    v2.push_back(point2.dx);
 }
 
 

@@ -262,7 +262,8 @@ static int ocr_kmeans_cut(Mat mSrc, const char* srcImgPath, int offset, int widt
             x_end = width;
         }
         Mat mCutImg = roiImg(Range(0, roiImg.rows), Range(x_start, x_end));
-        mCutImg = ocr_blur(mCutImg, 3);
+        mCutImg = ocr_dilate(mCutImg, 2);
+        mCutImg = ocr_erode(mCutImg, 2);
         mCutImg = ocr_smooth(mCutImg, CV_MEDIAN);
         memset(cmd, 0, sizeof(cmd));
         strcpy(cmd, cutImgPath);

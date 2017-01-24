@@ -1,2 +1,3 @@
-/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_detect.dir
-/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_java.dir
+/home/cloud/work/project/opencv/ocr/CMakeFiles/edit_cache.dir
+/home/cloud/work/project/opencv/ocr/CMakeFiles/rebuild_cache.dir
+/home/cloud/work/project/opencv/ocr/CMakeFiles/ocr_detect.dir

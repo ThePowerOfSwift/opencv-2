@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="ocr" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/cloud/work/project/opencv/ocr" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="/home/cloud/work/project/opencv/ocr" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/home/cloud/work/project/opencv/ocr" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="ocr_detect">
+         <Option output="/home/cloud/work/project/opencv/ocr/ocr_detect" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/cloud/work/project/opencv/ocr" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/cloud/work/project/opencv/ocr/." />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/lib/jvm/java-8-openjdk-amd64/include" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/leptonica" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 ocr_detect" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="ocr_detect/fast">
+         <Option output="/home/cloud/work/project/opencv/ocr/ocr_detect" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/cloud/work/project/opencv/ocr" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/cloud/work/project/opencv/ocr/." />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/lib/jvm/java-8-openjdk-amd64/include" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/leptonica" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 ocr_detect/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/cloud/work/project/opencv/ocr/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/src/kmeans.cpp">
+         <Option target="ocr_detect"/>
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/src/kmeans.h">
+         <Option target="ocr_detect"/>
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/src/ocr_java.cpp">
+         <Option target="ocr_detect"/>
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/src/ocr_kmeans.cpp">
+         <Option target="ocr_detect"/>
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/src/ocr_kmeans.h">
+         <Option target="ocr_detect"/>
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/src/ocr_main.cpp">
+         <Option target="ocr_detect"/>
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/src/ocr_ml.cpp">
+         <Option target="ocr_detect"/>
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/src/ocr_ml.h">
+         <Option target="ocr_detect"/>
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/src/ocr_read.cpp">
+         <Option target="ocr_detect"/>
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/src/ocr_read.h">
+         <Option target="ocr_detect"/>
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/../../../../../../usr/local/share/OpenCV/OpenCVConfig-version.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/../../../../../../usr/local/share/OpenCV/OpenCVConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/../../../../../../usr/local/share/OpenCV/OpenCVModules.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/cloud/work/project/opencv/ocr/../../../../../../usr/local/share/OpenCV/OpenCVModules-release.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

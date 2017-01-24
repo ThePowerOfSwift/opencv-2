@@ -1,31 +1,31 @@
 # The set of languages for which implicit dependencies are needed:
-SET(CMAKE_DEPENDS_LANGUAGES
+set(CMAKE_DEPENDS_LANGUAGES
   "CXX"
   )
 # The set of files for implicit dependencies of each language:
-SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/cloud/cloud-git-master/opencv/ocr/src/kmeans.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_java.dir/src/kmeans.cpp.o"
-  "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_java.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_java.cpp.o"
-  "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_kmeans.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_kmeans.cpp.o"
-  "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_main.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_main.cpp.o"
-  "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_ml.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_ml.cpp.o"
-  "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_read.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_read.cpp.o"
-  "/home/cloud/cloud-git-master/opencv/ocr/src/ocr_tesseract.cpp" "/home/cloud/cloud-git-master/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_tesseract.cpp.o"
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/cloud/work/project/opencv/ocr/src/kmeans.cpp" "/home/cloud/work/project/opencv/ocr/CMakeFiles/ocr_java.dir/src/kmeans.cpp.o"
+  "/home/cloud/work/project/opencv/ocr/src/ocr_java.cpp" "/home/cloud/work/project/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_java.cpp.o"
+  "/home/cloud/work/project/opencv/ocr/src/ocr_kmeans.cpp" "/home/cloud/work/project/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_kmeans.cpp.o"
+  "/home/cloud/work/project/opencv/ocr/src/ocr_main.cpp" "/home/cloud/work/project/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_main.cpp.o"
+  "/home/cloud/work/project/opencv/ocr/src/ocr_ml.cpp" "/home/cloud/work/project/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_ml.cpp.o"
+  "/home/cloud/work/project/opencv/ocr/src/ocr_read.cpp" "/home/cloud/work/project/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_read.cpp.o"
+  "/home/cloud/work/project/opencv/ocr/src/ocr_tesseract.cpp" "/home/cloud/work/project/opencv/ocr/CMakeFiles/ocr_java.dir/src/ocr_tesseract.cpp.o"
   )
-SET(CMAKE_CXX_COMPILER_ID "GNU")
-
-# Targets to which this target links.
-SET(CMAKE_TARGET_LINKED_INFO_FILES
-  )
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
-SET(CMAKE_C_TARGET_INCLUDE_PATH
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include"
   "."
   "/usr/local/include/leptonica"
-  "/usr/lib/jvm/java-7-openjdk-amd64/include"
+  "/usr/lib/jvm/java-8-openjdk-amd64/include"
   "/usr/local/include/opencv"
   )
-SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-SET(CMAKE_ASM_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

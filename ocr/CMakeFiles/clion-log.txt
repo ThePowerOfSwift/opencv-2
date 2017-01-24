@@ -1,0 +1,4 @@
+/home/cloud/work/software/clion/clion-2016.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - Unix Makefiles" /home/cloud/work/project/opencv/ocr
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/cloud/work/project/opencv/ocr

@@ -42,7 +42,7 @@ int ocrs_detect(const char* dir, const char* result, int cnt, const char* bpPath
         fprintf(stderr, "open %s error\n", result);
         return -1;
     }
-
+    fprintf(pf, "%d: ", cnt);
     fprintf(pf, "%s", cutResult);
     fprintf(pf, "\n");
     fclose(pf);

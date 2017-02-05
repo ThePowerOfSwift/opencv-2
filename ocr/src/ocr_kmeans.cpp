@@ -12,23 +12,79 @@
 #include "kmeans.h"
 #include "ocr_kmeans.h"
 
+//Idea : auto adjust every para weight, use neron network or other supervised algorithms to traning weights for kmeans
+//To adjust weight for x para (X_WEIGHT is theta1 in under line,  no use for others)
+//eg.  sum = theta1 * dx^2 + theta2 * rb^2 + theta3 * rg^2 + theta4 * gb^2
+#define X_WEIGHT 1.2
+
 using namespace cv;
 using namespace std;
 
-void* ocr_kmeans_init(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRUCT> &cluster, int knum) {
-    int cnt = 0;
-    double x_sum = 0;
-    std::vector<KMEAN_STRUCT> xcluster;
+void* ocr_kmeans_regularziation(std::vector<KMEAN_STRUCT> &cluster) {
 
-    for(int i=0; i<cluster.size(); i++) {
-        x_sum += (double) cluster[i].x;
-    }
-    x_sum /= cluster.size();
-
-    cluster[0].dx = ((double)cluster[0].x)/x_sum;
+    cluster[0].dx = cluster[0].x;
     cluster[0].rb = (double)cluster[0].rv/(double)cluster[0].bv;
     cluster[0].rg = (double)cluster[0].rv/(double)cluster[0].gv;
     cluster[0].gb = (double)cluster[0].gv/(double)cluster[0].bv;
+
+    KMEAN_STRUCT kmax = cluster[0], kmean = cluster[0], kmin = cluster[0];
+    kmean.dx = kmax.dx = kmin.dx = kmean.x;
+
+    for(int i=1; i<cluster.size(); i++) {
+        cluster[i].rb = (double) cluster[i].rv / (double) cluster[i].bv;
+        cluster[i].rg = (double) cluster[i].rv / (double) cluster[i].gv;
+        cluster[i].gb = (double) cluster[i].gv / (double) cluster[i].bv;
+
+        kmean.dx += cluster[i].x;
+        kmean.rb += cluster[i].rb;
+        kmean.gb += cluster[i].gb;
+        kmean.rg += cluster[i].rg;
+
+        if (kmax.rb < cluster[i].rb)
+            kmax.rb = cluster[i].rb;
+        if (kmax.gb < cluster[i].gb)
+            kmax.gb = cluster[i].gb;
+        if (kmax.rg < cluster[i].rg)
+            kmax.rg = cluster[i].rg;
+        if (kmax.dx < cluster[i].x)
+            kmax.dx = cluster[i].x;
+
+        if (kmin.rb > cluster[i].rb)
+            kmin.rb = cluster[i].rb;
+        if (kmin.gb > cluster[i].gb)
+            kmin.gb = cluster[i].gb;
+        if (kmin.rg > cluster[i].rg)
+            kmin.rg = cluster[i].rg;
+        if (kmin.dx > cluster[i].x)
+            kmin.dx = cluster[i].x;
+    }
+
+    kmean.dx /= cluster.size();
+    kmean.rb /= cluster.size();
+    kmean.gb /= cluster.size();
+    kmean.rg /= cluster.size();
+    //printf("kmean.dx = %f, kmean.rb = %f, kmean.gb = %f, kmean.rg = %f\n", kmean.dx, kmean.rb, kmean.gb, kmean.rg);
+    //printf("kmax.dx = %f, kmax.rb = %f, kmax.gb = %f, kmax.rg = %f\n", kmax.dx, kmax.rb, kmax.gb, kmax.rg);
+    //printf("kmin.dx = %f, kmin.rb = %f, kmin.gb = %f, kmin.rg = %f\n", kmin.dx, kmin.rb, kmin.gb, kmin.rg);
+    KMEAN_STRUCT kscope;
+    kscope.dx = kmax.dx -kmin.dx;
+    kscope.rb = kmax.rb - kmin.rb;
+    kscope.gb = kmax.gb - kmin.gb;
+    kscope.rg = kmax.rg - kmin.rg;
+    //printf("kscope.dx = %f, kscope.rb = %f, kscope.gb = %f, kscope.rg = %f\n", kscope.dx, kscope.rb, kscope.gb, kscope.rg);
+    for(int i=0; i<cluster.size(); i++) {
+        cluster[i].dx = ((double)(cluster[i].x - kmean.dx))/kscope.dx * X_WEIGHT;
+        cluster[i].rb = (cluster[i].rb - kmean.rb)/(kmax.rb - kmin.rb);
+        cluster[i].gb = (cluster[i].gb - kmean.gb)/(kmax.gb - kmin.gb);
+        cluster[i].rg = (cluster[i].rg - kmean.rg)/(kmax.rg - kmin.rg);
+    }
+}
+
+void* ocr_kmeans_init(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRUCT> &cluster, int knum) {
+    int cnt = 0;
+    std::vector<KMEAN_STRUCT> xcluster;
+
+    kmeans_regularization(cluster, ocr_kmeans_regularziation);
     xcluster.push_back(cluster[0]);
 
     //按x值 冒泡排序
@@ -44,10 +100,6 @@ void* ocr_kmeans_init(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRUCT
     }
 
     for(int i=0; i<cluster.size();i++) {
-        cluster[i].dx = ((double)cluster[i].x)/x_sum;
-        cluster[i].rb = (double)cluster[i].rv/(double)cluster[i].bv;
-        cluster[i].rg = (double)cluster[i].rv/(double)cluster[i].gv;
-        cluster[i].gb = (double)cluster[i].gv/(double)cluster[i].bv;
         if(xcluster[cnt].x != cluster[i].x) {
             xcluster.push_back(cluster[i]);
             cnt ++;
@@ -58,7 +110,7 @@ void* ocr_kmeans_init(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRUCT
 
     for(int i=0; i<knum; i++) {
         means.push_back(xcluster[i*((cnt-1)/(knum-1))]);
-        //printf("means[%d].x = %d, .y = %d, .rb = %f, .rg = %f, .gb = %f\n", i, means[i].x, means[i].y, means[i].rb, means[i].rg, means[i].gb);
+        //printf("means[%d].x = %d, .y = %d, .dx = %f, .rb = %f, .rg = %f, .gb = %f\n", i, means[i].x, means[i].y, means[i].dx, means[i].rb, means[i].rg, means[i].gb);
     }
 }
 
@@ -88,6 +140,7 @@ void* ocr_kmeans_update(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRU
         means[i].rb /= cnt[i];
         means[i].gb /= cnt[i];
         means[i].dx /= cnt[i];
+        //printf("Update %d, kmean.dx = %f, kmean.rb = %f, kmean.gb = %f, kmean.rg = %f\n", i, means[i].dx, means[i].rb, means[i].gb, means[i].rg);
     }
 }
 

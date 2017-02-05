@@ -21,6 +21,7 @@ struct KPoint {
 #define KMEAN_STRUCT KPoint
 
 void* ocr_kmeans_init(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRUCT> &cluster, int knum);
+void* ocr_kmeans_regularziation(std::vector<KMEAN_STRUCT> &cluster);
 void* ocr_kmeans_update(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_STRUCT> &cluster, std::vector<int> &label, std::vector<int> &cnt);
 void* ocr_kmeans_load(KMEAN_STRUCT& point1, KMEAN_STRUCT& point2, std::vector<double> &v1, std::vector<double> &v2);
 #endif //OCR_OCR_KMEANS_H

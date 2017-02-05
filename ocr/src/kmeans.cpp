@@ -28,12 +28,12 @@ static double _kmeans_calDict(std::vector<double> dict1, std::vector<double> dic
     double sum = 0;
     double temp = 0;
 
-    if ((dict1.size() < 2) || (dict2.size() < 2) || (dict1.size() != dict2.size())) {
+    if ((dict1.size() < 1) || (dict2.size() < 1) || (dict1.size() != dict2.size())) {
         printf("Kmeans cal para error!\n");
         return -1;
     }
 
-    for(int i=0; i< dict1.size()-1; i++) {
+    for(int i = 0; i < dict1.size(); i++) {
         temp = dict1[i] - dict2[i];
         sum += temp * temp;
     }
@@ -64,6 +64,7 @@ static int kmeans_sort(KMEAN_STRUCT &point, std::vector<KMEAN_STRUCT> &means, \
     dict = kmeans_calDict(point, means[0], fn);
     for(int i=1; i < means.size(); i++) {
         sum = kmeans_calDict(point, means[i], fn);
+        //KDEBUG(printf("kmeans dict = %f, kmeans sum = %f \n", dict, sum));
         if(dict > sum)	{
             dict = sum;
             label = i;
@@ -71,6 +72,12 @@ static int kmeans_sort(KMEAN_STRUCT &point, std::vector<KMEAN_STRUCT> &means, \
     }
     //KDEBUG(printf("Point label is %d\n", label));
     return label;
+}
+
+//kmeans para regularization :  x_regular = (x - x_mean) / (x_max - x_min)
+void kmeans_regularization(std::vector<KMEAN_STRUCT> &cluster, \
+  void* fn(std::vector<KMEAN_STRUCT>&)) {
+    fn(cluster);
 }
 
 //Init means value
@@ -112,9 +119,7 @@ double kmeans_cal_deltaSum(std::vector<KMEAN_STRUCT> &means, std::vector<KMEAN_S
     for(int i = 0; i < cluster.size(); i++) {
         sum += kmeans_calDict(cluster[i], means[label[i]], fn);
     }
-    KDEBUG(printf("cluster dict means sum: %f\n", sum));
     sum /= cluster.size();
-    //KDEBUG(printf("cluster dict means sum: %f\n", sum));
     return sum;
 }
 

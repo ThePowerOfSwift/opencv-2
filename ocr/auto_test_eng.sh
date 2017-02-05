@@ -11,11 +11,11 @@ if [ -d ./cut ]; then
 fi
 i=1
 
-for file in ./png/code7/*.png
+#for file in ./png/nianlian/*.png
+for file in ./png/code8/*.png
 	do 
 		./ocr_detect ${file} ./test/$i.png cut ./test/result.txt $i bp.xml
+#		exit
 		i=`expr $i + 1`
 done
-#./ocr_detect ./png/code1/1468500000502.png ./test/temp.jpg ./test/temp.tif test ./test/result.txt
-#./ocr_detect ./temp_1.png ./test/temp.jpg ./test/temp.tif test ./test/result.txt
 
